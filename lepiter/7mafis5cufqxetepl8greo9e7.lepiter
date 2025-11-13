@@ -1,0 +1,147 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:59:37.171042+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:59:56.09392+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "9AR3kuP/DQC8xlNGD1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtClass:KoSlotSpaceExamples}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:55:45.197563+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:56:08.157789+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "QWKjhOP/DQC8lsTzD1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "You’re getting that DNU because `KoSlotSpace` in your image doesn’t (yet) provide the builder API the examples use. Here’s a **compat layer** that adds the minimal methods on `KoSlotSpace` so your examples run as-is. Paste in a playground and Do-it. [chatgpt](https://chatgpt.com/g/g-p-691437235e0481919843c65364b0e9d5-korz-and-pov/c/69165f8a-377c-8327-bf9d-a7141ebc9d7b)\n\n```smalltalk\n\"Compat layer for KoSlotSpace — only if the API is missing.\"\nSmalltalk at: #KoSlotSpace ifPresent: [ :cls |\n\t(cls canUnderstand: #addDimensionNamed:) ifFalse: [\n\t\tSmalltalk at: #KoSlotSpaceState ifAbsentPut: [ WeakKeyDictionary new ].\n\n\t\tKoSlotSpace compile: '\nkozState\n\t^ (KoSlotSpaceState at: self ifAbsentPut: [ Dictionary new\n\t\tat: #dimensions put: OrderedCollection new;\n\t\tat: #coordinates put: Dictionary new; \"dim -> (name -> coord)\"\n\t\tat: #slots put: OrderedCollection new;\n\t\tyourself ])' classified: 'Korz-Projection-Compat'.\n\n\t\tKoSlotSpace compile: '\naddDimensionNamed: aSymbol\n\t| st dims |\n\tst := self kozState.\n\tdims := st at: #dimensions.\n\t(dims includes: aSymbol) ifFalse: [ dims add: aSymbol ].\n\t^ aSymbol' classified: 'Korz-Projection-Compat'.\n\n\t\tKoSlotSpace compile: '\naddCoordinateNamed: aSymbol onDimension: aDim parent: aParent\n\t| st byDim coord |\n\tst := self kozState.\n\tbyDim := (st at: #coordinates) at: aDim ifAbsentPut: [ Dictionary new ].\n\tcoord := byDim at: aSymbol ifAbsentPut: [\n\t\tDictionary newFrom: {\n\t\t\t#name -> aSymbol.\n\t\t\t#dimension -> aDim.\n\t\t\t#parent -> aParent } ].\n\t^ coord' classified: 'Korz-Projection-Compat'.\n\n\t\tKoSlotSpace compile: '\naddSlot: aSlot\n\t(self kozState at: #slots) add: aSlot.\n\t^ aSlot' classified: 'Korz-Projection-Compat'.\n\n\t\tKoSlotSpace compile: '\nmatchingSlotsForContext: aContext selector: aSelector arguments: ignored\n\t\"Return the slots whose guard selector matches and whose dimension constraints\n\t are exactly satisfied by aContext (identity compare on coords).\"\n\t| slots |\n\tslots := self kozState at: #slots.\n\t^ slots select: [ :slot |\n\t\t| guard ok |\n\t\tguard := (slot respondsTo: #guard)\n\t\t\tifTrue: [ slot guard ]\n\t\t\tifFalse: [ nil ].\n\t\tguard ifNil: [ ^ #() ].\n\t\t(guard respondsTo: #selector) and: [ guard selector = aSelector ] and: [\n\t\t\tok := true.\n\t\t\t(guard respondsTo: #dimensionConstraints)\n\t\t\t\tifTrue: [\n\t\t\t\t\tguard dimensionConstraints keysAndValuesDo: [ :dim :coord |\n\t\t\t\t\t\t((aContext at: dim ifAbsent: [ ^ false ]) == coord) ifFalse: [ ok := false ] ] ].\n\t\t\tok ] ]' classified: 'Korz-Projection-Compat'.\n\t].\n].\n```\n\nNow re-run your examples, e.g.:\n\n```smalltalk\nKoSlotSpaceExamples exampleSlotMatching\n```\n"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:56:24.730022+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:56:26.591999+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "65n+huP/DQC8v9DbD1+ygA=="
+				},
+				"code" : "KoSlotSpaceExamples exampleSlotMatching"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:01:56.226652+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:01:56.226652+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "KoSlotSpace in your image doesn’t (yet) provide the builder API the examples use"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "8f5fa384-e3ff-0d00-bc95-44630f5fb280"
+	}
+}

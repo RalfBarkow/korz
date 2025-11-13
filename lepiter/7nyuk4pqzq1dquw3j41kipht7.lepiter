@@ -1,0 +1,668 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:30:56.74236+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:31:18.387338+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "H2HrK+P/DQC4jTKqAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "A Korz slot space is a tuple SS = (C, p, D, L, S) where:  • C is a set of coordinates,  • p is a parent relation on coordinates, • D is a set of dimension names, • L is a set of selectors, • S is a set of slots.  Each slot consists of:  • A slot guard, sg = (dcs, l, pct), where: - dcs is a dimension constraint set, made up of dimension constraints (which are context/implicit parameter constraints) - l is a selector - pct is a parameter constraint tuple, made up of parameter constraints • Contents, which can be: - A coordinate, or  - The special assignment primitive, or - A method body, which consists of:  • 0 or more local variable declarations, and  • An expression, usually a sequence of sub-expressions, which can be message sends or various other forms.  In this exposition, whenever we have tuples in the abstract syntax, we use the component names as the names of functions providing access to the components. Thus for SS above, C(SS) denotes the coordinate set of SS, p(SS) denotes its parent relation, etc. Each of these elements, and their sub-elements, are now described in more detail. The exposition is done mostly bottom-up, so that we can keep building on known concepts; the map above puts the elements in context."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:32:49.988291+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:32:51.826504+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "+FqrMuP/DQC4kzOHAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "IDE support is essential for managing complexity when working with the slot space and with subjectivity, allowing the task at hand to dictate what subspaces to isolate and what dominance of dimensions to use when presenting nested views to the user."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:33:19.626873+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:33:21.554833+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "rppvNOP/DQC4ma6IAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "With the Korz computational model, a system consists of a sea of slots (containing data values or methods), organized in a multidimensional slot space. Computation occurs in a context, which is also multidimensional, binding specific values to some or all of the dimensions in the slot space. At each computation step, a slot is selected from the space, using multiple dispatch that is based on the context, a selector, and explicit arguments, and then that slot is evaluated. The context is implicitly passed along to this evaluation, and hence serves as a set of implicit arguments."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:33:48.424933+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:33:50.219395+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "IQcnNuP/DQC4nzpJAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The context, selector and explicit arguments of the message send are all used to find an appropriate slot in the slot space – the slot whose slot guard best matches the components of the message send (the dispatch algorithm is discussed in detail in the next section). That slot is then evaluated, and a coordinate is returned. Thus, the message send {rcvr: stack1}.push(100) results in the push method slot of Figure 1 being evaluated, because rcvr: stack1 matches rcvr ≤ stackParent from the slot guard by virtue of the fact that stack1 extends stackParent (it was created by copying stack), as well as the fact that the selectors are the same and the arguments (100) match the parameters (x)."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:34:06.52026+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:34:08.337446+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "/CM7N+P/DQC4paXdAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "3. Language Definition  A body of Korz code is termed a slot space: a collection of slots organized in a multidimensional space. Execution occurs when an expression is evaluated relative to the slot space. Expression evaluation usually involves sending messages. Each message send occurs in an implicit context (comprised of implicit arguments) and specifies a selector and explicit arguments. The context, selector and arguments (three kinds of bindings) are all used to find an appropriate slot in the slot space, by finding the slot whose slot guard (consisting of corresponding constraints) best matches the bindings. If a most-suitable slot is found, it is then evaluated to yield the result of the message send. We first describe an abstract syntax for Korz slot spaces. We then describe the semantics of the interpreter. Both descriptions are semi-formal, with the intent of combining precision and readability."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:34:38.081671+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:34:40.403459+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "xrocOeP/DQC4q5d9APV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "3.1.4 Identifiers and Dimension Names  As is customary, an identifier is a sequence of a restricted set of characters. Examples of identifiers from Section 2 are: sp, pop, push and x. Identifiers can be compared for equality, and are used for variable and parameter names and the like. A Korz slot space includes a set, D, of identifiers used as dimension names, and hence defining the dimensional structure of the slot space. Examples of dimension names from Section 2 are: rcvr and assertions."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:34:57.486907+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:34:59.878582+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "etREOuP/DQC4sdSoAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "A dimension binding set, dbs = { db1, db2, ..., dbn } is a set of 0 or more dimension bindings, containing at most one dimension binding per dimension of the slot space. Not all dimensions in the slot space need be mentioned in dbs; any dimension not mentioned is considered irrelevant. A context is a dimension binding set."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:35:46.738465+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:35:49.761193+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "X1k0PeP/DQC4t29ZAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "3.1.11 Slot  A slot is a pair, s = (sg, contents), where sg is a slot guard. No two slots in a slot space may have equal slot guards (i.e., slot guards all of whose components are equal, ignoring parameter names). Contents may be one of:  • A coordinate, in which case the slot is a data slot. • The assignment primitive, in which case the slot is an assignment slot. In this case the parameter guard must specify a single parameter (to hold the value to be assigned), and the assignment slot must be paired with a data slot (thus forming a getter/setter pair). This pairing might be done using selector conventions, such as ‘x’ for a data slot and ‘x:’ or ‘setX’ for the corresponding assignment slot. A message sent to the assignment slot sets the value of the corresponding data slot. • A method body (defined below), in which case the slot is a method slot.  Examples of slot declarations from Section 2 are:  var {rcvr ≤ stack} sp = 0;  and  method {rcvr ≤ stackParent} pop() { ... } .  The var in this syntax declares both sp as a data slot and also a corresponding assignment slot that is invoked by assignment expressions like ‘sp = 0.’ The method indicates that pop is a method slot."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:36:07.206815+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:36:09.613249+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "3atsPuP/DQC4vcgUAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "3.1.14 Dimension Modifier Set  When the need arises to execute a sub-expression with a different set of dimension bindings (i.e. in a different context) than is used for its enclosing expression, a dimension modifier set is used. A dimension modifier set, dms = { dm1, dm2, ..., dmn } is a set of dimension modifiers, containing at most one dimension modifier per dimension of the slot space. A dimension modifier is a pair dm = (dim, e), where dim ∈ D is a dimension name and e is either an expression, which evaluates to a coordinate; or the symbol ‘−’, which indicates that any existing binding to the associated dimension should be removed. Examples of dimension modifier sets from Section 2 are: {assertions: true} and {assertions}.  A dimension modifier contains an expression, which is evaluated when the modifier is used, whereas a dimension binding or dimension constraint contains a coordinate, which requires no evaluation."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:36:30.239422+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:36:44.899554+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "9R7MP+P/DQC4w+HZAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "6. Programming with Korz  In this section, we move from language and dispatch details to consider how programmers think about their Korz programs. Appendix D provides more depth on these topics.  Slot space versus object model: Traditional object-oriented programmers, when wanting an overall understanding of a program, think in terms of an object model, in which the inheritance hierarchy plays a key role in organization and overall understanding. In Korz, the multidimensional slot space assumes this role. Multidimensional spaces are conceptually simple and regular, but quickly become large and hence complex in detail. Sophisticated IDE support is critical to working with them effectively. Since many object-oriented programs actually deal with multiple dimensions of variation, Korz’s paradigm, along with a suitable environment, may well actually ease the task of working with such programs. Modularity: Dimensions provide a flexible and powerful modularization mechanism that can be used for program organization and presentation. A module can be represented by a specific dimension, or a coordinate within a specific dimension. However, the global scope of dimension names in Korz could present problems when merging two Korz slot spaces that have some dimension names in common if those names are used with different meanings in the two spaces.  Static analysis and programmer assistance: The dimensions and coordinates in the slot space provide valuable structural information to programmers, and can be used by an IDE for intelligent code completion in slot guards and dimension binding modifiers. Though Korz is not statically typed, the constraints in slot guards provide a good deal of information that might be used for type inferencing in the same fashion as Agesen’s work for Self [AU94], and hence for intelligent code completion as well."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:37:06.74168+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:37:09.172597+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4Bn5QeP/DQC407bBAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The sea-of-slots, subjective object model of Korz poses an interesting challenge for its environment, which will have to tame its complexity. We believe it can do so by offering progressive disclosure of dimensions; supporting whatever view of the slot space is best suited for the task at hand, be it symmetric, a slice, or a projection; and by providing the illusion of objects in a given perspective. Such a perspective must be salient enough to be clear to a programmer without being constantly distracting."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:37:25.338912+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:37:43.611038+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "UN8UQ+P/DQC42cESAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "C.1 Symmetry and Subjectivity  The issues of symmetry and subjectivity become clearer when one thinks in terms of the multidimensional slot space. Figure 5 shows three dimensions of the slot space for the color point example of Section 4. Each dimension shows the coordinates that are appropriate to it, as well as a special don't-care indicator (\"-\"). Each slot is positioned in this space based on the coordinates specified in the dimension binding set of its slot guard. For any dimension not mentioned or not constrained in the slot guard, the don'tcare position is used. The figure shows the position of the first slot in Figure 4, whose dimension constraint set is: { rcvr ≤ screenParent, location ≤ southernHemi }  Since isColorblind is not included in the constraint set, this slot is shown in the don’t-care position for this dimension. The space is symmetrical in that there is no dominant dimension that determines the program structure. Instead, the developer can have the IDE present a variety of asymmetrical, subjective views of this space that are appropriate for different purposes. For example, for working on screen display issues in general, the view in Figure 6 presenting screenParent as an object with all relevant slots is best; for focussing on support for location, views like Figure 7 presenting southernHemi and other locations as an object is best; and for working on accessibility and ensuring that colorblind users are well supported, a view presenting true as an object is best, ideally filtered to focus on the isColorblind dimension (since true is likely to be widely used as a coordinate). Each of these views is obtained by cutting through the slot space a different way, restricting one's view to a plane (or, in general, a region) that is relevant to one's current task. They can even be combined as in Figure 4, which shows both hierarchies and reifies the slots."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:38:04.759815+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:38:06.681992+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "O2NuReP/DQC46dDIAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Figure 5: Three dimensions of the slot space for the color point example"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:38:32.11022+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:38:58.304959+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wLgPR+P/DQC47zqZAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "D.1 Slot space versus object model  Traditional object-oriented programmers, when wanting an overall understanding of a program, think in terms of an object model, in which the inheritance hierarchy plays a key role in organization and overall understanding. In Korz, the multidimensional slot space assumes this role. To have an overall understanding of a program, a developer needs to understand what the dimensions are, and what coordinates are appropriate on each. Coordinates can have parents, so each dimension effectively has an inheritance hierarchy. This overall view, which is imparted by visualizations such as the one shown in Figure 5, identifies the important concepts in the domain of the program, and indicates what combinations of cases are being considered. To some extent, it serves as an interface. When writing code, one of the key issues is what options are available for use in a message context, the analogy of what operations are supported by an object in an object-oriented language. For example, when coding a drawPixel(x, y, color) message send, what options are available for the rcvr dimension, and is it sensitive to different choices for location or isColorBlind? The structure of the space indicates what options are potentially available, and views that show how the space is populated indicate what options are actually available. Such views can be dynamically produced by the IDE. The space can also be a useful guide to implementers. What cases must be considered and implemented? Suppose, for example, that one is working to ensure proper support for colorblind users across an application. One can then focus on the isColorBlind dimension. Any slot whose coordinate in this dimension is true already supports color blindness, and any slot whose coordinate is explicitly false presumably provides behavior suitable for people who can distinguish colors. The slots in the don't-care position in this dimension are worthy of examination. The developer can look at each and decide whether color blindness is relevant or not, and act accordingly. Analysis performed by the IDE could help, for example to identify selectors that have no methods with isColorBlind ≤ true yet are related, according to some metric, to slots that do. The fact that the slot space makes these choices manifest leads to thoughts of such analyses, and can be expected to facilitate their implementation. Multidimensional spaces are conceptually simple and regular, but quickly become large and hence complex in detail. This leads to concern that they will confuse rather than help programmers. Certainly sophisticated IDE support is critical to working with them effectively. However, it is important to note that they do not introduce complexity; rather, they manifest inherent complexity. A simple program that does not deal with many areas of variation will have a simple space with few dimensions, perhaps even none. As areas of variation arise, as they invariably do in real-life programming (and real life in general), more complex structures and dependencies are inevitable, and often the dependencies are somewhat ad hoc, because only immediately-needed cases are considered. In most programs, these dependencies are hidden in the code and are easy to miss, or worse, hidden in requirements or design documentation and never explicitly referenced in the code. This makes it difficult to amass the knowledge of the program needed for evolution tasks, and makes all but the simplest evolution tasks dangerous, because it is easy to miss something. The multidimensional structure of Korz make more of the inherent structural complexity and dependencies manifest, and encourages regularity (or at least can highlight irregularity). Hence we believe it has the potential to reduce the effort and the risks in evolution tasks. More research is needed to test this belief."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:39:20.532254+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:39:22.621459+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "VpXySeP/DQC5DqiUAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "On the other hand, the dimension names in Korz are global. This presents problems if one needs to merge two Korz slot spaces that have some dimension names in common, especially if those names are used with different meanings in the two spaces. IDE support can help here, providing for renaming of dimensions that should be different, and handling mapping of coordinates in dimensions that should be merged. However, it is an open question as to whether this sort of approach is adequate, or whether Korz should provide additional mechanism, such as encapsulation of entire slot spaces, or namespaces for dimension names."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:39:46.143274+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:39:59.700996+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "lWB5S+P/DQC5FNXbAPV7gQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "D.3 Static analysis and programmer assistance  The fact that Korz programs consist of large numbers of small pieces (slots) means that the programmer is likely to need help finding things when needed, and avoiding mistakes. At the same time, the dynamic nature of Korz suggests that there are limits to how much help can be provided statically. The dimensions provide valuable structural information to programmers, and identify immediately key areas of variability. A simple analysis of the slot space can reveal the dimension names, and the sets of coordinates actually used in each dimension at any point in time. The results of this analysis can be used to provide intelligent code completion in slot guards and message sends. Though Korz is not statically typed, the constraints in slot guards do provide a good deal of information that can be used for type inferencing. In addition, Agesen demonstrated that it is possible to analyze Self programs so as to provide the programmer with assistance and checking such as is normally expected only in statically-typed languages [AU94], and we believe the approach can be extended to Korz. These and related issues require further research."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:47:35.811448+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T23:47:38.317378+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Syt4Z+P/DQC2UlmWAj22ig=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "\nUNGAR, David, OSSHER, Harold and KIMELMAN, Doug, 2014. Korz: Simple, symmetric, subjective, context-oriented programming. In: ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software.. Online. 20 October 2014. ISBN 978-1-4503-3210-1. DOI 10.1145/2661136.2661147. [Accessed 13 October 2025]. \nKorz: Simple, symmetric, subjective, context-oriented programming for Onward! 2014 by David Ungar et al.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-13T23:31:00.032672+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-13T23:31:00.032672+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Slot Space"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "6b58eb2b-e3ff-0d00-b88c-0a9200f57b81"
+	}
+}

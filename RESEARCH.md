@@ -16,6 +16,12 @@
 - Graph/pile/Yoneda/Croquet structures need concrete encodings as slots + coordinates; until we prove that mapping, they remain experiments rather than scope items.
 - Any claims about quick implementation must be backed by real slot-space code plus tests—documentation now reflects that reality.
 
+## Slot Space page translations
+- `KoSlotSpaceExamples exampleBracketSees` encodes the bracket toy (multi-POV, anti-reflex rule).
+- `KoSlotSpaceExamples exampleYonedaProfiles` demonstrates contextual identity via relation profiles.
+- `KoSlotSpaceExamples examplePileSelection` models piles/selection dimensions.
+- `KoSlotSpaceExamples exampleCombinerPolicies` describes ensemble/combiner strategies as dispatcher hooks.
+
 ## Open questions / to-verify
 - How should raw Smalltalk values vs. coordinates coexist in slot contents? (May need a wrapper protocol.)
 - What is the preferred strategy for ambiguity: error, choose-arbitrary, or user-provided handler?

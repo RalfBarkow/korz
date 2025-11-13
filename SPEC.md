@@ -29,3 +29,8 @@ Deliver a minimal-yet-usable Korz-style projection-object kernel for Pharo/Glamo
 - **Guard usage:** keep the standard Korz practice where a guard may constrain the same dimension it binds; “boundary can’t see itself” must be modelled separately later.
 - **Combiners as strategies:** any “run all slots” behaviour (meet/sum/quorum/etc.) will plug in via dispatcher policies rather than as ordinary coordinates.
 - **External structures:** piles, Yoneda profiles, Croquet-style epochs/replicas only enter scope once we can map them cleanly into dimensions + coordinates; until then they remain research items.
+- **What Korz claims vs. reality:** tests exercise the falsifier’s checklist (ambiguous matches, subjectivity/invariant drift, namespace pressure) so documentation + code stay honest about the current limits.
+
+## Slot Space coherence
+- `KoSlotSpaceExamples` hosts runnable slices for the Lepiter “Slot Space” page (brackets, Yoneda profiles, pile selections, combiner narratives).
+- `KoSlotSpaceExamplesTest` + `KoDispatcherTest` ensure the examples stay executable and keep the ambiguity/error semantics explicit.

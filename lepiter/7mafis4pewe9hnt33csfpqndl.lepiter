@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:15:54.184759+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:15:56.463657+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fhCzzOP/DQC+XsJ7D1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "─ Worked for 7m 32s ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n• Korz Kernel\n\n  - Added the missing slot-space core (KoCoordinate, KoDimension, KoSlotGuard, KoSlot, KoSlotSpace) plus context/dispatcher/error plumbing so\n    Lepiter’s “Slot Space” spec is now runnable (src/Korz/*.class.st).\n  - KoSlotSpace>>bestSlotsForContext: implements Korz’s “remove less specific, error on ambiguity” rule so KoDispatcher can signal\n    KoMessageNotUnderstood or KoAmbiguousDispatch deterministically (src/Korz/KoSlotSpace.class.st:1, src/Korz/KoDispatcher.class.st:1).\n\n  Examples & Falsifier Harness\n\n  - KoSlotSpaceExamples now mirrors the new Lepiter narratives: screen/location baseline, bracket POVs (anti‑reflex rule), Yoneda profiles,\n    pile selection, and combiner-policy sketches (src/Korz-Examples/KoSlotSpaceExamples.class.st:1).\n  - Tests exercise the falsifier checklist: ambiguity errors, subjectivity drift, pile selectors, combiner descriptions, and base\n    guard behavior (src/Korz-Tests/KoDispatcherTest.class.st:1, src/Korz-Tests/KoSlotSpaceExamplesTest.class.st:1, src/Korz-Tests/\n    KoSlotSpaceTest.class.st:1, src/Korz-Tests/KoSlotGuardTest.class.st:1, src/Korz-Tests/KoCoordinateTest.class.st:1).\n\n  Docs & Research\n\n  - README now lists all GT example entry points so the Slot Space page is demonstrably executable (README.md:2-28).\n  - SPEC/RESEARCH/WORKLOG capture the new Lepiter pages (“What Korz claims…”, “Slot Space”) and note how the examples/tests keep those\n    falsifier narratives honest (SPEC.md:27-35, RESEARCH.md:13-24, WORKLOG.md:5-8).\n\n  Testing\n\n  - Load via:\n\n    Metacello new\n      baseline: 'Korz';\n      repository: 'gitlocal:///Users/rgb/workspace/korz/src';\n      load.\n    (RPackage named: 'Korz-Tests') runAll.\n    (All new tests live under Korz-Tests.)\n\n  Next Steps\n\n  1. Encode the Croquet/Syndicate time-warp experiments and namespace-collision rehearsal suggested in Lepiter to continue the falsifier\n     suite.\n  2. Introduce dispatcher strategy objects (meet/sum/quorum) instead of the current string descriptions once the baseline semantics settle."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:18:14.5402+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:18:14.5402+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Korz Kernel"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "d90db3cc-e3ff-0d00-be5d-934d0f5fb280"
+	}
+}

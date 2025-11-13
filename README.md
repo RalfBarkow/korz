@@ -17,3 +17,12 @@ KoSlotSpaceExamples exampleSlotMatching inspect
 ```
 
 The example builds the `rcvr` / `location` / `isColorblind` scenario from the Korz paper and returns the slot bodies that currently match each context (`#australia`, `#colorblindAustralia`, etc.). In Glamorous Toolkit you can also browse it via the Examples browser thanks to the `<gtExample>` annotation.
+
+Additional example entry points translate the “Slot Space” Lepiter page into runnable snippets:
+
+```st
+KoSlotSpaceExamples exampleBracketSees          "boundary POVs without self-vision"
+KoSlotSpaceExamples exampleYonedaProfiles       "contextual identity via relation profiles"
+KoSlotSpaceExamples examplePileSelection        "pile selections (tops vs all)"
+KoSlotSpaceExamples exampleCombinerPolicies     "describing ensemble strategies"
+```
