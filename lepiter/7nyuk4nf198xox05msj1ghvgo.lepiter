@@ -86,40 +86,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-11-13T20:06:26.700475+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-11-13T20:06:28.298645+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "nGuRUOD/DQC2Htc0APV7gQ=="
-				},
-				"code" : " IceSystemEventListener disable.\n    [\n      Metacello new\n        baseline: 'Korz';\n        repository: 'tonel:///Users/rgb/workspace/korz/src';\n        load.\n    ] ensure: [ IceSystemEventListener enable ]."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2025-11-13T20:08:05.029545+01:00"
 					}
 				},
@@ -173,6 +139,40 @@
 					"uidString" : "qxgFQ+D/DQC1/sx4APV7gQ=="
 				},
 				"code" : " \"2. Load Korz from the Tonel directory\"\n  Metacello new\n    baseline: 'Korz';\n    repository: 'tonel:///Users/rgb/workspace/korz/src';\n    load."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T20:23:29.214698+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-13T20:23:33.634849+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "QLWDjeD/DQC2UOWdAPV7gQ=="
+				},
+				"code" : "Iceberg enableMetacelloIntegration: true."
 			}
 		]
 	},

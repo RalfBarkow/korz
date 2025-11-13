@@ -32,6 +32,16 @@
 * Interpreter-modifying dimensions (e.g. failure/ambiguity hooks) beyond a simple error strategy.
 * Ensembles (“run all slots”) — just keep a clear seam for them.
 
+### 1.1 Falsifier checkpoints
+
+From the Lepiter “Falsifier’s report”, we extract the following guardrails:
+
+1. **Baseline first:** Ship a faithful Korz kernel (unique most-specific dispatch) before experimenting with combiners/ensembles.
+2. **No anti-reflex ban:** Guards may constrain the same dimension they bind; any “boundary cannot see itself” rule must become a separate meta-dimension or static analysis pass.
+3. **Concrete data stories:** Concepts like Yoneda profiles, piles/selection strategies, or Croquet/Syndicate epochs stay in RESEARCH until we can encode them explicitly as coordinates + slots.
+4. **Combiners as strategies:** Ensemble modes (`meet`, `sum`, `quorum(k)`, etc.) arrive through dispatcher strategy objects, not via naïvely adding a `combiner` coordinate to guards.
+5. **Scope honesty:** SPEC/RESEARCH must keep these limitations visible so we do not over-promise “implement tomorrow” abstractions without the runtime support.
+
 ---
 
 ### 2. Architecture Overview
@@ -321,9 +331,9 @@ Leave clear seams for future work, but don’t implement yet:
 1. **Interpreter-behaviour dimensions**
 
    * Add a pluggable “onAmbiguous:” / “onNotUnderstood:” strategy taking `KoContext`.
-2. **Ensembles**
+2. **Ensembles / combiners**
 
-   * Optional flag or dimension value that changes `KoDispatcher` policy to “run all matching slots and combine results”.
+   * Provide dispatcher strategy objects that can deliberately “run all matching slots” (meet/sum/quorum/fixpoint) without polluting ordinary guard coordinates.
 3. **Pattern-based selectors**
 
    * A variant of `KoSlotGuard` where selector is a pattern instead of a single symbol.
@@ -351,9 +361,11 @@ Document these hooks in the code so pharo-code-emitter can target them later.
 5. **Examples + narrative tests**
 
    * Recreate a minimal form of the Korz “screen/location/isColorblind” story.
+   * Only after the kernel is stable, prototype one “pile/selection strategy” scenario with an explicit slot-encoded graph.
 6. **Refinement & hooks**
 
    * Add extension points for interpreter dimensions and ensembles.
+   * Design dispatcher strategy objects (ensemble/combiner policies) so “run all slots” lives outside plain guard coordinates.
 
 ---
 
