@@ -1,0 +1,290 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T08:47:23.141109+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T08:47:33.065332+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "KWDn8er/DQCTV2Z4Ci3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtClass:KoSlotGuard}}"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T07:45:46.723923+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T07:45:46.723923+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "CYGUFer/DQCRtwhOCi3ECw=="
+				},
+				"code" : "\"1) Probe what we have\"\nhaveKoSlotSpace := (Smalltalk includesKey: #KoSlotSpace).\nhaveKoSlotGuard := (Smalltalk includesKey: #KoSlotGuard).\nhaveKoSlot := (Smalltalk includesKey: #KoSlot).\n\nhaveAddDim  := haveKoSlotSpace and: [ (Smalltalk at: #KoSlotSpace) canUnderstand: #addDimensionNamed: ].\nhaveAddCoord:= haveKoSlotSpace and: [ (Smalltalk at: #KoSlotSpace) canUnderstand: #addCoordinateNamed:onDimension:parent: ].\nhaveAddSlot := haveKoSlotSpace and: [ (Smalltalk at: #KoSlotSpace) canUnderstand: #addSlot: ].\nhaveMatch   := haveKoSlotSpace and: [ (Smalltalk at: #KoSlotSpace) canUnderstand: #matchingSlotsForContext:selector:arguments: ]."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T07:46:08.07285+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T07:46:08.07285+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "eT3aFur/DQCRvrfDCi3ECw=="
+				},
+				"code" : "haveGuardCtor := haveKoSlotGuard and: [ (Smalltalk at: #KoSlotGuard) class canUnderstand: #selector:dimensionConstraints:parameterConstraints: ]."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T08:46:55.263142+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T08:46:55.263142+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qPc98Or/DQCTUft+Ci3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Yep—that `mustBeBoolean` is coming from the probe lines that chained `and:` in a way that sometimes produced a non-boolean. Here’s a **drop-in fix**: it recomputes those feature flags step-by-step (no nested `and:`), so everything is strictly boolean.\n\nPaste this **small do-it** and run it once; it only defines the vars safely and won’t touch any methods/classes.\n\n```smalltalk\n\"=== Fix probe booleans to avoid mustBeBoolean ===\"\n\n| haveKoSlotSpace haveKoSlotGuard haveKoSlot\n  haveAddDim haveAddCoord haveAddSlot haveMatch\n  haveGuardCtor haveGuardAccessors\n  haveSlotCtor haveSlotAccessors haveEval\n  g s |\n\n\"Class presence\"\nhaveKoSlotSpace := Smalltalk includesKey: #KoSlotSpace.\nhaveKoSlotGuard := Smalltalk includesKey: #KoSlotGuard.\nhaveKoSlot      := Smalltalk includesKey: #KoSlot.\n\n\"KoSlotSpace API\"\nhaveAddDim  := false.\nhaveAddCoord:= false.\nhaveAddSlot := false.\nhaveMatch   := false.\n\nhaveKoSlotSpace ifTrue: [\n\ts := Smalltalk at: #KoSlotSpace.\n\thaveAddDim   := s canUnderstand: #addDimensionNamed:.\n\thaveAddCoord := s canUnderstand: #addCoordinateNamed:onDimension:parent:.\n\thaveAddSlot  := s canUnderstand: #addSlot:.\n\thaveMatch    := s canUnderstand: #matchingSlotsForContext:selector:arguments:\n].\n\n\"KoSlotGuard API\"\nhaveGuardCtor := false.\nhaveGuardAccessors := false.\n\nhaveKoSlotGuard ifTrue: [\n\tg := Smalltalk at: #KoSlotGuard.\n\thaveGuardCtor := g class canUnderstand: #selector:dimensionConstraints:parameterConstraints:.\n\thaveGuardAccessors :=\n\t\t((g canUnderstand: #selector)\n\t\t\t& (g canUnderstand: #dimensionConstraints)\n\t\t\t& (g canUnderstand: #parameterConstraints))\n].\n\n\"KoSlot API\"\nhaveSlotCtor := false.\nhaveSlotAccessors := false.\nhaveEval := false.\n\nhaveKoSlot ifTrue: [\n\tg := Smalltalk at: #KoSlot.\n\thaveSlotCtor := g class canUnderstand: #guard:contents:.\n\thaveSlotAccessors := ((g canUnderstand: #guard) & (g canUnderstand: #contents)).\n\thaveEval := g canUnderstand: #evaluateInContext:withArguments:\n].\n\nTranscript cr; show:\n\t(String streamContents: [ :str |\n\t\tstr\n\t\t\tnextPutAll: '[Probe] KoSlotSpace: '; print: haveKoSlotSpace; nextPutAll: ' (addDim:'; print: haveAddDim;\n\t\t\t\tnextPutAll: ', addCoord:'; print: haveAddCoord; nextPutAll: ', addSlot:'; print: haveAddSlot; nextPutAll: ', match:'; print: haveMatch; nextPutAll: ')'; cr;\n\t\t\tnextPutAll: '[Probe] KoSlotGuard: '; print: haveKoSlotGuard; nextPutAll: ' (ctor:'; print: haveGuardCtor;\n\t\t\t\tnextPutAll: ', accessors:'; print: haveGuardAccessors; nextPutAll: ')'; cr;\n\t\t\tnextPutAll: '[Probe] KoSlot: '; print: haveKoSlot; nextPutAll: ' (ctor:'; print: haveSlotCtor;\n\t\t\t\tnextPutAll: ', accessors:'; print: haveSlotAccessors; nextPutAll: ', eval:'; print: haveEval; nextPutAll: ')'\n\t]).\n```\n"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T08:39:35.629315+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T08:46:55.274122+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "iLYJ1ur/DQCSlOCYCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If you still want the full reorient script, keep everything else as-is and **replace just the probe section** with the code above. That eliminates the brittle nested `and:` chain the error pointed to.\n"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T08:41:50.44822+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T08:41:53.354179+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "lOIS3ur/DQCSpeORCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Great—your probe says everything’s wired except **KoSlotGuard accessors**. Here’s a **minimal, safe do-it** that adds getters/setters *without touching class layout* (it uses a per-instance WeakKeyDictionary). Paste & run once.\n\n```smalltalk\n\"=== Fix KoSlotGuard accessors (no layout changes) ===\"\n\n| g compileOn ensure |\ng := Smalltalk at: #KoSlotGuard.\n\ncompileOn := [ :isClassSide :source :protocol |\n\t| target |\n\ttarget := isClassSide ifTrue: [ g class ] ifFalse: [ g ].\n\ttarget compile: source classified: protocol\n].\n\n\"Per-instance state bag (avoids adding ivars)\"\n(g canUnderstand: #kozGuardState) ifFalse: [\n\tcompileOn value: false value:\n'kozGuardState\n\t^ (Smalltalk at: #KoSlotGuardState ifAbsentPut: [ WeakKeyDictionary new ])\n\t\tat: self ifAbsentPut: [ Dictionary new ]'\n\tvalue: 'storage'\n].\n\n\"--- selector ---\"\n(g canUnderstand: #selector) ifFalse: [\n\tcompileOn value: false value:\n'selector\n\t^ self kozGuardState at: #selector ifAbsent: [ nil ]'\n\tvalue: 'accessing'\n].\n(g canUnderstand: #selector:) ifFalse: [\n\tcompileOn value: false value:\n'selector: aSel\n\tself kozGuardState at: #selector put: aSel'\n\tvalue: 'accessing'\n].\n\n\"--- dimensionConstraints ---\"\n(g canUnderstand: #dimensionConstraints) ifFalse: [\n\tcompileOn value: false value:\n'dimensionConstraints\n\t^ self kozGuardState at: #dimensionConstraints ifAbsent: [ Dictionary new ]'\n\tvalue: 'accessing'\n].\n(g canUnderstand: #dimensionConstraints:) ifFalse: [\n\tcompileOn value: false value:\n'dimensionConstraints: aDict\n\tself kozGuardState at: #dimensionConstraints put: (aDict ifNil: [ Dictionary new ])'\n\tvalue: 'accessing'\n].\n\n\"--- parameterConstraints ---\"\n(g canUnderstand: #parameterConstraints) ifFalse: [\n\tcompileOn value: false value:\n'parameterConstraints\n\t^ self kozGuardState at: #parameterConstraints ifAbsent: [ Dictionary new ]'\n\tvalue: 'accessing'\n].\n(g canUnderstand: #parameterConstraints:) ifFalse: [\n\tcompileOn value: false value:\n'parameterConstraints: aDict\n\tself kozGuardState at: #parameterConstraints put: (aDict ifNil: [ Dictionary new ])'\n\tvalue: 'accessing'\n].\n\n\"Smoke test: build a guard via the existing ctor and read it back\"\n| guard ok |\nguard := (g class)\n\tselector: #drawPixel\n\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\tparameterConstraints: nil.\n\nok := { \n\t#selector -> (guard selector = #drawPixel).\n\t#dimCons  -> ((guard dimensionConstraints at: #rcvr ifAbsent: [ nil ]) = #screenParent).\n\t#paramCons-> (guard parameterConstraints isKindOf: Dictionary)\n} asDictionary.\n\nTranscript\n\tcr;\n\tshow: '[KoSlotGuard accessors fixed] '; show: ok printString; cr.\n```\n\nNow your earlier examples and falsifier code that call `KoSlotGuard selector:dimensionConstraints:parameterConstraints:` should run without DNUs. If anything else complains, tell me the **selector name** and I’ll patch it the same way.\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T07:46:23.686908+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T07:46:23.686908+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "xILIF+r/DQCRxeusCi3ECw=="
+				},
+				"code" : "haveGuardAccessors := haveKoSlotGuard\n\tand: [ (Smalltalk at: #KoSlotGuard) canUnderstand: #selector\n\tand: [ (Smalltalk at: #KoSlotGuard) canUnderstand: #dimensionConstraints\n\tand: [ (Smalltalk at: #KoSlotGuard) canUnderstand: #parameterConstraints ] ] ]."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T07:46:22.472781+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T07:46:22.472781+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Probe what we have"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "c9cc6714-eaff-0d00-91ad-7a390a2dc40b"
+	}
+}

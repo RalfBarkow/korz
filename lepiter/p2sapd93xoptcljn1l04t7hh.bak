@@ -1,0 +1,414 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:07:06.921117+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:07:19.937748+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "zWx2OOv/DQCVJwTSCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtClass:KoSlotSpace}} "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:01:14.083688+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:01:14.083688+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "8H9uI+v/DQCUkaS6Ci3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Good catch. Your new intent makes sense (selector must match, and all guard constraints must be **exactly** satisfied by the context using **identity** `==`). But as written it’s brittle:\n\n* `^` inside the `select:` block will return from the **whole method** on the first offending slot (early-exit bug).\n* `actionForState:and:` isn’t standard Smalltalk; it will DNU unless you added it.\n* `acceptableConstraints` isn’t guaranteed to exist on `KoSlotGuard`.\n\nBelow are **drop-in do-its** to (1) provide a safe, standard implementation of `matchingSlotsForContext:selector:arguments:`, (2) add a tiny `acceptableConstraints` shim on `KoSlotGuard`, and (3) install focused examples + tests that exercise identity matching, guard holes, and selector filtering.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:01:19.835508+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:01:23.439773+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ykrGI+v/DQCUmkvJCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 1) Patch `KoSlotSpace>>matchingSlotsForContext:selector:arguments:` (safe, no early returns)\n\n```smalltalk\n\"== KoSlotSpace: robust, identity-based matching with no early returns ==\"\n\n(KoSlotSpace canUnderstand: #matchingSlotsForContext:selector:arguments:) ifTrue: [\n\tKoSlotSpace compile: \n'matchingSlotsForContext: aContext selector: aSelector arguments: ignored\n\t\"Return the slots whose guard selector matches and whose dimension constraints\n\t are exactly satisfied by aContext (identity compare on coords).\"\n\n\t| slots result |\n\tslots := (self kozState at: #slots ifAbsent: [ #() ]).\n\tresult := OrderedCollection new.\n\n\tslots do: [ :slot |\n\t\t| guard ok |\n\t\tguard := (slot respondsTo: #guard) ifTrue: [ slot guard ] ifFalse: [ nil ].\n\t\tguard ifNil: [  \"skip silently\"  ] ifNotNil: [\n\t\t\t(guard respondsTo: #selector) ifTrue: [\n\t\t\t\t(guard selector = aSelector) ifTrue: [\n\t\t\t\t\tok := true.\n\t\t\t\t\t(guard respondsTo: #acceptableConstraints)\n\t\t\t\t\t\tifTrue: [\n\t\t\t\t\t\t\tguard acceptableConstraints keysAndValuesDo: [ :dim :coord |\n\t\t\t\t\t\t\t\t| ctxVal |\n\t\t\t\t\t\t\t\tok ifTrue: [\n\t\t\t\t\t\t\t\t\tctxVal := aContext at: dim ifAbsent: [ ok := false ].\n\t\t\t\t\t\t\t\t\t(ctxVal == coord) ifFalse: [ ok := false ] ] ] ].\n\t\t\t\t\tok ifTrue: [ result add: slot ] ] ] ] ].\n\t^ result'\nclassified: 'Korz-Projection-Compat' ].\n```\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:02:24.065918+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:02:25.791033+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "TWCaJ+v/DQCU2vz9Ci3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "\nBRÅTEN, Stein, 2006. Beteiligte Spiegelung. In: Ulrich WENZEL, Günter DUX, Bettina BRETZINGER und Klaus HOLZ (Hrsg.), Subjekte und Gesellschaft: zur Konstitution von Sozialität ; für Günter Dux. Studienausg., Nachdr. der Erstausg. Weilerswist: Velbrück Wiss. S. 139–169. ISBN 978-3-938808-23-8\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:01:36.207257+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:01:40.69319+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "0SHAJOv/DQCUq/VrCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Prompt: Your temporary slots variable shadows another variable, i.e. the slot/instvar named 'slots'. [sic!]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:04:39.353406+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:04:45.183998+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "e7iqL+v/DQCU84azCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtMethod:KoSlotGuard>>#acceptableConstraints}}"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:04:33.84742+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:04:33.84742+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "gKxWL+v/DQCU7r5zCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 2) Shim `KoSlotGuard>>acceptableConstraints` (fallback to existing `dimensionConstraints`)\n\n```smalltalk\n\"== KoSlotGuard: fallback accessor = dimensionConstraints ==\"\n\n(KoSlotGuard canUnderstand: #acceptableConstraints) ifFalse: [\n\tKoSlotGuard compile:\n'acceptableConstraints\n\t\"Default to dimensionConstraints if present; never nil.\"\n\t^(self respondsTo: #dimensionConstraints)\n\t\tifTrue: [ self dimensionConstraints ifNil: [ Dictionary new ] ]\n\t\tifFalse: [ Dictionary new ]'\nclassified: 'accessing' ].\n```\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:05:46.034085+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:05:51.043692+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "OiqkM+v/DQCVE+uHCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 3) Tiny GT examples showing identity-based matching\n\n```smalltalk\n\"== Examples that demonstrate identity matching and filtering ==\"\n\n(KoSlotSpaceExamples class) compile:\n'exampleMatchingIdentityVsCopy\n\t<gtExample>\n\t| env s dims coords ctxGood ctxCopy resultsGood resultsBad |\n\tenv := self screenScenario.\n\ts := env at: #slotSpace.\n\tdims := env at: #dimensions.\n\tcoords := env at: #coordinates.\n\n\t\"Good: use the exact coordinate objects produced by the space\"\n\tctxGood := Dictionary newFrom: {\n\t\t(dims at: #rcvr) -> (coords at: #screenParent) }.\n\tresultsGood := (s matchingSlotsForContext: ctxGood selector: #drawPixel arguments: #())\n\t\tcollect: [ :sl | sl evaluateInContext: ctxGood withArguments: #() ].\n\n\t\"Bad: use a shallow copy that is equal-but-not-identical => should NOT match\"\n\tctxCopy := Dictionary newFrom: {\n\t\t(dims at: #rcvr) -> ((coords at: #screenParent) copy) }.\n\tresultsBad := (s matchingSlotsForContext: ctxCopy selector: #drawPixel arguments: #())\n\t\tcollect: [ :sl | sl evaluateInContext: ctxCopy withArguments: #() ].\n\n\t^ { #good -> resultsGood. #badCopy -> resultsBad } asDictionary'\nclassified: 'examples'.\n\n(KoSlotSpaceExamples class) compile:\n'exampleSelectorFiltering\n\t<gtExample>\n\t| s dim coord slotOther ctx |\n\ts := KoSlotSpace new.\n\tdim := s addDimensionNamed: #rcvr.\n\tcoord := s addCoordinateNamed: #screen onDimension: dim parent: nil.\n\n\t\"Install a matching drawPixel slot\"\n\ts addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #drawPixel dimensionConstraints: (Dictionary newFrom: { dim -> coord }) parameterConstraints: nil)\n\t\tcontents: [ :c :a | #pixel ]).\n\n\t\"And a different selector that must not be returned\"\n\tslotOther := KoSlot\n\t\tguard: (KoSlotGuard selector: #measure dimensionConstraints: (Dictionary newFrom: { dim -> coord }) parameterConstraints: nil)\n\t\tcontents: [ :c :a | #meter ].\n\ts addSlot: slotOther.\n\n\tctx := Dictionary newFrom: { dim -> coord }.\n\n\t^ (s matchingSlotsForContext: ctx selector: #drawPixel arguments: #())\n\t\tcollect: [ :sl | sl evaluateInContext: ctx withArguments: #() ]'\nclassified: 'examples'.\n```\n"
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:06:03.51828+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:06:03.51828+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fPmuNOv/DQCVI/6WCi3ECw=="
+				},
+				"exampleSelector" : "exampleSelectorFiltering",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "KoSlotSpaceExamples class",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T08:57:42.948315+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:05:46.046273+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "I+LYFuv/DQCUgkN3Ci3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "---\n\n### 4) Focused tests (drop-in `TestCase`)\n\n```smalltalk\n\"== Tests for identity matching, selector filtering, and guard holes ==\"\n\n(Smalltalk includesKey: #KoSlotSpaceMatchingTests) ifFalse: [\n\tTestCase subclass: #KoSlotSpaceMatchingTests\n\t\tinstanceVariableNames: ''\n\t\tclassVariableNames: ''\n\t\tpackage: 'Korz-Projection-Tests' ].\n\nKoSlotSpaceMatchingTests compile:\n'testSelectorFiltering\n\t| res |\n\tres := KoSlotSpaceExamples exampleSelectorFiltering.\n\tself assert: res size = 1.\n\tself assert: res first = #pixel' classified: 'tests'.\n\nKoSlotSpaceMatchingTests compile:\n'testIdentityRequired\n\t| out |\n\tout := KoSlotSpaceExamples exampleMatchingIdentityVsCopy.\n\tself assert: ((out at: #good) includes: ''baseline renderer'').\n\tself assert: (out at: #badCopy) isEmpty' classified: 'tests'.\n\nKoSlotSpaceMatchingTests compile:\n'testNilGuardDoesNotEarlyExit\n\t| s dim coord ctx goodSlot res |\n\ts := KoSlotSpace new.\n\tdim := s addDimensionNamed: #d.\n\tcoord := s addCoordinateNamed: #c onDimension: dim parent: nil.\n\n\t\"Install a valid slot\"\n\tgoodSlot := KoSlot\n\t\tguard: (KoSlotGuard selector: #op dimensionConstraints: (Dictionary newFrom: { dim -> coord }) parameterConstraints: nil)\n\t\tcontents: [ :cxt :args | #ok ].\n\ts addSlot: goodSlot.\n\n\t\"Install a slot that later loses its guard (= nil), must be ignored without aborting\"\n\t(s addSlot: (KoSlot guard: (KoSlotGuard selector: #op dimensionConstraints: Dictionary new parameterConstraints: nil)\n\t\tcontents: [ :cxt :args | #bad ])) guard: nil.\n\n\tctx := Dictionary newFrom: { dim -> coord }.\n\tres := (s matchingSlotsForContext: ctx selector: #op arguments: #())\n\t\tcollect: [ :sl | sl evaluateInContext: ctx withArguments: #() ].\n\n\tself assert: res asSet = #(ok) asSet' classified: 'tests'.\n```\n\n---\n\n### 5) Quick smoke run\n\n```smalltalk\n{ \n\t#ex1 -> [ KoSlotSpaceExamples exampleMatchingIdentityVsCopy ].\n\t#ex2 -> [ KoSlotSpaceExamples exampleSelectorFiltering ].\n\t#t1  -> [ KoSlotSpaceMatchingTests new testSelectorFiltering ].\n\t#t2  -> [ KoSlotSpaceMatchingTests new testIdentityRequired ].\n\t#t3  -> [ KoSlotSpaceMatchingTests new testNilGuardDoesNotEarlyExit ] \n} keysAndValuesDo: [ :k :blk |\n\t| r | r := blk value.\n\tTranscript show: k asString , ' => ' , r printString; cr ].\n```\n\n---\n\nIf you *do* want to keep your `actionForState:and:` style, I can add a Boolean extension and keep the exact semantics; otherwise the code above sticks to standard Pharo and should run cleanly.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T08:58:13.327549+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T08:58:13.327549+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Patch KoSlotSpace>>matchingSlotsForContext:selector:arguments: (safe, no early returns)"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "25dfd816-ebff-0d00-9481-b7d60a2dc40b"
+	}
+}

@@ -99,12 +99,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-11-13T23:54:27.173243+01:00"
+			"dateAndTimeString" : "2025-11-14T00:23:24.290951+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "an \"incisive review\" and \"try to falsify as much as possible\" regarding this \"Slot Space\" computational mode"
+		"title" : "An \"incisive review\" and \"try to falsify as much as possible\" regarding this \"Slot Space\" computational mode"
 	},
 	"uid" : {
 		"__type" : "uuid",

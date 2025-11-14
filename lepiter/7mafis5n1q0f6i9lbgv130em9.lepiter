@@ -1,0 +1,113 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T08:44:00.00395+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T08:44:08.937876+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "sr/L5er/DQCS5pQ7Ci3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "See [[rcvr]]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:23:27.870891+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:23:47.676397+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "7MO95+P/DQC+hHQ2D1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Got it. Here’s a focused **incisive review** of Korz/“Slot Space,” written to *falsify wherever possible*, with concrete checks you can run. [chatgpt](https://chatgpt.com/g/g-p-691437235e0481919843c65364b0e9d5-korz-and-pov/c/69165f8a-377c-8327-bf9d-a7141ebc9d7b)\n\n# What Korz claims vs. where it may break\n\n1. **“Simple, symmetric, subjective” core (no objects/layers; a sea of slots).**\n\n* **Undercut by `rcvr` special-casing.** The paper admits `rcvr` is treated specially for syntactic sugaring and general methods (e.g., `copy`), and that this is “ugly” and unresolved. This compromises symmetry and suggests the model quietly re-imports an OO receiver in practice. Falsify by measuring how often code must lean on `rcvr` to stay readable/ergonomic; if frequent, symmetry is aspirational, not actual.  \n\n2. **“Slot space replaces the OO object model and scales with IDE help.”**\n\n* **Authors concede spaces “quickly become large… complex in detail” and that “sophisticated IDE support is critical.”** This is a red flag: if comprehensibility hinges on a not-yet-demonstrated IDE, the model itself may be too unwieldy. Falsify by user studies: remove advanced IDE affordances and see if teams can still perform maintenance tasks on medium-sized Korz codebases. If not, the core abstraction lacks human-factor robustness. \n\n3. **“Multiple dispatch + implicit context yields unique, best-matching slot.”**\n\n* **Ambiguity/combination is ducked.** The spec requires a unique “most-suitable slot,” but provides no first-class “call-next-method”/layer-linearization analogue; authors acknowledge not supporting the richness of composition operators (e.g., executing multiple methods per send). Real systems *routinely* need combination (logging + policy + feature variants). Falsify by importing a typical AOP/COP scenario (before/after/around advice) and showing Korz either picks an arbitrary winner or forces awkward refactoring.  \n\n4. **“Modularity via dimensions.”**\n\n* **Global dimension names create collision risks.** The paper notes merge pain when two slot spaces use the same dimension name differently—this is a large-scale modularity flaw. Falsify by actually merging two independently evolved Korz libraries with clashing `pov`, `mode`, or `region` dimensions and quantify rename fallout and accidental dispatch changes. \n\n5. **“Korz is conceptually simpler than COP/AOP/MDSoC.”**\n\n* **Shifts, doesn’t remove, complexity.** Korz drops explicit layers and comp ops, then pushes the burden to dispatch + IDE. Prior work offered explicit composition and reasoning tools; Korz currently offers neither (no call chains; no method combination algebra). Falsify by replicating a Hyper/J/CME remodularization task; if Korz can’t express equivalent controlled compositions, the “simpler” model reduces capability. \n\n6. **“Subjective objects are a feature, not a bug.”**\n\n* **Identity instability harms reasoning.** If “objects” are regrouped differently per view, how do you specify invariants, ownership, aliasing, or security boundaries? Falsify with a property-based test: assert an invariant over one grouping and show it’s violated under a different subjectivity cut with the *same* updates (heisen-invariants). \n\n# Algorithmic & semantic pressure points\n\n* **Dispatch cost & predictability.** The formal core selects a unique best slot by matching (context × selector × args). Without a proven indexing/ordering, worst-case lookup is combinatorial in dimensions × candidates. Falsify by constructing adversarial guards (orthogonal, overlapping) and profiling lookup latency vs. slot count; require a polynomial bound or a concrete indexing scheme. \n\n* **Blocks/closures & context capture.** Blocks exist but details are “precluded for space.” In practice, block capture/escape and dynamic context modification interact nastily with implicit args (cf. non-local returns pain seen in Ly). Falsify by reproducing fork/join + non-local return scenarios; demonstrate surprising context leakage or handler ambiguity.  \n\n* **Selector not a dimension (yet).** The taxonomy choice makes zero-dimensional = functions, one-dimensional = OO. But not dispatching on selector as a first-class dimension limits uniformity and invokes special rules elsewhere (see `rcvr`). Falsify by attempting meta-protocols that *want* selector-as-data (e.g., auditing/metrics per selector) and show you fall back to IDE/tooling. \n\n# Human factors & operability\n\n* **Observability/debuggability.** With subjective object views and implicit context, “why did *this* slot run?” must be answered *every time*. Without a deterministic, inspectable precedence/combination story, debugging becomes guesswork. Falsify with a controlled study: seed five misdispatch bugs; measure TTR (time-to-rootcause) vs. Smalltalk/CLOS baselines with and without Korz IDE help. \n\n* **Evolvability claims need evidence.** Authors report a prototype and “considerable promise,” but no longitudinal evolution data. Falsify by running a month-long change stream (feature toggles, cross-cutting concerns, renames) and compare churn, breakage, and cognitive load to MDSoC/traits/CLOS controls. \n\n# Concrete falsification experiments you can run now\n\n1. **Ambiguous matches:** craft two guards that both match `(rcvr ≤ screenParent, location ≤ southernHemi)`. Expect either an error or an arbitrary winner; both are problematic for composition. (Targets Korz’s “unique slot” promise.) \n\n2. **Method combination gap:** attempt AOP-style before/after/around for `drawPixel` across dimensions (`location`, `isColorblind`). If you can’t express ordered combination without duplicating bodies, that falsifies “more than sum of parts.” \n\n3. **Namespace collision:** merge two mini slot spaces that both define `pov` but with different coordinate lattices. Track the number of renames and unintended dispatch changes required. (Scales badly ⇒ modularity claim weakened.) \n\n4. **Subjectivity & invariants:** encode a small “brackets see” model and prove an invariant under `pov = adjacent`; then flip to `pov = symmetric` and show the invariant fails while code is unchanged—identity depends on viewpoint. (You already have such scaffolding.)  \n\n5. **Dispatch scaling:** synthesize N dimensions × M coordinates with overlapping guards; measure lookup latency under random contexts. Demand a documented indexing/priority scheme or the performance claim fails.\n\n6. **Block/context semantics:** reproduce Ly’s non-local return and unintended parallelism pitfalls but in Korz terms (e.g., block returning across a context-modified call). If the paper’s “space precludes details” hides sharp edges, this will surface them. \n\n# Related threads to scrutinize\n\n* **Prior art did the hard bits Korz sidesteps.** CLOS/Cecil/AOP provide combination, linearization, and explicit composition; Korz trades those for uniformity + IDE promises. Unless Korz re-introduces principled composition at the language level, it is *less* controllable in practice.  \n\n* **Ensembles & combiners (Ly).** If Korz’s “combiner” dimension grows (run all matching slots, quorum, meet, etc.), Ly’s real-world traps (empty ensembles, partial understanding, unintended parallelism) become relevant and should be pre-emptively addressed in Korz semantics/tests.  \n\n---\n\n## Bottom line (devil’s-advocate)\n\n* **Symmetry is compromised by `rcvr`.**\n* **Scalability is conceded to a hypothetical IDE.**\n* **No first-class method combination ⇒ real composition gaps.**\n* **Global dimension namespace ⇒ modularity risk at scale.**\n* **Semantics around blocks/selector/determinism are under-specified.**\n\nIf even half of the experiments above yield the expected pathologies, Korz’s core claims (simplicity, symmetry, evolvability) don’t hold under realistic pressure. If you want, I can turn these into an automated falsifier harness (micro-bench + property tests) against your current Smalltalk prototype and report deltas.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T08:43:58.1149+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T08:43:58.1149+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "“Simple, symmetric, subjective” core (no objects/layers; a sea of slots)"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "01c1bde7-e3ff-0d00-be83-b66c0f5fb280"
+	}
+}

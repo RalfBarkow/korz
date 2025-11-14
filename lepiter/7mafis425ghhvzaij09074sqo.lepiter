@@ -136,12 +136,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-11-14T00:08:15.70958+01:00"
+			"dateAndTimeString" : "2025-11-14T00:23:17.871068+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "a detailed critique of the Korz programming model and its slot space."
+		"title" : "A detailed critique of the Korz programming model and its slot space."
 	},
 	"uid" : {
 		"__type" : "uuid",

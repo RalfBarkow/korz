@@ -1,0 +1,293 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:09:06.578844+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:09:18.955491+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "zEGYP+v/DQCVwCbTCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtMethod:KoSlotSpace>>#matchingSlotsForContext:selector:arguments:}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:10:57.199826+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:10:57.199826+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wicwRuv/DQCWNh+aCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "ah—good catch. If your real `KoSlotSpace` has an ivar named `slots`, my local `| slots |` temp shadows it. Here’s a tiny patch that just renames the temp to `spaceSlots` (no other behavior changes), plus a quick smoke.\n\n### Patch: rename the temp to avoid shadowing\n\n```smalltalk\n\"KoSlotSpace >> matchingSlotsForContext:selector:arguments:\n (no shadowing; uses `spaceSlots`)\"\n\nKoSlotSpace compile:\n'matchingSlotsForContext: aContext selector: aSelector arguments: ignored\n\t\"Return the slots whose guard selector matches and whose dimension constraints\n\t are exactly satisfied by aContext (identity compare on coords).\"\n\n\t| spaceSlots result |\n\tspaceSlots := (self kozState at: #slots ifAbsent: [ #() ]).\n\tresult := OrderedCollection new.\n\n\tspaceSlots do: [ :slot |\n\t\t| guard ok |\n\t\tguard := (slot respondsTo: #guard) ifTrue: [ slot guard ] ifFalse: [ nil ].\n\t\tguard ifNil: [  \"skip silently\"  ] ifNotNil: [\n\t\t\t(guard respondsTo: #selector) ifTrue: [\n\t\t\t\t(guard selector = aSelector) ifTrue: [\n\t\t\t\t\tok := true.\n\t\t\t\t\t(guard respondsTo: #acceptableConstraints) ifTrue: [\n\t\t\t\t\t\tguard acceptableConstraints keysAndValuesDo: [ :dim :coord |\n\t\t\t\t\t\t\t| ctxVal |\n\t\t\t\t\t\t\tok ifTrue: [\n\t\t\t\t\t\t\t\tctxVal := aContext at: dim ifAbsent: [ ok := false ].\n\t\t\t\t\t\t\t\t(ctxVal == coord) ifFalse: [ ok := false ] ] ] ].\n\t\t\t\t\tok ifTrue: [ result add: slot ] ] ] ] ].\n\t^ result'\nclassified: 'Korz-Projection-Compat'.\n```\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:11:15.86534+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:11:15.86534+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "r/xMR+v/DQCWR6ZICi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\n\"Should produce a dict with #good having results, #badCopy empty\"\nKoSlotSpaceExamples exampleMatchingIdentityVsCopy.\n\n\"Should only return #pixel\"\nKoSlotSpaceExamples exampleSelectorFiltering.\n```\n"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:11:20.793632+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:11:26.603752+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "WjaYR+v/DQCWTCE7Ci3ECw=="
+							},
+							"code" : "\"Should produce a dict with #good having results, #badCopy empty\"\nKoSlotSpaceExamples exampleMatchingIdentityVsCopy."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:11:41.306685+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:11:43.202094+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "djfRSOv/DQCWUvJUCi3ECw=="
+							},
+							"code" : "\"Should only return #pixel\"\nKoSlotSpaceExamples exampleSelectorFiltering."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:08:26.552868+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:11:15.872679+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "gYI1Pev/DQCVuuoeCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If you’d like, I can also add a guard that refuses to compile if a temp name collides with an ivar, but the rename above should keep you unblocked.\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:11:04.403839+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:11:04.403839+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "5BmeRuv/DQCWPUBrCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### Quick smoke"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T09:08:39.605509+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T09:08:39.605509+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "matchingSlotsForContext:selector:arguments:"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "9879353d-ebff-0d00-95b9-2a2c0a2dc40b"
+	}
+}

@@ -1,0 +1,357 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:53:28.410411+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:53:28.410411+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kccPU+T/DQC/fS/RD1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Understood. Here are **clean, self-contained do-it chunks** (copy-paste, run in order). They avoid any non-standard Pharo calls and include all shims + examples + falsifier suite.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:53:45.295541+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:53:45.295541+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "w2sRVOT/DQC/j3o7D1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 1) Minimal compat layer (KoSlotSpace, KoSlotGuard, KoSlot)"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:53:49.267126+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:54:17.940804+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4BBOVOT/DQC/lCAlD1+ygA=="
+				},
+				"code" : "\"== 1) Ko* compat layer — only adds missing API, safe to re-run ==\"\n\n\"Helper: compile a method on a class (or its metaclass) into a package/protocol\"\n| compileOn |\ncompileOn := [ :clsName :isClassSide :source :protocol :package |\n\t| cls target |\n\tcls := Smalltalk at: clsName ifAbsent: [ ^ self error: 'Class not found: ', clsName asString ].\n\ttarget := isClassSide ifTrue: [ cls class ] ifFalse: [ cls ].\n\ttarget compile: source classified: protocol notifying: nil.\n\ttarget organization classify: (source readStream upTo: Character cr) fallbackProtocol: protocol.\n\tSystemOrganization addCategory: package ]."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:55:47.974747+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:55:47.974747+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "OVhhW+T/DQC/uAl9D1+ygA=="
+				},
+				"code" : "\"KoSlotGuard shim\"\nSmalltalk at: #KoSlotGuard ifAbsent: [\n\tObject\n\t\tsubclass: #KoSlotGuard\n\t\tinstanceVariableNames: 'selector dimensionConstraints parameterConstraints'\n\t\tclassVariableNames: ''\n\t\tpackage: 'Korz-Projection-Compat' ]."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:56:11.573978+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:56:11.573978+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "OHnJXOT/DQC/v9LGD1+ygA=="
+				},
+				"code" : "(KoSlotGuard class canUnderstand: #selector:dimensionConstraints:parameterConstraints:) ifFalse: [\n\tcompileOn value: #KoSlotGuard value: true value:\n'selector: aSel dimensionConstraints: aDict parameterConstraints: aParamDict\n\t^ self new\n\t\tselector: aSel;\n\t\tdimensionConstraints: (aDict ifNil: [ Dictionary new ]);\n\t\tparameterConstraints: (aParamDict ifNil: [ Dictionary new ]);\n\t\tyourself'\n\tvalue: 'instance creation' value: 'Korz-Projection-Compat' ]."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:56:14.657695+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:56:14.657695+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "mIf4XOT/DQC/xmRQD1+ygA=="
+				},
+				"code" : "(KoSlotGuard canUnderstand: #selector) ifFalse: [\n\tcompileOn value: #KoSlotGuard value: false value: 'selector ^ selector' value: 'accessing' value: 'Korz-Projection-Compat'.\n\tcompileOn value: #KoSlotGuard value: false value: 'selector: aSel selector := aSel' value: 'accessing' value: 'Korz-Projection-Compat' ]."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:55:40.390169+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:56:14.66134+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "S6vtWuT/DQC/sOuDD1+ygA=="
+				},
+				"code" : "(KoSlotGuard canUnderstand: #dimensionConstraints) ifFalse: [\n\tcompileOn value: #KoSlotGuard value: false value: 'dimensionConstraints ^ dimensionConstraints' value: 'accessing' value: 'Korz-Projection-Compat'.\n\tcompileOn value: #KoSlotGuard value: false value: 'dimensionConstraints: aDict dimensionConstraints := aDict' value: 'accessing' value: 'Korz-Projection-Compat' ].\n\n(KoSlotGuard canUnderstand: #parameterConstraints) ifFalse: [\n\tcompileOn value: #KoSlotGuard value: false value: 'parameterConstraints ^ parameterConstraints' value: 'accessing' value: 'Korz-Projection-Compat'.\n\tcompileOn value: #KoSlotGuard value: false value: 'parameterConstraints: aDict parameterConstraints := aDict' value: 'accessing' value: 'Korz-Projection-Compat' ]."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:55:34.95969+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:55:34.95969+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Jb+aWuT/DQC/q73cD1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "```smalltalk\n\"== 1) Ko* compat layer — only adds missing API, safe to re-run ==\"\n\n\"Helper: compile a method on a class (or its metaclass) into a package/protocol\"\n| compileOn instSide classSide |\ncompileOn := [ :clsName :isClassSide :source :protocol :package |\n\t| cls target |\n\tcls := Smalltalk at: clsName ifAbsent: [ ^ self error: 'Class not found: ', clsName asString ].\n\ttarget := isClassSide ifTrue: [ cls class ] ifFalse: [ cls ].\n\ttarget compile: source classified: protocol notifying: nil.\n\ttarget organization classify: (source readStream upTo: Character cr) withProtocol: protocol.\n\tSystemOrganization addCategory: package ].\n\n\"KoSlotSpace shim\"\nSmalltalk at: #KoSlotSpace ifPresent: [ :cls |\n\tSmalltalk at: #KoSlotSpaceState ifAbsentPut: [ WeakKeyDictionary new ].\n\n\t(cls canUnderstand: #kozState) ifFalse: [\n\t\tcompileOn value: #KoSlotSpace value: false value:\n'kozState\n\t^ (KoSlotSpaceState at: self ifAbsentPut: [\n\t\tDictionary new\n\t\t\tat: #dimensions put: OrderedCollection new;\n\t\t\tat: #coordinates put: Dictionary new;  \"dim -> (name -> coord)\"\n\t\t\tat: #slots put: OrderedCollection new;\n\t\t\tyourself ])'\n\t\tvalue: 'Korz-Projection-Compat' value: 'Korz-Projection-Compat' ].\n\n\t(cls canUnderstand: #addDimensionNamed:) ifFalse: [\n\t\tcompileOn value: #KoSlotSpace value: false value:\n'addDimensionNamed: aSymbol\n\t| st dims |\n\tst := self kozState.\n\tdims := st at: #dimensions.\n\t(dims includes: aSymbol) ifFalse: [ dims add: aSymbol ].\n\t^ aSymbol'\n\t\tvalue: 'Korz-Projection-Compat' value: 'Korz-Projection-Compat' ].\n\n\t(cls canUnderstand: #addCoordinateNamed:onDimension:parent:) ifFalse: [\n\t\tcompileOn value: #KoSlotSpace value: false value:\n'addCoordinateNamed: aSymbol onDimension: aDim parent: aParent\n\t| st byDim coord |\n\tst := self kozState.\n\tbyDim := (st at: #coordinates) at: aDim ifAbsentPut: [ Dictionary new ].\n\tcoord := byDim at: aSymbol ifAbsentPut: [\n\t\tDictionary newFrom: {\n\t\t\t#name -> aSymbol.\n\t\t\t#dimension -> aDim.\n\t\t\t#parent -> aParent } ].\n\t^ coord'\n\t\tvalue: 'Korz-Projection-Compat' value: 'Korz-Projection-Compat' ].\n\n\t(cls canUnderstand: #addSlot:) ifFalse: [\n\t\tcompileOn value: #KoSlotSpace value: false value:\n'addSlot: aSlot\n\t(self kozState at: #slots) add: aSlot.\n\t^ aSlot'\n\t\tvalue: 'Korz-Projection-Compat' value: 'Korz-Projection-Compat' ].\n\n\t(cls canUnderstand: #matchingSlotsForContext:selector:arguments:) ifFalse: [\n\t\tcompileOn value: #KoSlotSpace value: false value:\n'matchingSlotsForContext: aContext selector: aSelector arguments: ignored\n\t\"Return matching slots (no tie-breaking/ordering).\"\n\t| slots |\n\tslots := self kozState at: #slots.\n\t^ (OrderedCollection new)\n\t\taddAll: (slots select: [ :slot |\n\t\t\t| g ok |\n\t\t\tg := (slot respondsTo: #guard) ifTrue: [ slot guard ] ifFalse: [ nil ].\n\t\t\tg isNil ifTrue: [ ^ OrderedCollection new ].\n\t\t\t((g respondsTo: #selector) and: [ g selector = aSelector ]) and: [\n\t\t\t\tok := true.\n\t\t\t\t(g respondsTo: #dimensionConstraints) ifTrue: [\n\t\t\t\t\tg dimensionConstraints keysAndValuesDo: [ :dim :coord |\n\t\t\t\t\t\t| ctxVal |\n\t\t\t\t\t\tctxVal := aContext at: dim ifAbsent: [ ok := false. ^false ].\n\t\t\t\t\t\t(ctxVal == coord) ifFalse: [ ok := false ] ] ].\n\t\t\t\tok ] ]);\n\t\tyourself'\n\t\tvalue: 'Korz-Projection-Compat' value: 'Korz-Projection-Compat' ].\n].\n\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:52:53.304283+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:55:34.976928+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "pCT4UOT/DQC/dQzpD1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "\"KoSlot shim\"\nSmalltalk at: #KoSlot ifAbsent: [\n\tObject\n\t\tsubclass: #KoSlot\n\t\tinstanceVariableNames: 'guard contents'\n\t\tclassVariableNames: ''\n\t\tpackage: 'Korz-Projection-Compat' ].\n\n(KoSlot class canUnderstand: #guard:contents:) ifFalse: [\n\tcompileOn value: #KoSlot value: true value:\n'guard: aGuard contents: aBlock\n\t^ self new guard: aGuard; contents: aBlock; yourself'\n\tvalue: 'instance creation' value: 'Korz-Projection-Compat' ].\n\n(KoSlot canUnderstand: #guard) ifFalse: [\n\tcompileOn value: #KoSlot value: false value: 'guard ^ guard' value: 'accessing' value: 'Korz-Projection-Compat'.\n\tcompileOn value: #KoSlot value: false value: 'guard: aGuard guard := aGuard' value: 'accessing' value: 'Korz-Projection-Compat' ].\n\n(KoSlot canUnderstand: #contents) ifFalse: [\n\tcompileOn value: #KoSlot value: false value: 'contents ^ contents' value: 'accessing' value: 'Korz-Projection-Compat'.\n\tcompileOn value: #KoSlot value: false value: 'contents: aBlock contents := aBlock' value: 'accessing' value: 'Korz-Projection-Compat' ].\n\n(KoSlot canUnderstand: #evaluateInContext:withArguments:) ifFalse: [\n\tcompileOn value: #KoSlot value: false value:\n'evaluateInContext: aContext withArguments: argArray\n\t^ contents ifNil: [ nil ] ifNotNil: [ contents value: aContext value: argArray ]'\n\tvalue: 'evaluating' value: 'Korz-Projection-Compat' ].\n```\n\n---\n\n### 2) `KoSlotSpaceExamples` (your examples, compiled)\n\n```smalltalk\n\"== 2) KoSlotSpaceExamples class + all example methods ==\"\n\n| ensureClass compileOnClass |\nensureClass := [ :name :super :package |\n\tSmalltalk at: name ifAbsent: [\n\t\tsuper\n\t\t\tsubclass: name\n\t\t\tinstanceVariableNames: ''\n\t\t\tclassVariableNames: ''\n\t\t\tpackage: package ] ].\ncompileOnClass := [ :src :prot |\n\t(KoSlotSpaceExamples class) compile: src classified: prot ].\n\nensureClass value: #KoSlotSpaceExamples value: Object value: 'Korz-Projection-Examples'.\n\n\"examples\"\ncompileOnClass value:\n'exampleSlotMatching\n\t<gtExample>\n\t| scenario slotSpace dimensions coordinates contexts results |\n\tscenario := self screenScenario.\n\tslotSpace := scenario at: #slotSpace.\n\tdimensions := scenario at: #dimensions.\n\tcoordinates := scenario at: #coordinates.\n\tcontexts := self screenContextsUsingDimensions: dimensions coordinates: coordinates.\n\tresults := Dictionary new.\n\tcontexts keysAndValuesDo: [ :label :context |\n\t\tresults at: label put: (self resultsForContext: context slotSpace: slotSpace selector: #drawPixel) ].\n\t^ results' value: 'examples'.\n\ncompileOnClass value:\n'exampleBracketSees\n\t<gtExample>\n\t| scenario dims coords slotSpace boundaryDimension povDimension boundaryCoords povs result |\n\tscenario := self bracketSeesScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tslotSpace := scenario at: #slotSpace.\n\tboundaryDimension := dims at: #boundaryType.\n\tpovDimension := dims at: #pov.\n\tboundaryCoords := self bracketBoundaryCoordinatesFrom: coords.\n\tpovs := Dictionary newFrom: {\n\t\t#adjacent -> (coords at: #povAdjacent).\n\t\t#symmetric -> (coords at: #povSymmetric) }.\n\tresult := Dictionary new.\n\tpovs keysAndValuesDo: [ :povLabel :povCoord |\n\t\t| perBoundary |\n\t\tperBoundary := Dictionary new.\n\t\tboundaryCoords keysAndValuesDo: [ :boundaryLabel :boundaryCoord |\n\t\t\t| context |\n\t\t\tcontext := Dictionary newFrom: {\n\t\t\t\tboundaryDimension -> boundaryCoord.\n\t\t\t\tpovDimension -> povCoord }.\n\t\t\tperBoundary at: boundaryLabel put:\n\t\t\t\t(self resultsForContext: context slotSpace: slotSpace selector: #sees) ].\n\t\tresult at: povLabel put: perBoundary ].\n\t^ result' value: 'examples'.\n\ncompileOnClass value:\n'exampleYonedaProfiles\n\t<gtExample>\n\t| scenario dims coords slotSpace povDimension objectDimension povs objects result |\n\tscenario := self yonedaScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tslotSpace := scenario at: #slotSpace.\n\tpovDimension := dims at: #pov.\n\tobjectDimension := dims at: #object.\n\tpovs := Dictionary newFrom: {\n\t\t#local -> (coords at: #povLocal).\n\t\t#meta -> (coords at: #povMeta) }.\n\tobjects := Dictionary newFrom: {\n\t\t#nodeA -> (coords at: #nodeA).\n\t\t#nodeB -> (coords at: #nodeB).\n\t\t#nodeC -> (coords at: #nodeC) }.\n\tresult := Dictionary new.\n\tpovs keysAndValuesDo: [ :povLabel :povCoord |\n\t\t| perObject |\n\t\tperObject := Dictionary new.\n\t\tobjects keysAndValuesDo: [ :objectLabel :objectCoord |\n\t\t\t| context profile |\n\t\t\tcontext := Dictionary newFrom: {\n\t\t\t\tpovDimension -> povCoord.\n\t\t\t\tobjectDimension -> objectCoord }.\n\t\t\tprofile := self firstResultForContext: context slotSpace: slotSpace selector: #profile.\n\t\t\tperObject at: objectLabel put: profile ].\n\t\tresult at: povLabel put: perObject ].\n\t^ result' value: 'examples'.\n\ncompileOnClass value:\n'examplePileSelection\n\t<gtExample>\n\t| scenario dims coords slotSpace selectionDimension |\n\tscenario := self pileScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tslotSpace := scenario at: #slotSpace.\n\tselectionDimension := dims at: #selection.\n\t^ Dictionary newFrom: {\n\t\t#tops -> (self resultsForContext: (Dictionary newFrom: {\n\t\t\t\tselectionDimension -> (coords at: #tops) })\n\t\t\tslotSpace: slotSpace selector: #project).\n\t\t#all -> (self resultsForContext: (Dictionary newFrom: {\n\t\t\t\tselectionDimension -> (coords at: #all) })\n\t\t\tslotSpace: slotSpace selector: #project) }' value: 'examples'.\n\ncompileOnClass value:\n'exampleCombinerPolicies\n\t<gtExample>\n\t| scenario dims coords slotSpace combinerDimension |\n\tscenario := self combinerScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tslotSpace := scenario at: #slotSpace.\n\tcombinerDimension := dims at: #combiner.\n\t^ Dictionary newFrom: {\n\t\t#meet -> (self firstResultForContext: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coords at: #meet) })\n\t\t\tslotSpace: slotSpace selector: #stabilize).\n\t\t#quorum -> (self firstResultForContext: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coords at: #quorum) })\n\t\t\tslotSpace: slotSpace selector: #stabilize) }' value: 'examples'.\n\n\"private - building\"\ncompileOnClass value:\n'firstResultForContext: context slotSpace: slotSpace selector: selector\n\t^ (self resultsForContext: context slotSpace: slotSpace selector: selector) first' value: 'private - building'.\n\ncompileOnClass value:\n'resultsForContext: context slotSpace: slotSpace selector: selector\n\t^ (slotSpace matchingSlotsForContext: context selector: selector arguments: #())\n\t\tcollect: [ :slot | slot evaluateInContext: context withArguments: #() ]' value: 'private - building'.\n\ncompileOnClass value:\n'screenContextsUsingDimensions: dimensions coordinates: coordinates\n\t| rcvr location vision screen |\n\trcvr := dimensions at: #rcvr.\n\tlocation := dimensions at: #location.\n\tvision := dimensions at: #isColorblind.\n\tscreen := coordinates at: #screen.\n\t^ Dictionary newFrom: {\n\t\t#australia -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coordinates at: #australia). vision -> (coordinates at: #false) }).\n\t\t#colorblindAustralia -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coordinates at: #australia). vision -> (coordinates at: #true) }).\n\t\t#antarctica -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coordinates at: #antarctica). vision -> (coordinates at: #false) }).\n\t\t#northern -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coordinates at: #northernHemi). vision -> (coordinates at: #false) }) }'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'screenScenario\n\t| slotSpace dims coords world southern northern |\n\tslotSpace := KoSlotSpace new.\n\tdims := Dictionary new.\n\tdims at: #rcvr put: (slotSpace addDimensionNamed: #rcvr).\n\tdims at: #location put: (slotSpace addDimensionNamed: #location).\n\tdims at: #isColorblind put: (slotSpace addDimensionNamed: #isColorblind).\n\tworld := slotSpace addCoordinateNamed: #world onDimension: (dims at: #location) parent: nil.\n\tsouthern := slotSpace addCoordinateNamed: #southernHemi onDimension: (dims at: #location) parent: world.\n\tnorthern := slotSpace addCoordinateNamed: #northernHemi onDimension: (dims at: #location) parent: world.\n\tcoords := Dictionary new.\n\tcoords at: #screenParent put: (slotSpace addCoordinateNamed: #screenParent onDimension: (dims at: #rcvr) parent: nil).\n\tcoords at: #screen put: (slotSpace addCoordinateNamed: #screen onDimension: (dims at: #rcvr) parent: (coords at: #screenParent)).\n\tcoords at: #southernHemi put: southern.\n\tcoords at: #northernHemi put: northern.\n\tcoords at: #australia put: (slotSpace addCoordinateNamed: #australia onDimension: (dims at: #location) parent: southern).\n\tcoords at: #antarctica put: (slotSpace addCoordinateNamed: #antarctica onDimension: (dims at: #location) parent: southern).\n\tcoords at: #false put: (slotSpace addCoordinateNamed: #false onDimension: (dims at: #isColorblind) parent: nil).\n\tcoords at: #true put: (slotSpace addCoordinateNamed: #true onDimension: (dims at: #isColorblind) parent: nil).\n\tself addDrawPixelSlotsOn: slotSpace dimensions: dims coordinates: coords.\n\t^ Dictionary newFrom: { #slotSpace -> slotSpace. #dimensions -> dims. #coordinates -> coords }'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'addDrawPixelSlotsOn: slotSpace dimensions: dimensions coordinates: coordinates\n\t| rcvr location vision |\n\trcvr := dimensions at: #rcvr.\n\tlocation := dimensions at: #location.\n\tvision := dimensions at: #isColorblind.\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #drawPixel dimensionConstraints: (Dictionary newFrom: {\n\t\t\trcvr -> (coordinates at: #screenParent) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''baseline renderer'' ]).\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #drawPixel dimensionConstraints: (Dictionary newFrom: {\n\t\t\trcvr -> (coordinates at: #screenParent). location -> (coordinates at: #southernHemi) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''southern hemisphere override'' ]).\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #drawPixel dimensionConstraints: (Dictionary newFrom: {\n\t\t\trcvr -> (coordinates at: #screenParent). vision -> (coordinates at: #true) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''colorblind override'' ]).\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #drawPixel dimensionConstraints: (Dictionary newFrom: {\n\t\t\trcvr -> (coordinates at: #screenParent). location -> (coordinates at: #southernHemi). vision -> (coordinates at: #true) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''southern colorblind override'' ])'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'bracketBoundaryCoordinatesFrom: coordinates\n\t^ Dictionary newFrom: {\n\t\t#square -> (coordinates at: #square).\n\t\t#round -> (coordinates at: #round).\n\t\t#curly -> (coordinates at: #curly).\n\t\t#angle -> (coordinates at: #angle) }' value: 'private - building'.\n\ncompileOnClass value:\n'bracketSeesScenario\n\t| slotSpace boundaryDimension povDimension coords |\n\tslotSpace := KoSlotSpace new.\n\tboundaryDimension := slotSpace addDimensionNamed: #boundaryType.\n\tpovDimension := slotSpace addDimensionNamed: #pov.\n\tcoords := Dictionary new.\n\tcoords at: #square put: (slotSpace addCoordinateNamed: #square onDimension: boundaryDimension parent: nil).\n\tcoords at: #round put: (slotSpace addCoordinateNamed: #round onDimension: boundaryDimension parent: nil).\n\tcoords at: #curly put: (slotSpace addCoordinateNamed: #curly onDimension: boundaryDimension parent: nil).\n\tcoords at: #angle put: (slotSpace addCoordinateNamed: #angle onDimension: boundaryDimension parent: nil).\n\tcoords at: #povAdjacent put: (slotSpace addCoordinateNamed: #povAdjacent onDimension: povDimension parent: nil).\n\tcoords at: #povSymmetric put: (slotSpace addCoordinateNamed: #povSymmetric onDimension: povDimension parent: nil).\n\tself addBracketSeesSlotsOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> slotSpace.\n\t\t#dimensions -> (Dictionary newFrom: { #boundaryType -> boundaryDimension. #pov -> povDimension }).\n\t\t#coordinates -> coords }'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'addBracketSeesSlotsOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension coordinates: coordinates\n\t| square round curly angle adjacent symmetric |\n\tsquare := coordinates at: #square.\n\tround := coordinates at: #round.\n\tcurly := coordinates at: #curly.\n\tangle := coordinates at: #angle.\n\tadjacent := coordinates at: #povAdjacent.\n\tsymmetric := coordinates at: #povSymmetric.\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: square pov: adjacent result: #(round curly).\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: round pov: adjacent result: #(curly square).\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: curly pov: adjacent result: #(round angle square).\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: angle pov: adjacent result: #(curly).\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: square pov: symmetric result: #(round curly).\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: round pov: symmetric result: #(curly square).\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: curly pov: symmetric result: #(round angle square).\n\tself addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: angle pov: symmetric result: #(curly)'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'addSeesSlotOn: slotSpace boundaryDimension: boundaryDimension povDimension: povDimension boundary: boundary pov: pov result: resultCollection\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #sees dimensionConstraints: (Dictionary newFrom: {\n\t\t\tboundaryDimension -> boundary. povDimension -> pov }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | resultCollection ])'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'yonedaScenario\n\t| slotSpace povDimension objectDimension coords |\n\tslotSpace := KoSlotSpace new.\n\tpovDimension := slotSpace addDimensionNamed: #pov.\n\tobjectDimension := slotSpace addDimensionNamed: #object.\n\tcoords := Dictionary new.\n\tcoords at: #povLocal put: (slotSpace addCoordinateNamed: #povLocal onDimension: povDimension parent: nil).\n\tcoords at: #povMeta put: (slotSpace addCoordinateNamed: #povMeta onDimension: povDimension parent: nil).\n\tcoords at: #nodeA put: (slotSpace addCoordinateNamed: #nodeA onDimension: objectDimension parent: nil).\n\tcoords at: #nodeB put: (slotSpace addCoordinateNamed: #nodeB onDimension: objectDimension parent: nil).\n\tcoords at: #nodeC put: (slotSpace addCoordinateNamed: #nodeC onDimension: objectDimension parent: nil).\n\tself addYonedaSlotsOn: slotSpace povDimension: povDimension objectDimension: objectDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> slotSpace.\n\t\t#dimensions -> (Dictionary newFrom: { #pov -> povDimension. #object -> objectDimension }).\n\t\t#coordinates -> coords }'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'addYonedaSlotsOn: slotSpace povDimension: povDimension objectDimension: objectDimension coordinates: coordinates\n\t| povLocal povMeta nodeA nodeB nodeC |\n\tpovLocal := coordinates at: #povLocal.\n\tpovMeta := coordinates at: #povMeta.\n\tnodeA := coordinates at: #nodeA.\n\tnodeB := coordinates at: #nodeB.\n\tnodeC := coordinates at: #nodeC.\n\tself addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: povLocal object: nodeA result: #(fromB).\n\tself addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: povLocal object: nodeB result: #(fromC).\n\tself addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: povLocal object: nodeC result: #(fromB).\n\tself addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: povMeta object: nodeA result: #(fromAll).\n\tself addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: povMeta object: nodeB result: #(fromAll).\n\tself addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: povMeta object: nodeC result: #(fromAll)'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: pov object: object result: resultCollection\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #profile dimensionConstraints: (Dictionary newFrom: {\n\t\t\tpovDimension -> pov. objectDimension -> object }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | resultCollection ])'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'pileScenario\n\t| slotSpace selectionDimension coords |\n\tslotSpace := KoSlotSpace new.\n\tselectionDimension := slotSpace addDimensionNamed: #selection.\n\tcoords := Dictionary new.\n\tcoords at: #tops put: (slotSpace addCoordinateNamed: #tops onDimension: selectionDimension parent: nil).\n\tcoords at: #all put: (slotSpace addCoordinateNamed: #all onDimension: selectionDimension parent: nil).\n\tself addPileSlotsOn: slotSpace selectionDimension: selectionDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> slotSpace.\n\t\t#dimensions -> (Dictionary newFrom: { #selection -> selectionDimension }).\n\t\t#coordinates -> coords }'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'addPileSlotsOn: slotSpace selectionDimension: selectionDimension coordinates: coordinates\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #project dimensionConstraints: (Dictionary newFrom: {\n\t\t\tselectionDimension -> (coordinates at: #tops) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #(topA topB) ]).\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #project dimensionConstraints: (Dictionary newFrom: {\n\t\t\tselectionDimension -> (coordinates at: #all) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #(topA midC baseD) ])'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'combinerScenario\n\t| slotSpace combinerDimension coords |\n\tslotSpace := KoSlotSpace new.\n\tcombinerDimension := slotSpace addDimensionNamed: #combiner.\n\tcoords := Dictionary new.\n\tcoords at: #meet put: (slotSpace addCoordinateNamed: #meet onDimension: combinerDimension parent: nil).\n\tcoords at: #quorum put: (slotSpace addCoordinateNamed: #quorum onDimension: combinerDimension parent: nil).\n\tself addCombinerSlotsOn: slotSpace combinerDimension: combinerDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> slotSpace.\n\t\t#dimensions -> (Dictionary newFrom: { #combiner -> combinerDimension }).\n\t\t#coordinates -> coords }'\n\tvalue: 'private - building'.\n\ncompileOnClass value:\n'addCombinerSlotsOn: slotSpace combinerDimension: combinerDimension coordinates: coordinates\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #stabilize dimensionConstraints: (Dictionary newFrom: {\n\t\t\tcombinerDimension -> (coordinates at: #meet) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''intersection of candidates'' ]).\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard selector: #stabilize dimensionConstraints: (Dictionary newFrom: {\n\t\t\tcombinerDimension -> (coordinates at: #quorum) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''accept proposals supported by >= 2 POVs'' ])'\n\tvalue: 'private - building'.\n```\n\n---\n\n### 3) Falsifier harness + tests (updated for vanilla Pharo)\n\n```smalltalk\n\"== 3) KoSlotSpaceFalsifier & Tests ==\"\n\n| ensureClass compileClass compileInst |\nensureClass := [ :name :super :pkg | Smalltalk at: name ifAbsent: [\n\tsuper subclass: name instanceVariableNames: '' classVariableNames: '' package: pkg ] ].\ncompileClass := [ :cls :src :prot | (Smalltalk at: cls) class compile: src classified: prot ].\ncompileInst := [ :cls :src :prot | (Smalltalk at: cls) compile: src classified: prot ].\n\nensureClass value: #KoSlotSpaceFalsifier value: Object value: 'Korz-Projection-Tests'.\nensureClass value: #KoSlotSpaceFalsifierTests value: TestCase value: 'Korz-Projection-Tests'.\n\n\"Builders\"\ncompileClass value: #KoSlotSpaceFalsifier value:\n'ambiguousSpace\n\t| s dims coords |\n\ts := KoSlotSpace new.\n\tdims := Dictionary new.\n\tdims at: #rcvr put: (s addDimensionNamed: #rcvr).\n\tdims at: #location put: (s addDimensionNamed: #location).\n\tcoords := Dictionary new.\n\tcoords at: #screenParent put: (s addCoordinateNamed: #screenParent onDimension: (dims at: #rcvr) parent: nil).\n\tcoords at: #screen put: (s addCoordinateNamed: #screen onDimension: (dims at: #rcvr) parent: (coords at: #screenParent)).\n\tcoords at: #southern put: (s addCoordinateNamed: #southern onDimension: (dims at: #location) parent: nil).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #drawPixel dimensionConstraints:\n\t\t(Dictionary newFrom: { (dims at: #rcvr) -> (coords at: #screenParent) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #baseline ]).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #drawPixel dimensionConstraints:\n\t\t(Dictionary newFrom: { (dims at: #rcvr) -> (coords at: #screenParent). (dims at: #location) -> (coords at: #southern) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #southernOverride ]).\n\t^ { #space -> s. #dims -> dims. #coords -> coords } asDictionary' value: 'building'.\n\ncompileClass value: #KoSlotSpaceFalsifier value:\n'combinationSpace\n\t| s dim coords |\n\ts := KoSlotSpace new.\n\tdim := s addDimensionNamed: #rcvr.\n\tcoords := Dictionary new.\n\tcoords at: #screen put: (s addCoordinateNamed: #screen onDimension: dim parent: nil).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #render dimensionConstraints: (Dictionary newFrom: { dim -> (coords at: #screen) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #before ]).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #render dimensionConstraints: (Dictionary newFrom: { dim -> (coords at: #screen) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #after ]).\n\t^ { #space -> s. #dim -> dim. #coords -> coords } asDictionary' value: 'building'.\n\ncompileClass value: #KoSlotSpaceFalsifier value:\n'collisionSpace\n\t| s pov aCoords bCoords |\n\ts := KoSlotSpace new.\n\tpov := s addDimensionNamed: #pov.\n\taCoords := Dictionary new.\n\taCoords at: #adjacent put: (s addCoordinateNamed: #adjacent onDimension: pov parent: nil).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #sees dimensionConstraints: (Dictionary newFrom: { pov -> (aCoords at: #adjacent) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #A_adjacent ]).\n\tbCoords := Dictionary new.\n\tbCoords at: #symmetric put: (s addCoordinateNamed: #symmetric onDimension: pov parent: nil).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #sees dimensionConstraints: (Dictionary newFrom: { pov -> (bCoords at: #symmetric) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #B_symmetric ]).\n\t^ { #space -> s. #dim -> pov. #a -> aCoords. #b -> bCoords } asDictionary' value: 'building'.\n\ncompileClass value: #KoSlotSpaceFalsifier value:\n'subjectivitySpace\n\t| s pov obj coords |\n\ts := KoSlotSpace new.\n\tpov := s addDimensionNamed: #pov.\n\tobj := s addDimensionNamed: #object.\n\tcoords := Dictionary new.\n\tcoords at: #customer put: (s addCoordinateNamed: #customer onDimension: pov parent: nil).\n\tcoords at: #auditor put: (s addCoordinateNamed: #auditor onDimension: pov parent: nil).\n\tcoords at: #acct1 put: (s addCoordinateNamed: #acct1 onDimension: obj parent: nil).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #balance dimensionConstraints: (Dictionary newFrom: { pov -> (coords at: #customer). obj -> (coords at: #acct1) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | 100 ]).\n\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #balance dimensionConstraints: (Dictionary newFrom: { pov -> (coords at: #auditor). obj -> (coords at: #acct1) }) parameterConstraints: nil)\n\t\tcontents: [ :ctx :args | -50 ]).\n\t^ { #space -> s. #dims -> (Dictionary newFrom: { #pov -> pov. #object -> obj }). #coords -> coords } asDictionary' value: 'building'.\n\ncompileClass value: #KoSlotSpaceFalsifier value:\n'stressSpaceDims: nDims coordsPerDim: kCoords slots: m width: w\n\t| s dims dimsList i j d c chosen guardMap mIdx |\n\ts := KoSlotSpace new.\n\tdims := Dictionary new.\n\tdimsList := OrderedCollection new.\n\t1 to: nDims do: [ :ii |\n\t\td := s addDimensionNamed: (#d , ii asString) asSymbol.\n\t\tdims at: d put: OrderedCollection new.\n\t\tdimsList add: d.\n\t\t1 to: kCoords do: [ :jj |\n\t\t\tc := s addCoordinateNamed: (#c , ii asString , $_ , jj asString) asSymbol onDimension: d parent: nil.\n\t\t\t(dims at: d) add: c ] ].\n\t1 to: m do: [ :mm |\n\t\tchosen := OrderedCollection new.\n\t\ti := 1.\n\t\t[ (chosen size < (w min: dimsList size)) and: [ i <= dimsList size ] ] whileTrue: [\n\t\t\tchosen add: (dimsList at: i). i := i + 1 ].\n\t\tguardMap := Dictionary new.\n\t\tchosen do: [ :dimName |\n\t\t\t| coordsForDim idx |\n\t\t\tcoordsForDim := (dims at: dimName).\n\t\t\tidx := 1 + ((mm + dimName hash) \\\\ coordsForDim size).\n\t\t\tguardMap at: dimName put: (coordsForDim at: idx) ].\n\t\ts addSlot: (KoSlot guard: (KoSlotGuard selector: #op dimensionConstraints: guardMap parameterConstraints: nil)\n\t\t\tcontents: [ :ctx :args | mm ]) ].\n\t^ { #space -> s. #dims -> dims } asDictionary' value: 'building'.\n\n\"Probes\"\ncompileClass value: #KoSlotSpaceFalsifier value:\n'probe: aSpace context: aCtx selector: sel\n\t| slots results |\n\tslots := aSpace matchingSlotsForContext: aCtx selector: sel arguments: #().\n\tresults := slots collect: [ :sl | sl evaluateInContext: aCtx withArguments: #() ].\n\t^ { #slots -> slots. #results -> results } asDictionary' value: 'probes'.\n\ncompileClass value: #KoSlotSpaceFalsifier value:\n'timeLookup: aSpace context: aCtx selector: sel\n\t| dur |\n\tdur := [ aSpace matchingSlotsForContext: aCtx selector: sel arguments: #() ] timeToRun.\n\t^ dur asMicroseconds' value: 'bench'.\n\n\"Tests\"\ncompileInst value: #KoSlotSpaceFalsifierTests value:\n'testAmbiguousMatchIsNotResolvedUniquely\n\t| b s dims coords ctx r |\n\tb := KoSlotSpaceFalsifier ambiguousSpace.\n\ts := b at: #space. dims := b at: #dims. coords := b at: #coords.\n\tctx := Dictionary newFrom: {\n\t\t(dims at: #rcvr) -> (coords at: #screenParent).\n\t\t(dims at: #location) -> (coords at: #southern) }.\n\tr := KoSlotSpaceFalsifier probe: s context: ctx selector: #drawPixel.\n\tself assert: (r at: #slots) size >= 2.\n\tself assert: (r at: #results) asSet = #(baseline southernOverride) asSet' value: 'tests'.\n\ncompileInst value: #KoSlotSpaceFalsifierTests value:\n'testMethodCombinationOrderIsUndefined\n\t| b s dim coords ctx run |\n\tb := KoSlotSpaceFalsifier combinationSpace.\n\ts := b at: #space. dim := b at: #dim. coords := b at: #coords.\n\tctx := Dictionary newFrom: { dim -> (coords at: #screen) }.\n\trun := (KoSlotSpaceFalsifier probe: s context: ctx selector: #render) at: #results.\n\tself assert: run asSet = #(before after) asSet' value: 'tests'.\n\ncompileInst value: #KoSlotSpaceFalsifierTests value:\n'testGlobalDimensionNamespaceCollision\n\t| b s pov a bdict ctxA ctxB rA rB |\n\tb := KoSlotSpaceFalsifier collisionSpace.\n\ts := b at: #space. pov := b at: #dim. a := b at: #a. bdict := b at: #b.\n\tctxA := Dictionary newFrom: { pov -> (a at: #adjacent) }.\n\tctxB := Dictionary newFrom: { pov -> (bdict at: #symmetric) }.\n\trA := KoSlotSpaceFalsifier probe: s context: ctxA selector: #sees.\n\trB := KoSlotSpaceFalsifier probe: s context: ctxB selector: #sees.\n\tself assert: (rA at: #results) asSet = #(A_adjacent) asSet.\n\tself assert: (rB at: #results) asSet = #(B_symmetric) asSet' value: 'tests'.\n\ncompileInst value: #KoSlotSpaceFalsifierTests value:\n'testSubjectivityBreaksInvariantAcrossPOV\n\t| b s dims coords ctxCustomer ctxAuditor balCustomer balAuditor |\n\tb := KoSlotSpaceFalsifier subjectivitySpace.\n\ts := b at: #space. dims := b at: #dims. coords := b at: #coords.\n\tctxCustomer := Dictionary newFrom: { (dims at: #pov) -> (coords at: #customer). (dims at: #object) -> (coords at: #acct1) }.\n\tctxAuditor := Dictionary newFrom: { (dims at: #pov) -> (coords at: #auditor). (dims at: #object) -> (coords at: #acct1) }.\n\tbalCustomer := ((KoSlotSpaceFalsifier probe: s context: ctxCustomer selector: #balance) at: #results) first.\n\tbalAuditor := ((KoSlotSpaceFalsifier probe: s context: ctxAuditor selector: #balance) at: #results) first.\n\tself assert: balCustomer >= 0.\n\tself deny: balAuditor >= 0' value: 'tests'.\n\ncompileInst value: #KoSlotSpaceFalsifierTests value:\n'testDispatchScalingMicrobench\n\t| build s dims ctx t |\n\tbuild := KoSlotSpaceFalsifier stressSpaceDims: 4 coordsPerDim: 5 slots: 1200 width: 3.\n\ts := build at: #space. dims := build at: #dims.\n\tctx := Dictionary new.\n\tdims keysAndValuesDo: [ :d :coordsForDim | ctx at: d put: coordsForDim first ].\n\tt := KoSlotSpaceFalsifier timeLookup: s context: ctx selector: #op.\n\tTranscript show: ''[dispatch-scaling] 4x5 dims, 1200 slots, width 3 => '' , t asString , '' μs''; cr.\n\tself assert: t > 0' value: 'tests'.\n\n\"Convenience runner\"\ncompileClass value: #KoSlotSpaceFalsifier value:\n'runAllTests\n\t^ (Smalltalk at: #KoSlotSpaceFalsifierTests) new\n\t\trun: #( testAmbiguousMatchIsNotResolvedUniquely\n\t\t\t\ttestMethodCombinationOrderIsUndefined\n\t\t\t\ttestGlobalDimensionNamespaceCollision\n\t\t\t\ttestSubjectivityBreaksInvariantAcrossPOV\n\t\t\t\ttestDispatchScalingMicrobench )'\nvalue: 'running'.\n```\n\n---\n\n### 4) Quick sanity runs (optional)\n\n```smalltalk\n\"Run examples\"\nKoSlotSpaceExamples exampleSlotMatching.\nKoSlotSpaceExamples exampleBracketSees.\nKoSlotSpaceExamples exampleYonedaProfiles.\nKoSlotSpaceExamples examplePileSelection.\nKoSlotSpaceExamples exampleCombinerPolicies.\n\n\"Run falsifier tests\"\nKoSlotSpaceFalsifier runAllTests.\n```\n\nIf anything still DNU’s, paste the exact selector — I’ll patch the shim accordingly.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:53:27.558822+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:53:27.558822+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Minimal compat layer (KoSlotSpace, KoSlotGuard, KoSlot)"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "25fef750-e4ff-0d00-bf74-678f0f5fb280"
+	}
+}

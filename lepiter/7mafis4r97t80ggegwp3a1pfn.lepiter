@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T01:02:45.872366+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T01:02:48.680515+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "RwNKdOT/DQC/864eD1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "In Korz, a message send occurs in a context consisting of a number of coordinates, each in a particular role (or “along a dimension”). The context, selector, and explicit positional arguments of the message send determine the slot to be evaluated. In Figure 2, {rcvr: stack1}.push(100) is an example of a message send. The context for the message send will include the coordinate stack1 in the rcvr dimension, and, depending on the chain of sends leading up to this send, the context might also implicitly include a coordinate in the assertions dimension: true or possibly false. In some circumstances (discussed in subsequent sections), syntactic sugar can reduce the code for this message send to stack1.push(100)."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T01:02:59.709167+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T01:02:59.709167+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "rcvr"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "03fd4974-e4ff-0d00-bff2-474f0f5fb280"
+	}
+}

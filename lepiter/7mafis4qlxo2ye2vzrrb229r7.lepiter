@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:28:22.692093+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T00:28:24.314374+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "xGFQ+eP/DQC+rqcdD1+ygA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "─ Worked for 7s ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n• Falsifier Outlook\n\n  - Core kernel still unproven – KoSlotSpace dispatch logic now exists, but no benchmarks or property tests back the “unique most-specific”\n    guarantee. Next: add adversarial guard fixtures (orthogonal dimensions, overlapping constraints) verifying that bestSlotsForContext:\n    either selects deterministically or raises KoAmbiguousDispatch. Measure lookup cost vs slot count (Lepiter demand #5).\n  - Subjectivity invariants unchecked – examples cover bracket POV flips, yet there’s no invariant test showing a property that holds under\n    pov = #adjacent and fails under #symmetric. Add a test proving the “Heisen-invariants” issue the critique warns about, then document\n    mitigation strategies.\n  - IDE promise remains aspirational – README names GT example entry points, but no GT inspector implementations exist\n    (KoSlotSpace>>gtInspectorOn: etc. are still TODO). Until inspectors visualize dimensions/guards, the “IDE saves us” claim is falsified;\n    prioritize basic inspectors to map contexts, selectors, and slot provenance.\n  - Namespace collision / evolution experiments missing – no automation exercises the “merge two slot spaces with clashing dimensions”\n    scenario or measures rename fallout. Introduce a test harness that builds two mini spaces, merges them, and asserts dispatch drift to\n    quantify the modularity risk.\n  - Combiner strategies blank – exampleCombinerPolicies returns strings describing meet/quorum, but there’s no dispatcher strategy or hook.\n    Plan: stub a KoDispatchStrategy protocol and cover at least one real “run all slots” strategy so claims about ensembles aren’t purely\n    narrative.\n  - Docs vs code drift potential – SPEC/RESEARCH mention projection layer, GT inspectors, Croquet/Syndicate hooks, but no classes/tests\n    exist. Either implement Phase 3 (KoProjection/Object, inspectors) or explicitly mark them “pending” in IMPLEMENTATION_PLAN to avoid\n    overstating current capabilities.\n\n  Next steps: build the falsifier harnesses above (dispatch ambiguity suite, invariant drift, namespace collision), implement minimal\n  inspectors, and start a dispatcher-strategy skeleton so experiments can move from prose to executable tests."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:28:32.418873+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T00:28:32.418873+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Falsifier Outlook"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "e35b50f9-e3ff-0d00-bead-ae4e0f5fb280"
+	}
+}
