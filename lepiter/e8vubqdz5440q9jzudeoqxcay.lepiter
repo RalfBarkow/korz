@@ -93,6 +93,77 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T13:09:31.175702+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T13:09:31.175702+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "YB1em+7/DQCYTy8HDXQlqw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here’s a single **do-it** that adds the constructor on **every class side** by defining"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T13:09:35.782024+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T13:09:37.444412+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wGykm+7/DQCYVBXUDXQlqw=="
+				},
+				"code" : "\"Install a class-side constructor on Metaclass (available to all classes).\"\nMetaclass compile:\n'selector: aSel dimensionConstraints: aDict parameterConstraints: aParamDict\n\t\"Generic class-side ctor. Works for classes whose instances understand\n\t #selector:, #dimensionConstraints:, and #parameterConstraints:.\"\n\t^ self new\n\t\tselector: aSel;\n\t\tdimensionConstraints: (aDict ifNil: [ Dictionary new ]);\n\t\tparameterConstraints: (aParamDict ifNil: [ Dictionary new ]);\n\t\tyourself'\nclassified: 'instance creation'."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2025-11-14T11:41:01.812299+01:00"
 					}
 				},
@@ -104,7 +175,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-11-14T11:41:04.97444+01:00"
+						"dateAndTimeString" : "2025-11-14T13:09:31.181739+01:00"
 					}
 				},
 				"uid" : {
@@ -114,7 +185,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Here’s a single **do-it** that adds the constructor on **every class side** by defining\n\n`Metaclass>>selector:dimensionConstraints:parameterConstraints:`\n\n```smalltalk\n\"Install a class-side constructor on Metaclass (available to all classes).\"\nMetaclass compile:\n'selector: aSel dimensionConstraints: aDict parameterConstraints: aParamDict\n\t\"Generic class-side ctor. Works for classes whose instances understand\n\t #selector:, #dimensionConstraints:, and #parameterConstraints:.\"\n\t^ self new\n\t\tselector: aSel;\n\t\tdimensionConstraints: (aDict ifNil: [ Dictionary new ]);\n\t\tparameterConstraints: (aParamDict ifNil: [ Dictionary new ]);\n\t\tyourself'\nclassified: 'instance creation'.\n\n\n\"Quick smoke: uses KoSlotGuard class side (requires instance accessors present).\"\n[ \n\t| guard ok |\n\tguard := KoSlotGuard\n\t\tselector: #drawPixel\n\t\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\t\tparameterConstraints: nil.\n\n\tok := {\n\t\t#selector     -> (guard selector = #drawPixel).\n\t\t#dimConsRcvr  -> ((guard dimensionConstraints at: #rcvr ifAbsent: [ nil ]) = #screenParent).\n\t\t#paramIsDict  -> (guard parameterConstraints isKindOf: Dictionary)\n\t} asDictionary.\n\n\tTranscript cr; show: '[Metaclass ctor OK] '; show: ok printString; cr\n] on: Error do: [ :ex |\n\tTranscript cr; show: '[Metaclass ctor ERROR] '; show: ex description; cr ].\n```\n\n⚠️ Note: this defines a **generic** constructor on the class side of **all classes** (since it lives on `Metaclass`). It’s convenient for `KoSlotGuard`, but will only succeed for classes whose *instances* implement `#selector:`, `#dimensionConstraints:`, and `#parameterConstraints:`.\n"
+				"string" : "`Metaclass>>selector:dimensionConstraints:parameterConstraints:`\n\n```smalltalk\n\"Install a class-side constructor on Metaclass (available to all classes).\"\nMetaclass compile:\n'selector: aSel dimensionConstraints: aDict parameterConstraints: aParamDict\n\t\"Generic class-side ctor. Works for classes whose instances understand\n\t #selector:, #dimensionConstraints:, and #parameterConstraints:.\"\n\t^ self new\n\t\tselector: aSel;\n\t\tdimensionConstraints: (aDict ifNil: [ Dictionary new ]);\n\t\tparameterConstraints: (aParamDict ifNil: [ Dictionary new ]);\n\t\tyourself'\nclassified: 'instance creation'.\n\n\n\"Quick smoke: uses KoSlotGuard class side (requires instance accessors present).\"\n[ \n\t| guard ok |\n\tguard := KoSlotGuard\n\t\tselector: #drawPixel\n\t\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\t\tparameterConstraints: nil.\n\n\tok := {\n\t\t#selector     -> (guard selector = #drawPixel).\n\t\t#dimConsRcvr  -> ((guard dimensionConstraints at: #rcvr ifAbsent: [ nil ]) = #screenParent).\n\t\t#paramIsDict  -> (guard parameterConstraints isKindOf: Dictionary)\n\t} asDictionary.\n\n\tTranscript cr; show: '[Metaclass ctor OK] '; show: ok printString; cr\n] on: Error do: [ :ex |\n\tTranscript cr; show: '[Metaclass ctor ERROR] '; show: ex description; cr ].\n```\n\n⚠️ Note: this defines a **generic** constructor on the class side of **all classes** (since it lives on `Metaclass`). It’s convenient for `KoSlotGuard`, but will only succeed for classes whose *instances* implement `#selector:`, `#dimensionConstraints:`, and `#parameterConstraints:`.\n"
 			},
 			{
 				"__type" : "textSnippet",

@@ -178,7 +178,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-11-14T11:48:00.956588+01:00"
+						"dateAndTimeString" : "2025-11-14T11:48:29.007775+01:00"
 					}
 				},
 				"uid" : {
@@ -188,7 +188,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "See "
+				"string" : "See {{gtClass:KoSlotGuard}}"
 			}
 		]
 	},
