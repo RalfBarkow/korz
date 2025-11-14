@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T17:04:02.086587+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T17:04:04.125166+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "PjMP4vH/DQC6notODLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here’s a do-it chunk that *recreates/fixes* both class-side examples via `compile:`.\n\nPaste into a Playground and **Do it**:\n\n```smalltalk\n\"=== Fix KoSlotSpaceExamples class >> exampleYonedaProfiles / exampleCombinerPolicies ===\"\n\n| cls |\n\nSmalltalk at: #KoSlotSpaceExamples ifAbsent: [\n\tObject\n\t\tsubclass: #KoSlotSpaceExamples\n\t\tinstanceVariableNames: ''\n\t\tclassVariableNames: ''\n\t\tpackage: 'Korz-Projection-Examples' ].\n\ncls := Smalltalk at: #KoSlotSpaceExamples.\n\n\"exampleYonedaProfiles\"\n\n(cls class canUnderstand: #exampleYonedaProfiles) ifFalse: [\n\tcls class\n\t\tcompile:\n'exampleYonedaProfiles\n\t<gtExample>\n\t| scenario dims coords space povDimension objectDimension povs objects result |\n\tscenario := self yonedaScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tspace := scenario at: #slotSpace.\n\tpovDimension := dims at: #pov.\n\tobjectDimension := dims at: #object.\n\tpovs := Dictionary newFrom: {\n\t\t#local -> (coords at: #povLocal).\n\t\t#meta -> (coords at: #povMeta) }.\n\tobjects := Dictionary newFrom: {\n\t\t#nodeA -> (coords at: #nodeA).\n\t\t#nodeB -> (coords at: #nodeB).\n\t\t#nodeC -> (coords at: #nodeC) }.\n\tresult := Dictionary new.\n\tpovs keysAndValuesDo: [ :povLabel :povCoord |\n\t\t| perObject |\n\t\tperObject := Dictionary new.\n\t\tobjects keysAndValuesDo: [ :objectLabel :objectCoord |\n\t\t\t| context profile |\n\t\t\tcontext := Dictionary newFrom: {\n\t\t\t\tpovDimension -> povCoord.\n\t\t\t\tobjectDimension -> objectCoord }.\n\t\t\tprofile := self\n\t\t\t\tfirstResultForContext: context\n\t\t\t\tslotSpace: space\n\t\t\t\tselector: #profile.\n\t\t\tperObject at: objectLabel put: profile ].\n\t\tresult at: povLabel put: perObject ].\n\t^ result'\n\t\tclassified: 'examples'\n].\n\n\"exampleCombinerPolicies\"\n\n(cls class canUnderstand: #exampleCombinerPolicies) ifFalse: [\n\tcls class\n\t\tcompile:\n'exampleCombinerPolicies\n\t<gtExample>\n\t| scenario dims coords space combinerDimension |\n\tscenario := self combinerScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tspace := scenario at: #slotSpace.\n\tcombinerDimension := dims at: #combiner.\n\t^ Dictionary newFrom: {\n\t\t#meet -> (self\n\t\t\tfirstResultForContext: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coords at: #meet) })\n\t\t\tslotSpace: space\n\t\t\tselector: #stabilize).\n\t\t#quorum -> (self\n\t\t\tfirstResultForContext: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coords at: #quorum) })\n\t\t\tslotSpace: space\n\t\t\tselector: #stabilize) }'\n\t\tclassified: 'examples'\n].\n\nTranscript\n\tcr;\n\tshow: '[Korz] KoSlotSpaceExamples examples fixed (YonedaProfiles + CombinerPolicies).';\n\tcr.\n```\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T17:04:26.205257+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T17:04:26.205257+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Fix KoSlotSpaceExamples"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "14300fe2-f1ff-0d00-ba9d-d0a70cbcf794"
+	}
+}

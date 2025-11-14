@@ -1,1 +1,0 @@
-Package { #name : #'Korz-Examples' }

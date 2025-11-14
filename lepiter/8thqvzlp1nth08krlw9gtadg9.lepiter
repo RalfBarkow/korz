@@ -1,0 +1,113 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:52:06.609643+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:52:23.170595+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GONpt/H/DQC5gVN0DLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtClass:KoSlot}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:51:50.939081+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:52:00.095502+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "BMZ6tvH/DQC5elsjDLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here’s the **KoSlot** do-it chunk (including a small integration helper on `KoSlotSpace`).\nPaste into a Playground and **Do it** once.\n\n```smalltalk\n\"=== KoSlot compat: ensure class + builder + KoSlotSpace helper ===\"\n\n| slotClass spaceClass |\n\n\"1) Ensure KoSlot class exists\"\nSmalltalk at: #KoSlot ifAbsent: [\n\tObject\n\t\tsubclass: #KoSlot\n\t\tinstanceVariableNames: 'name guard implementation'\n\t\tclassVariableNames: ''\n\t\tpackage: 'Korz-Projection-Compat' ].\n\nslotClass := Smalltalk at: #KoSlot.\n\n\"2) Instance-side accessors\"\n\n(slotClass canUnderstand: #name) ifFalse: [\n\tslotClass\n\t\tcompile: 'name ^ name'\n\t\tclassified: 'accessing'.\n\tslotClass\n\t\tcompile: 'name: aSymbol name := aSymbol'\n\t\tclassified: 'accessing'\n].\n\n(slotClass canUnderstand: #guard) ifFalse: [\n\tslotClass\n\t\tcompile: 'guard ^ guard'\n\t\tclassified: 'accessing'.\n\tslotClass\n\t\tcompile: 'guard: aGuard guard := aGuard'\n\t\tclassified: 'accessing'\n].\n\n(slotClass canUnderstand: #implementation) ifFalse: [\n\tslotClass\n\t\tcompile: 'implementation ^ implementation'\n\t\tclassified: 'accessing'.\n\tslotClass\n\t\tcompile:\n'implementation: aBlock\n\timplementation := aBlock'\n\t\tclassified: 'accessing'\n].\n\n\"3) Optional convenience: execute the implementation\"\n(slotClass canUnderstand: #valueWithReceiver:arguments:) ifFalse: [\n\tslotClass\n\t\tcompile:\n'valueWithReceiver: aReceiver arguments: argArray\n\t\"Simple convention: implementation is a block taking receiver and arguments.\"\n\t^ implementation\n\t\tvalue: aReceiver\n\t\tvalue: argArray'\n\t\tclassified: 'evaluating'\n].\n\n\"4) Class-side constructor that uses KoSlotGuard\"\n(slotClass class canUnderstand: #selector:dimensionConstraints:parameterConstraints:implementation:) ifFalse: [\n\tslotClass class\n\t\tcompile:\n'selector: aSelector\n dimensionConstraints: aDict\n parameterConstraints: aParam\n implementation: aBlock\n\n\t^ self new\n\t\tname: aSelector;\n\t\tguard: (KoSlotGuard\n\t\t\tselector: aSelector\n\t\t\tdimensionConstraints: (aDict ifNil: [ Dictionary new ])\n\t\t\tparameterConstraints: aParam);\n\t\timplementation: aBlock;\n\t\tyourself'\n\t\tclassified: 'instance creation'\n].\n\n\"5) Simpler convenience without constraints\"\n(slotClass class canUnderstand: #selector:implementation:) ifFalse: [\n\tslotClass class\n\t\tcompile:\n'selector: aSelector implementation: aBlock\n\t^ self\n\t\tselector: aSelector\n\t\tdimensionConstraints: Dictionary new\n\t\tparameterConstraints: nil\n\t\timplementation: aBlock'\n\t\tclassified: 'instance creation'\n].\n\n\"6) Wire into KoSlotSpace compat (if present)\"\n\nspaceClass := Smalltalk at: #KoSlotSpace ifAbsent: [ nil ].\n\nspaceClass ifNotNil: [\n\t(spaceClass canUnderstand: #addSlotSelector:dimensionConstraints:parameterConstraints:implementation:) ifFalse: [\n\t\tspaceClass\n\t\t\tcompile:\n'addSlotSelector: aSelector\n dimensionConstraints: aDict\n parameterConstraints: aParam\n implementation: aBlock\n\n\t| slot |\n\tslot := KoSlot\n\t\tselector: aSelector\n\t\tdimensionConstraints: aDict\n\t\tparameterConstraints: aParam\n\t\timplementation: aBlock.\n\tself addSlot: slot.\n\t^ slot'\n\t\t\tclassified: 'Korz-Projection-Compat'\n\t].\n\n\t(spaceClass canUnderstand: #addSlotSelector:implementation:) ifFalse: [\n\t\tspaceClass\n\t\t\tcompile:\n'addSlotSelector: aSelector implementation: aBlock\n\t^ self\n\t\taddSlotSelector: aSelector\n\t\tdimensionConstraints: Dictionary new\n\t\tparameterConstraints: nil\n\t\timplementation: aBlock'\n\t\t\tclassified: 'Korz-Projection-Compat'\n\t].\n].\n\nTranscript\n\tcr;\n\tshow: '[Korz] KoSlot compat installed (builder + KoSlotSpace helpers).';\n\tcr.\n```\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:51:50.851837+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:51:50.851837+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "KoSlot"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "996f79b6-f1ff-0d00-b979-baea0cbcf794"
+	}
+}

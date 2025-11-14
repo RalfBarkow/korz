@@ -1,7 +1,7 @@
 Class {
 	#name : #KoSlotSpaceExamples,
 	#superclass : #Object,
-	#category : #'Korz-Examples-Projection'
+	#category : #Korz
 }
 
 { #category : #'private - building' }
@@ -47,14 +47,14 @@ KoSlotSpaceExamples class >> addBracketSeesSlotsOn: slotSpace boundaryDimension:
 		povDimension: povDimension
 		boundary: square
 		pov: symmetric
-		result: #(round curly angle).
+		result: #(round curly).
 	self
 		addSeesSlotOn: slotSpace
 		boundaryDimension: boundaryDimension
 		povDimension: povDimension
 		boundary: round
 		pov: symmetric
-		result: #(curly square angle).
+		result: #(curly square).
 	self
 		addSeesSlotOn: slotSpace
 		boundaryDimension: boundaryDimension
@@ -68,7 +68,7 @@ KoSlotSpaceExamples class >> addBracketSeesSlotsOn: slotSpace boundaryDimension:
 		povDimension: povDimension
 		boundary: angle
 		pov: symmetric
-		result: #(curly round)
+		result: #(curly)
 ]
 
 { #category : #'private - building' }
@@ -395,7 +395,10 @@ KoSlotSpaceExamples class >> exampleYonedaProfiles [
 
 { #category : #'private - building' }
 KoSlotSpaceExamples class >> firstResultForContext: context slotSpace: slotSpace selector: selector [
-	^ (self resultsForContext: context slotSpace: slotSpace selector: selector) first
+	| results |
+	results := self resultsForContext: context slotSpace: slotSpace selector: selector.
+	results isEmpty ifTrue: [ ^ nil ].
+	^ results first
 ]
 
 { #category : #'private - building' }

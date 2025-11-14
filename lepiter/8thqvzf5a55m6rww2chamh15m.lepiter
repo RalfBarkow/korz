@@ -1,0 +1,113 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:55:51.27697+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:55:58.709081+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "3wnOxPH/DQC6C3BjDLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtMethod:KoSlot class>>#guard:contents:}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:55:06.804568+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:55:34.068061+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2nYnwvH/DQC6BcVHDLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here’s a **do-it** chunk that adds `KoSlot class >> guard:contents:` via `compile:` (idempotent, only if missing).\n\n```smalltalk\n\"=== KoSlot compat: class >> guard:contents: convenience constructor ===\"\n\n| slotClass |\n\nSmalltalk at: #KoSlot ifAbsent: [\n\tTranscript\n\t\tcr;\n\t\tshow: '[Korz] KoSlot class not found, guard:contents: not installed.'.\n\t^ self\n].\n\nslotClass := Smalltalk at: #KoSlot.\n\n(slotClass class canUnderstand: #guard:contents:) ifFalse: [\n\tslotClass class\n\t\tcompile:\n'guard: aGuard contents: aBlock\n\t\"Convenience constructor: build a KoSlot from an existing guard and contents.\n\t We also derive the slot name from the guard''s selector.\"\n\n\t^ self new\n\t\tname: (aGuard respondsTo: #selector\n\t\t\tifTrue: [ aGuard selector ]\n\t\t\tifFalse: [ nil ]);\n\t\tguard: aGuard;\n\t\timplementation: aBlock;\n\t\tyourself'\n\t\tclassified: 'instance creation'\n].\n\nTranscript\n\tcr;\n\tshow: '[Korz] KoSlot compat installed (class >> guard:contents:).';\n\tcr.\n```\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:55:10.752675+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:55:10.752675+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "KoSlot class>>#guard:contents:"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "1a6e27c2-f1ff-0d00-ba04-77100cbcf794"
+	}
+}

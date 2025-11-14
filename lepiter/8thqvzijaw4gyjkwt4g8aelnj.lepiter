@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:39:27.239575+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:39:29.42508+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "39EmivH/DQC4lmgMDLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here’s a single **do-it** that (re)creates the minimal `KoSlotSpace` builder API using `compile:`.\nPaste into a Playground and **Do-it once**.\n\n```smalltalk\n\"=== KoSlotSpace compat: ensure class + builder API via compile: ===\"\n\n| cls |\n\n\"Global state dictionary: KoSlotSpaceState (WeakKeyDictionary)\"\nSmalltalk at: #KoSlotSpaceState ifAbsentPut: [ WeakKeyDictionary new ].\n\n\"Ensure KoSlotSpace class exists (stub) in a compat package\"\nSmalltalk at: #KoSlotSpace ifAbsent: [\n\tObject\n\t\tsubclass: #KoSlotSpace\n\t\tinstanceVariableNames: ''\n\t\tclassVariableNames: ''\n\t\tpackage: 'Korz-Projection-Compat' ].\n\ncls := Smalltalk at: #KoSlotSpace.\n\n\"--- kozState ---\"\n(cls canUnderstand: #kozState) ifFalse: [\n\tcls compile: '\nkozState\n\t^ (Smalltalk at: #KoSlotSpaceState)\n\t\tat: self\n\t\tifAbsentPut: [\n\t\t\tDictionary new\n\t\t\t\tat: #dimensions put: OrderedCollection new;\n\t\t\t\tat: #coordinates put: Dictionary new;  \"dim -> (name -> coord)\"\n\t\t\t\tat: #slots put: OrderedCollection new;\n\t\t\t\tyourself ]'\n\t\tclassified: 'Korz-Projection-Compat'\n].\n\n\"--- addDimensionNamed: ---\"\n(cls canUnderstand: #addDimensionNamed:) ifFalse: [\n\tcls compile: '\naddDimensionNamed: aSymbol\n\t| st dims |\n\tst := self kozState.\n\tdims := st at: #dimensions.\n\t(dims includes: aSymbol) ifFalse: [ dims add: aSymbol ].\n\t^ aSymbol'\n\t\tclassified: 'Korz-Projection-Compat'\n].\n\n\"--- addCoordinateNamed:onDimension:parent: ---\"\n(cls canUnderstand: #addCoordinateNamed:onDimension:parent:) ifFalse: [\n\tcls compile: '\naddCoordinateNamed: aSymbol onDimension: aDim parent: aParent\n\t| st byDim coord |\n\tst := self kozState.\n\tbyDim := (st at: #coordinates) at: aDim ifAbsentPut: [ Dictionary new ].\n\tcoord := byDim\n\t\tat: aSymbol\n\t\tifAbsentPut: [\n\t\t\tDictionary newFrom: {\n\t\t\t\t#name -> aSymbol.\n\t\t\t\t#dimension -> aDim.\n\t\t\t\t#parent -> aParent } ].\n\t^ coord'\n\t\tclassified: 'Korz-Projection-Compat'\n].\n\n\"--- addSlot: ---\"\n(cls canUnderstand: #addSlot:) ifFalse: [\n\tcls compile: '\naddSlot: aSlot\n\t(self kozState at: #slots) add: aSlot.\n\t^ aSlot'\n\t\tclassified: 'Korz-Projection-Compat'\n].\n\n\"--- matchingSlotsForContext:selector:arguments: ---\"\n(cls canUnderstand: #matchingSlotsForContext:selector:arguments:) ifFalse: [\n\tcls compile: '\nmatchingSlotsForContext: aContext selector: aSelector arguments: ignored\n\t\"Return the slots whose guard selector matches and whose dimension constraints\n\t are exactly satisfied by aContext (identity compare on coords).\"\n\n\t| allSlots |\n\tallSlots := (self kozState at: #slots).\n\t^ allSlots select: [ :slot |\n\t\t| g ok |\n\t\tg := (slot respondsTo: #guard)\n\t\t\tifTrue: [ slot guard ]\n\t\t\tifFalse: [ nil ].\n\t\tg isNil ifTrue: [ ^ false ].\n\t\tg selector = aSelector ifFalse: [ ^ false ].\n\t\tg dimensionConstraints\n\t\t\tifNil: [ true ]\n\t\t\tifNotNil: [ :constraints |\n\t\t\t\tok := true.\n\t\t\t\tconstraints keysAndValuesDo: [ :dim :coord |\n\t\t\t\t\t((aContext at: dim ifAbsent: [ nil ]) == coord)\n\t\t\t\t\t\tifFalse: [ ok := false ] ].\n\t\t\t\tok ] ]'\n\t\tclassified: 'Korz-Projection-Compat'\n].\n\nTranscript\n\tcr;\n\tshow: '[Korz] KoSlotSpace compat installed (kozState + builder API).';\n\tcr.\n```\n\nIf you also want `pharo-code-emitter:` to generate similar chunks for `KoSlotGuard`/`KoSlot` later, we can mirror this pattern there (ensure class, then `compile:` the minimal API).\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:40:01.935592+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:40:01.935592+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "KoSlotSpace"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "1fcf268a-f1ff-0d00-b895-6d810cbcf794"
+	}
+}

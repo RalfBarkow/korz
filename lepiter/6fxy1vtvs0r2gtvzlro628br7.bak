@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T17:22:22.383643+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T17:22:24.577576+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "hWakI/L/DQCgn5WrAuDTbA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The crash is coming from `firstResultForContext:slotSpace:selector:` doing `#first` on an **empty** collection — that calls `at: 1` on an `OrderedCollection`, which raises `errorSubscriptBounds:`.\n\nSo the fix has two parts:\n\n1. Make `KoSlotSpace>>matchingSlotsForContext:selector:arguments:` actually return the right matching slots (no early `^` from inside the block, and proper constraint checking).\n2. Make `KoSlotSpaceExamples class>>firstResultForContext:slotSpace:selector:` defensive when the result list is empty.\n\nPaste this **whole do-it** into a Playground and *Do it* once:\n\n```smalltalk\n\"=== Fix Korz compat: matchingSlots + safe firstResultForContext ===\"\n\n| spaceClass examplesClass |\n\n\"1) Fix KoSlotSpace >> matchingSlotsForContext:selector:arguments:\"\n\nspaceClass := Smalltalk at: #KoSlotSpace ifAbsent: [ nil ].\nspaceClass ifNotNil: [\n\tspaceClass\n\t\tcompile:\n'matchingSlotsForContext: aContext selector: aSelector arguments: ignored\n\t\"Return the slots whose guard selector matches and whose dimension constraints\n\t are exactly satisfied by aContext (identity compare on coords).\"\n\n\t| slots |\n\tslots := self kozState at: #slots.\n\t^ slots select: [ :slot |\n\t\t| guard constraints matches |\n\t\tguard := (slot respondsTo: #guard)\n\t\t\tifTrue: [ slot guard ]\n\t\t\tifFalse: [ nil ].\n\t\tguard isNil\n\t\t\tifTrue: [ false ]\n\t\t\tifFalse: [\n\t\t\t\tguard selector = aSelector\n\t\t\t\t\tifFalse: [ false ]\n\t\t\t\t\tifTrue: [\n\t\t\t\t\t\tconstraints := guard dimensionConstraints.\n\t\t\t\t\t\tconstraints isNil\n\t\t\t\t\t\t\tifTrue: [ true ]\n\t\t\t\t\t\t\tifFalse: [\n\t\t\t\t\t\t\t\tmatches := true.\n\t\t\t\t\t\t\t\tconstraints keysAndValuesDo: [ :dim :coord |\n\t\t\t\t\t\t\t\t\t((aContext at: dim ifAbsent: [ nil ]) == coord)\n\t\t\t\t\t\t\t\t\t\tifFalse: [ matches := false ] ].\n\t\t\t\t\t\t\t\tmatches ] ] ] ]'\n\t\tclassified: 'Korz-Projection-Compat'\n].\n\n\"2) Make KoSlotSpaceExamples >> firstResultForContext:... safe on empty results\"\n\nexamplesClass := Smalltalk at: #KoSlotSpaceExamples ifAbsent: [ nil ].\nexamplesClass ifNotNil: [\n\texamplesClass class\n\t\tcompile:\n'firstResultForContext: context slotSpace: slotSpace selector: selector\n\t| results |\n\tresults := self resultsForContext: context slotSpace: slotSpace selector: selector.\n\tresults isEmpty ifTrue: [ ^ nil ].\n\t^ results first'\n\t\tclassified: 'private - building'\n].\n\nTranscript\n\tcr;\n\tshow: '[Korz] matchingSlotsForContext + firstResultForContext patched.';\n\tcr.\n```\n\nAfter running this:\n\n* `KoSlotSpaceExamples class>>exampleCombinerPolicies` should return a `Dictionary` like `#{ #meet -> ... . #quorum -> ... }` instead of crashing.\n* `KoSlotSpaceExamples class>>exampleYonedaProfiles` should likewise return its nested `Dictionary` of profiles without raising `errorSubscriptBounds:`.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T17:22:22.38354+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T17:22:22.38354+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "unnamedPage",
+		"defaultTitle" : "Page"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "8347a423-f2ff-0d00-a09e-dd5b02e0d36c"
+	}
+}

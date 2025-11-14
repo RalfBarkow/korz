@@ -1,0 +1,113 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:47:17.42012+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:47:31.7454+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "lDQtpvH/DQC4rdPVDLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtClass:KoSlotGuard}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:46:46.160271+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T16:46:48.085393+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "3zdQpPH/DQC4p8z2DLz3lA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here’s the **KoSlotGuard** do-it chunk using `compile:`.\nPaste into a Playground and **Do it** once.\n\n```smalltalk\n\"=== KoSlotGuard compat: ensure class + ctor + accessors ===\"\n\n| cls |\n\n\"1) Ensure KoSlotGuard class exists\"\nSmalltalk at: #KoSlotGuard ifAbsent: [\n\tObject\n\t\tsubclass: #KoSlotGuard\n\t\tinstanceVariableNames: 'selector dimensionConstraints parameterConstraints'\n\t\tclassVariableNames: ''\n\t\tpackage: 'Korz-Projection-Compat' ].\n\ncls := Smalltalk at: #KoSlotGuard.\n\n\"2) Class-side main constructor: selector:dimensionConstraints:parameterConstraints:\"\n(cls class canUnderstand: #selector:dimensionConstraints:parameterConstraints:) ifFalse: [\n\tcls class\n\t\tcompile:\n'selector: aSelector dimensionConstraints: aDict parameterConstraints: aParam\n\t^ self new\n\t\tselector: aSelector;\n\t\tdimensionConstraints: (aDict ifNil: [ Dictionary new ]);\n\t\tparameterConstraints: aParam;\n\t\tyourself'\n\t\tclassified: 'instance creation'\n].\n\n\"3) Optional convenience: KoSlotGuard class >> selector:\"\n(cls class canUnderstand: #selector:) ifFalse: [\n\tcls class\n\t\tcompile:\n'selector: aSelector\n\t\"Convenience factory with empty constraints.\"\n\t^ self\n\t\tselector: aSelector\n\t\tdimensionConstraints: Dictionary new\n\t\tparameterConstraints: nil'\n\t\tclassified: 'instance creation'\n].\n\n\"4) Instance-side accessors for selector\"\n(cls canUnderstand: #selector) ifFalse: [\n\tcls\n\t\tcompile: 'selector ^ selector'\n\t\tclassified: 'accessing'.\n\tcls\n\t\tcompile: 'selector: aSelector selector := aSelector'\n\t\tclassified: 'accessing'\n].\n\n\"5) Instance-side accessors for dimensionConstraints\"\n(cls canUnderstand: #dimensionConstraints) ifFalse: [\n\tcls\n\t\tcompile: 'dimensionConstraints ^ dimensionConstraints'\n\t\tclassified: 'accessing'.\n\tcls\n\t\tcompile:\n'dimensionConstraints: aDict\n\tdimensionConstraints := aDict'\n\t\tclassified: 'accessing'\n].\n\n\"6) Instance-side accessors for parameterConstraints\"\n(cls canUnderstand: #parameterConstraints) ifFalse: [\n\tcls\n\t\tcompile: 'parameterConstraints ^ parameterConstraints'\n\t\tclassified: 'accessing'.\n\tcls\n\t\tcompile:\n'parameterConstraints: aParam\n\tparameterConstraints := aParam'\n\t\tclassified: 'accessing'\n].\n\n\"7) Fallback for acceptableConstraints (used by some GT helpers)\"\n(cls canUnderstand: #acceptableConstraints) ifFalse: [\n\tcls\n\t\tcompile:\n'acceptableConstraints\n\t\"Default to dimensionConstraints if present; never nil.\"\n\t^(self respondsTo: #dimensionConstraints)\n\t\tifTrue: [ self dimensionConstraints ifNil: [ Dictionary new ] ]\n\t\tifFalse: [ Dictionary new ]'\n\t\tclassified: 'accessing'\n].\n\nTranscript\n\tcr;\n\tshow: '[Korz] KoSlotGuard compat installed (ctor + accessors).';\n\tcr.\n```\n\nNext step (when you want it): a similar chunk for **KoSlot** that assumes this guard API and wires into your `KoSlotSpace` compat.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:47:15.973809+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T16:47:15.973809+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "KoSlotGuard"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "b23450a4-f1ff-0d00-b8a6-3ea10cbcf794"
+	}
+}
