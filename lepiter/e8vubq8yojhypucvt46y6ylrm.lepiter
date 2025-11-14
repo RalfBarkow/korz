@@ -1,0 +1,184 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:31:49.724446+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:35:34.9546+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "XX3/Pe3/DQCz6DsnADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtClass:KoSlotGuardState}}, {{gtMethod:KoSlotGuard>>kozGuardState}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:36:00.65476+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:36:00.65476+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2lX0TO3/DQC0U0+ZADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Got it — here are the **do-it chunks** to create `KoSlotGuardState` as a proper class (with a WeakKeyDictionary registry) and to rewire `KoSlotGuard>>kozGuardState` to use it. Paste/run in order.\n\n```smalltalk\n\"1) Create the class if missing\"\n(Smalltalk includesKey: #KoSlotGuardState) ifFalse: [\n\tObject\n\t\tsubclass: #KoSlotGuardState\n\t\tinstanceVariableNames: ''\n\t\tclassVariableNames: 'Registry'\n\t\tpackage: 'Korz-Projection-Compat'\n].\n```\n\n```smalltalk\n\"2) Class-side: backing store + dictionary-like API\"\n\n(KoSlotGuardState class) compile:\n'default\n\t\"Singleton WeakKeyDictionary registry.\"\n\t^ Registry ifNil: [ Registry := WeakKeyDictionary new ]'\nclassified: 'accessing'.\n\n(KoSlotGuardState class) compile:\n'clear\n\t\"Drop all entries.\"\n\tRegistry := nil'\nclassified: 'mutating'.\n\n(KoSlotGuardState class) compile:\n'at: key ifAbsentPut: aBlock\n\t^ self default at: key ifAbsentPut: aBlock'\nclassified: 'delegating'.\n\n(KoSlotGuardState class) compile:\n'at: key ifAbsent: aBlock\n\t^ self default at: key ifAbsent: aBlock'\nclassified: 'delegating'.\n\n(KoSlotGuardState class) compile:\n'at: key put: value\n\t^ self default at: key put: value'\nclassified: 'delegating'.\n\n(KoSlotGuardState class) compile:\n'removeKey: key\n\t^ self default removeKey: key ifAbsent: [ nil ]'\nclassified: 'delegating'.\n\n(KoSlotGuardState class) compile:\n'keys\n\t^ self default keys'\nclassified: 'delegating'.\n\n(KoSlotGuardState class) compile:\n'size\n\t^ self default size'\nclassified: 'delegating'.\n```\n\n```smalltalk\n\"3) Point KoSlotGuard>>kozGuardState to the new registry class\"\n\n| g |\ng := Smalltalk at: #KoSlotGuard ifAbsent: [ ^ self error: 'KoSlotGuard not present' ].\n\n(g canUnderstand: #kozGuardState) ifTrue: [\n\tg compile:\n'kozGuardState\n\t^ KoSlotGuardState at: self ifAbsentPut: [ Dictionary new ]'\n\tclassified: 'storage'\n] ifFalse: [\n\tg compile:\n'kozGuardState\n\t^ KoSlotGuardState at: self ifAbsentPut: [ Dictionary new ]'\n\tclassified: 'storage'\n].\n```\n"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:36:14.952116+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:36:22.298638+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "7IrOTe3/DQC0Y8APADul8A=="
+				},
+				"code" : "\"4) Quick smoke: construct a guard and see state round-trip\"\n\n| guard ok |\nguard := KoSlotGuard class\n\tselector: #drawPixel\n\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\tparameterConstraints: nil.\n\nok := {\n\t#selector -> (guard selector = #drawPixel).\n\t#dimCons  -> ((guard dimensionConstraints at: #rcvr ifAbsent: [ nil ]) = #screenParent).\n\t#paramDict-> (guard parameterConstraints isKindOf: Dictionary).\n\t#registrySize -> KoSlotGuardState size } asDictionary.\n\nTranscript cr; show: '[KoSlotGuardState OK] '; show: ok printString; cr."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:31:18.871514+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:36:10.609661+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "OLcoPO3/DQCz4p7ZADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This keeps your earlier shims intact, avoids global-object hacks, and gives you a clean, reusable registry class.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T11:31:47.629517+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T11:31:47.629517+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "KoSlotGuardState"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "b290283c-edff-0d00-b3e1-9b34003ba5f0"
+	}
+}

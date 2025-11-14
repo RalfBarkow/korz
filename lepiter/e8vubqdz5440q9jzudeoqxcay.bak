@@ -1,0 +1,225 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T11:44:36.586089+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T11:44:47.085934+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "nt60a+3/DQC0zD8uADul8A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "See {{gtClass:Metaclass}}"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:42:21.15429+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:42:36.938214+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "L1iiY+3/DQC0eH5XADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtMethod:Metaclass>>selector:dimensionConstraints:parameterConstraints:}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:41:01.812299+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:41:04.97444+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Ma/nXu3/DQC0coe8ADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here’s a single **do-it** that adds the constructor on **every class side** by defining\n\n`Metaclass>>selector:dimensionConstraints:parameterConstraints:`\n\n```smalltalk\n\"Install a class-side constructor on Metaclass (available to all classes).\"\nMetaclass compile:\n'selector: aSel dimensionConstraints: aDict parameterConstraints: aParamDict\n\t\"Generic class-side ctor. Works for classes whose instances understand\n\t #selector:, #dimensionConstraints:, and #parameterConstraints:.\"\n\t^ self new\n\t\tselector: aSel;\n\t\tdimensionConstraints: (aDict ifNil: [ Dictionary new ]);\n\t\tparameterConstraints: (aParamDict ifNil: [ Dictionary new ]);\n\t\tyourself'\nclassified: 'instance creation'.\n\n\n\"Quick smoke: uses KoSlotGuard class side (requires instance accessors present).\"\n[ \n\t| guard ok |\n\tguard := KoSlotGuard\n\t\tselector: #drawPixel\n\t\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\t\tparameterConstraints: nil.\n\n\tok := {\n\t\t#selector     -> (guard selector = #drawPixel).\n\t\t#dimConsRcvr  -> ((guard dimensionConstraints at: #rcvr ifAbsent: [ nil ]) = #screenParent).\n\t\t#paramIsDict  -> (guard parameterConstraints isKindOf: Dictionary)\n\t} asDictionary.\n\n\tTranscript cr; show: '[Metaclass ctor OK] '; show: ok printString; cr\n] on: Error do: [ :ex |\n\tTranscript cr; show: '[Metaclass ctor ERROR] '; show: ex description; cr ].\n```\n\n⚠️ Note: this defines a **generic** constructor on the class side of **all classes** (since it lives on `Metaclass`). It’s convenient for `KoSlotGuard`, but will only succeed for classes whose *instances* implement `#selector:`, `#dimensionConstraints:`, and `#parameterConstraints:`.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:45:35.53294+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:45:38.515434+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "11M4b+3/DQC1MU84ADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "You’re missing the **instance-side setter** `KoSlotGuard>>selector:`.\nAdd it (and ensure the other setters exist) with these do-its:\n\n```smalltalk\n\"Add missing KoSlotGuard instance accessors (safe, idempotent).\"\n\n| g |\ng := Smalltalk at: #KoSlotGuard ifAbsent: [ ^ self error: 'KoSlotGuard not present' ].\n\n(g canUnderstand: #kozGuardState) ifFalse: [\n\tg compile:\n'kozGuardState\n\t^ KoSlotGuardState at: self ifAbsentPut: [ Dictionary new ]'\n\tclassified: 'storage' ].\n\n(g canUnderstand: #selector) ifFalse: [\n\tg compile:\n'selector\n\t^ self kozGuardState at: #selector ifAbsent: [ nil ]'\n\tclassified: 'accessing' ].\n\n(g canUnderstand: #selector:) ifFalse: [\n\tg compile:\n'selector: aSel\n\tself kozGuardState at: #selector put: aSel'\n\tclassified: 'accessing' ].\n\n(g canUnderstand: #dimensionConstraints:) ifFalse: [\n\tg compile:\n'dimensionConstraints: aDict\n\tself kozGuardState at: #dimensionConstraints put: (aDict ifNil: [ Dictionary new ])'\n\tclassified: 'accessing' ].\n\n(g canUnderstand: #parameterConstraints:) ifFalse: [\n\tg compile:\n'parameterConstraints: aDict\n\tself kozGuardState at: #parameterConstraints put: (aDict ifNil: [ Dictionary new ])'\n\tclassified: 'accessing' ].\n```\n\nSmoke test (uses your `Metaclass>>selector:dimensionConstraints:parameterConstraints:`):\n\n```smalltalk\n[\n\t| guard ok |\n\tguard := KoSlotGuard\n\t\tselector: #drawPixel\n\t\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\t\tparameterConstraints: nil.\n\n\tok := {\n\t\t#selector    -> (guard selector = #drawPixel).\n\t\t#dimRcvr     -> ((guard dimensionConstraints at: #rcvr) = #screenParent).\n\t\t#paramIsDict -> (guard parameterConstraints isKindOf: Dictionary)\n\t} asDictionary.\n\n\tTranscript cr; show: '[KoSlotGuard ctor OK] '; show: ok printString; cr\n] on: Error do: [ :ex |\n\tTranscript cr; show: '[KoSlotGuard ctor ERROR] '; show: ex description; cr ].\n```\n\nThat should clear the DNU (`#selector:`) and let your examples run.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:47:57.293828+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T11:48:00.956588+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Qm2rd+3/DQC1N6+VADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "See "
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T11:41:24.382461+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T11:41:24.382461+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Metaclass>>selector:dimensionConstraints:parameterConstraints:"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "8a96e75e-edff-0d00-b471-acdb003ba5f0"
+	}
+}

@@ -1,0 +1,374 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:12:34.867263+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:12:53.625905+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "iSCWIuz/DQCgY8Z0Ci3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtPage:StakeholderPointOfView >> missingSelectors|db=59ssjw3l1pwy7x1zshg1v0hwp}} and {{gtMethod:StakeholderPointOfView>>#selectorsSentToSelf}} "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:13:00.995307+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:13:00.995307+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "9sgkJOz/DQCgw30ECi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Right now you *already* have the “self-sends only” part plus the first collaborator extension (block args). I’ll push it one step further so it also picks up selectors sent to:\n\n* method args\n* temps\n* ivars (`stakeholder`, `system`, `codeEmitter`, etc.)\n\n…not just block arguments like `:concept`.\n\nBelow is a drop-in replacement for the two collaborator helpers in\n`src/Pov/StakeholderPointOfView.class.st` that does this. `missingSelectors`\nitself can stay as it is (it already unions self + collaborators). \n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T10:16:50.272435+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T10:17:46.199598+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "pkbPMez/DQCg1USfCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\n{ #category : #accessing }\nStakeholderPointOfView >> selectorsSentToCollaborators [\n\t| selectors |\n\tselectors := OrderedCollection new.\n\n\tself class selectors do: [ :selector |\n\t\t| source ast collaboratorNames |\n\t\tsource := self class sourceCodeAt: selector ifAbsent: [ '' ].\n\t\tsource isEmpty ifFalse: [\n\t\t\tast := RBParser parseMethod: source.\n\n\t\t\t\"Start with method-level collaborators: args, temps, ivars\"\n\t\t\tcollaboratorNames :=\n\t\t\t\t(ast arguments collect: [ :arg | arg name asSymbol ])\n\t\t\t\t\t,\n\t\t\t\t(ast temporaries collect: [ :temp | temp name asSymbol ])\n\t\t\t\t\t,\n\t\t\t\t(self class allInstVarNames collect: [ :each | each asSymbol ]).\n\n\t\t\tself\n\t\t\t\tcollectCollaboratorSelectorsFrom: ast\n\t\t\t\tcollaboratorVars: collaboratorNames asSet\n\t\t\t\tinto: selectors ] ].\n\n\t^ selectors asSet\n]\n```\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:17:46.186328+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:17:46.186328+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4XIkNez/DQCg3KPPCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 1. Replace `selectorsSentToCollaborators`"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T10:18:07.905752+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T10:18:07.905752+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "89tvNuz/DQCg7f48Ci3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\n{ #category : #accessing }\nStakeholderPointOfView\n\t>> collectCollaboratorSelectorsFrom: node\n\t collaboratorVars: collaboratorNames\n\t into: selectors [\n\n\t| nextVars |\n\tnextVars := collaboratorNames.\n\n\t\"Blocks introduce additional collaborator vars via their arguments\"\n\t(node isKindOf: RBBlockNode)\n\t\tifTrue: [\n\t\t\tnextVars := collaboratorNames\n\t\t\t\tcopyWithAll: (node arguments collect: [ :each | each name asSymbol ]) ].\n\n\t\"Any message whose receiver is one of our collaborator vars counts\"\n\t(node isKindOf: RBMessageNode)\n\t\tifTrue: [\n\t\t\t((node receiver isKindOf: RBVariableNode)\n\t\t\t\tand: [ nextVars includes: node receiver name asSymbol ])\n\t\t\t\t\tifTrue: [ selectors add: node selector ] ].\n\n\tnode children do: [ :child |\n\t\tself\n\t\t\tcollectCollaboratorSelectorsFrom: child\n\t\t\tcollaboratorVars: nextVars\n\t\t\tinto: selectors ]\n]\n```\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:18:01.450091+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:18:01.450091+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AVsNNuz/DQCg5oy0Ci3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 2. Replace `collectCollaboratorSelectorsFrom:…`"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:19:17.542861+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:19:17.542861+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "93GWOuz/DQCzXBPLADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "With these two changes:\n\n* `concept isNecessaryForUnderstandingBy:` (block arg) is still picked up. \n* Sends to `stakeholder`, `system`, `codeEmitter`, or method temps/args are now also treated as collaborator-API dependencies.\n* `missingSelectors` continues to:\n\n  ```smalltalk\n  selectors := (self selectorsSentToSelf\n                  union: self selectorsSentToCollaborators) asArray.\n  missing := selectors select: [ :each | (self respondsTo: each) not ].\n  self codeEmitter handleMissingSelectors: missing for: self class.\n  ```\n\nSo from the POV/GT side you now flag *both* self-API and collaborator-API selectors.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:19:32.677559+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:19:32.677559+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "t2B9O+z/DQCzblfPADul8A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 3. How this helps with the “selector:” question in Korz"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:11:59.100004+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T10:19:32.694135+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "61x0IOz/DQCgXduNCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "On the Korz side, the falsifier remark was: we only *need* `KoSlotGuard class >> selector:dimensionConstraints:parameterConstraints:` unless some code actually sends `KoSlotGuard selector:`. \n\nWith the extended collaborator detection logic above, you can apply the *same* pattern to `KoSlotGuard` (or to the whole Korz package) to answer:\n\n* “Is there any sender of `selector:` (class or instance) at all?”\n* If yes, those senders will show up as collaborator-selectors and you know you must support that API.\n* If no, `selector:` is optional sugar.\n\nIf you want, next step I can clone this logic into a generic “API dependency inspector” class for the Korz package, but the core change you asked for (flagging collaborator selectors from concepts & friends) is exactly in the two methods above.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T10:12:15.432464+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T10:12:15.432464+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "selectorsSentToCollaborators"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "28497420-ecff-0d00-a05c-b2b20a2dc40b"
+	}
+}
