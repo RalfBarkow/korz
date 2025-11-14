@@ -1,0 +1,258 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:42:43.021172+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:44:34.841389+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "q7nIt+v/DQCbrX0PCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtClass:KoSlotGuard}}, {{gtMethod:KoSlotGuard class>>#selector:}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:41:26.796924+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:42:10.705234+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "s6I9s+v/DQCbWiRtCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "See also {{gtPage:StakeholderPointOfView >> gtMissingSelectorsOn: aView|db=59ssjw3l1pwy7x1zshg1v0hwp}} and {{gtPage:StakeholderPointOfView >> missingSelectors|db=59ssjw3l1pwy7x1zshg1v0hwp}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:43:04.67888+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:43:04.67888+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "BCcTuev/DQCb8cJiCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Short answer (falsifier hat on):\nNo, you don’t *logically* need `KoSlotGuard class >> selector:` unless some code actually sends `KoSlotGuard selector:`. The **required** bit is the 3-arg constructor you already have / want:\n\n* `KoSlotGuard class >> selector:dimensionConstraints:parameterConstraints:`\n\nand the **instance** accessors:\n\n* `KoSlotGuard >> selector / selector:`\n* `KoSlotGuard >> dimensionConstraints / dimensionConstraints:`\n* `KoSlotGuard >> parameterConstraints / parameterConstraints:`\n\nIf there is **no sender** of `KoSlotGuard selector:` in your image, adding that method is unnecessary sugar.\n\nHowever, adding a convenience `selector:` on the class side does **no harm** and can be nice ergonomically, as long as you’re okay with the name sharing between\n\n* `KoSlotGuard class >> selector:` (factory) and\n* `KoSlotGuard >> selector` (accessor).\n\nThat pattern is common in Smalltalk.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:43:49.657926+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:43:49.657926+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "i3/Bu+v/DQCcA6xdCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### Do-it chunk: add class-side `selector:` as convenience factory\n\nIf you want the convenience method, here is the minimal do-it using `compile:`:\n\n```smalltalk\n\"Add a convenience factory on the class side of KoSlotGuard\"\n\n(Smalltalk at: #KoSlotGuard ifAbsent: [ self error: 'KoSlotGuard not found' ]) class\n    compile:\n'selector: aSelector\n\t\"Convenience factory: a guard with the given selector and empty constraints.\"\n\t^ self\n\t\tselector: aSelector\n\t\tdimensionConstraints: Dictionary new\n\t\tparameterConstraints: Dictionary new'\n    classified: 'instance creation'.\n```\n"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:43:59.173769+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:44:01.425074+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "zbhSvOv/DQCcCOAHCi3ECw=="
+				},
+				"code" : "\"Add a convenience factory on the class side of KoSlotGuard\"\n\n(Smalltalk at: #KoSlotGuard ifAbsent: [ self error: 'KoSlotGuard not found' ]) class\n    compile:\n'selector: aSelector\n\t\"Convenience factory: a guard with the given selector and empty constraints.\"\n\t^ self\n\t\tselector: aSelector\n\t\tdimensionConstraints: Dictionary new\n\t\tparameterConstraints: Dictionary new'\n    classified: 'instance creation'."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:40:32.409196+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:43:49.701107+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "xb7/r+v/DQCbU1alCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Falsifier check:\n\n* It **delegates** to the already-expected `selector:dimensionConstraints:parameterConstraints:`; if that one is missing, this will blow up — which is correct, because that 3-arg constructor is the real contract.\n* It doesn’t change any instance layout.\n* It doesn’t interfere with `KoSlotGuard >> selector` (instance side), because class vs instance side namespaces are separate.\n\nIf you want, next step is: run **senders of** `#selector:` on `KoSlotGuard` in GT to verify whether class-side use actually exists; that tells you whether this was necessary or just convenience.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T09:41:04.382721+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T09:41:04.382721+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "selector:"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "3bbaffaf-ebff-0d00-9b52-234f0a2dc40b"
+	}
+}

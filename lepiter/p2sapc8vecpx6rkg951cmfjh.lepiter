@@ -1,0 +1,523 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:34:40.499873+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:35:19.48311+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Z3jokev/DQCacGHICi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtPackage:Korz}} / {{gtClass:KoSlotSpaceExamples}}, {{gtClass:KoDimension}}, {{gtClass:KoCoordinate}}, {{gtClass:KoSlotGuard}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:32:42.071091+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:32:42.071091+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Fuj2k+v/DQCau957Ci3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Great—let’s get you back to a runnable state with **clean, minimal shims** and the **examples/tests** you asked for. The chunks below:\n\n* define a tiny working core (`KoSlotSpace`, `KoSlotGuard`, `KoSlot`, plus `KoDimension`/`KoCoordinate` used by your scenarios),\n* implement **`matchingSlotsForContext:selector:arguments:`** without early returns or shadowing pitfalls,\n* provide your **`KoSlotSpaceExamples`** exactly as you wrote it, and\n* add a **test class** that exercises every example.\n\nCopy-paste each **do-it** chunk into a Playground in order.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:46:46.432181+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:46:46.432181+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "uNxKxuv/DQCcgq5TCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\n\"Create package if needed\"\n(RPackageOrganizer default includesPackageNamed: 'Korz') ifFalse: [\n\tRPackageOrganizer default registerPackageNamed: 'Korz'\n].\n```\n\n```smalltalk\n\"KoDimension\"\nObject subclass: #KoDimension\n\tinstanceVariableNames: 'name'\n\tclassVariableNames: ''\n\tpackage: 'Korz'.\n\nKoDimension >> name [ ^ name ]\nKoDimension >> name: aSymbol [ name := aSymbol ]\n\nKoDimension class >> named: aSymbol [\n\t^ self new name: aSymbol; yourself\n]\n```\n\n```smalltalk\n\"KoCoordinate\"\nObject subclass: #KoCoordinate\n\tinstanceVariableNames: 'name dimension parent'\n\tclassVariableNames: ''\n\tpackage: 'Korz'.\n\nKoCoordinate >> name [ ^ name ]\nKoCoordinate >> dimension [ ^ dimension ]\nKoCoordinate >> parent [ ^ parent ]\n\nKoCoordinate >> name: nm dimension: dim parent: par [\n\tname := nm. dimension := dim. parent := par ]\n\nKoCoordinate class >> named: nm dimension: dim parent: par [\n\t^ self new name: nm dimension: dim parent: par; yourself\n]\n```\n\n```smalltalk\n\"KoSlotGuard\"\nObject subclass: #KoSlotGuard\n\tinstanceVariableNames: 'selector dimensionConstraints parameterConstraints'\n\tclassVariableNames: ''\n\tpackage: 'Korz'.\n\nKoSlotGuard >> selector [ ^ selector ]\nKoSlotGuard >> dimensionConstraints [ ^ dimensionConstraints ]\nKoSlotGuard >> parameterConstraints [ ^ parameterConstraints ]\n\n\"Some example code used #acceptableConstraints; keep a safe alias\"\nKoSlotGuard >> acceptableConstraints [ ^ self dimensionConstraints ]\n\nKoSlotGuard class >> selector: aSelector dimensionConstraints: dimDict parameterConstraints: parDict [\n\t^ self new\n\t\tinstanceVariableNamed: #selector put: aSelector;\n\t\tinstanceVariableNamed: #dimensionConstraints put: (dimDict ifNil: [ Dictionary new ]);\n\t\tinstanceVariableNamed: #parameterConstraints put: (parDict ifNil: [ Dictionary new ]);\n\t\tyourself\n]\n```\n\n```smalltalk\n\"KoSlot\"\nObject subclass: #KoSlot\n\tinstanceVariableNames: 'guard contents'\n\tclassVariableNames: ''\n\tpackage: 'Korz'.\n\nKoSlot >> guard [ ^ guard ]\nKoSlot >> contents [ ^ contents ]\n\nKoSlot >> evaluateInContext: aContext withArguments: anArray [\n\t\"Contents is a 2-arg block [:ctx :args | ...]\"\n\t^ contents cull: aContext cull: anArray\n]\n\nKoSlot class >> guard: aGuard contents: aBlock [\n\t^ self new\n\t\tinstanceVariableNamed: #guard put: aGuard;\n\t\tinstanceVariableNamed: #contents put: aBlock;\n\t\tyourself\n]\n```\n\n```smalltalk\n\"KoSlotSpace\"\nObject subclass: #KoSlotSpace\n\tinstanceVariableNames: 'dimensions coordinates slots'\n\tclassVariableNames: ''\n\tpackage: 'Korz'.\n\nKoSlotSpace >> initialize [\n\tsuper initialize.\n\tdimensions := Dictionary new.\n\tcoordinates := Dictionary new.\n\tslots := OrderedCollection new\n]\n\nKoSlotSpace >> dimensions [ ^ dimensions ]\nKoSlotSpace >> coordinates [ ^ coordinates ]\nKoSlotSpace >> slots [ ^ slots ]\n\nKoSlotSpace >> addDimensionNamed: aSymbol [\n\t| dim |\n\tdim := KoDimension named: aSymbol.\n\tdimensions at: aSymbol put: dim.\n\t^ dim\n]\n\nKoSlotSpace >> addCoordinateNamed: aSymbol onDimension: aDimension parent: aParentOrNil [\n\t| coord |\n\tcoord := KoCoordinate named: aSymbol dimension: aDimension parent: aParentOrNil.\n\tcoordinates at: aSymbol put: coord.\n\t^ coord\n]\n\nKoSlotSpace >> addSlot: aKoSlot [\n\tslots add: aKoSlot.\n\t^ aKoSlot\n]\n\nKoSlotSpace >> matchingSlotsForContext: aContext selector: aSelector arguments: ignoredArgs [\n\t\"Return those slots whose guard selector equals aSelector\n\t and ALL dimension constraints match exactly (identity on coords).\n\t No early-returns inside blocks; keep this pure boolean.\"\n\t| out |\n\tout := OrderedCollection new.\n\tslots do: [ :eachSlot |\n\t\t| g match constraints |\n\t\tg := (eachSlot respondsTo: #guard) ifTrue: [ eachSlot guard ] ifFalse: [ nil ].\n\t\tg ifNotNil: [\n\t\t\t((g respondsTo: #selector) and: [ g selector = aSelector ]) ifTrue: [\n\t\t\t\tmatch := true.\n\t\t\t\tconstraints := (g respondsTo: #acceptableConstraints)\n\t\t\t\t\tifTrue: [ g acceptableConstraints ]\n\t\t\t\t\tifFalse: [ Dictionary new ].\n\t\t\t\tconstraints keysAndValuesDo: [ :dim :coord |\n\t\t\t\t\t| ctxVal |\n\t\t\t\t\tctxVal := aContext at: dim ifAbsent: [ nil ].\n\t\t\t\t\t(ctxVal == coord) ifFalse: [ match := false ] ].\n\t\t\t\tmatch ifTrue: [ out add: eachSlot ]\n\t\t\t]\n\t\t]\n\t].\n\t^ out asArray\n]\n```\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:46:35.030497+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:46:35.030497+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "l+Gcxev/DQCce/fcCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 1) Bootstrap package + tiny model (no shadowing, no early-returns-in-blocks)"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:48:49.489891+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:49:04.848954+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "HJigzev/DQCcvjWNCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Context: {{gtClass:KoSlotSpaceExamples}}"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:32:38.29405+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:47:36.08068+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "/ky9k+v/DQCatPz/Ci3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\nObject subclass: #KoSlotSpaceExamples\n\tinstanceVariableNames: ''\n\tclassVariableNames: ''\n\tpackage: 'Korz'.\n```\n\n```smalltalk\n\"Private helpers used by several examples\"\nKoSlotSpaceExamples class >> firstResultForContext: context slotSpace: slotSpace selector: selector [\n\t^ (self resultsForContext: context slotSpace: slotSpace selector: selector) first\n]\n\nKoSlotSpaceExamples class >> resultsForContext: context slotSpace: slotSpace selector: selector [\n\t^ (slotSpace\n\t\tmatchingSlotsForContext: context\n\t\tselector: selector\n\t\targuments: #())\n\t\tcollect: [ :s | s evaluateInContext: context withArguments: #() ]\n]\n```\n"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:49:26.736472+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:49:30.877289+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Udafz+v/DQCdYr0wCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Screen scenario + helpers]]"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:48:05.686883+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:48:05.686883+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "zSYEy+v/DQCcoFkFCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\n\"Screen scenario + helpers\"\nKoSlotSpaceExamples class >> screenScenario [\n\t| space dims coords world south north |\n\tspace := KoSlotSpace new.\n\tdims := Dictionary new.\n\tdims at: #rcvr put: (space addDimensionNamed: #rcvr).\n\tdims at: #location put: (space addDimensionNamed: #location).\n\tdims at: #isColorblind put: (space addDimensionNamed: #isColorblind).\n\tworld := space addCoordinateNamed: #world onDimension: (dims at: #location) parent: nil.\n\tsouth := space addCoordinateNamed: #southernHemi onDimension: (dims at: #location) parent: world.\n\tnorth := space addCoordinateNamed: #northernHemi onDimension: (dims at: #location) parent: world.\n\tcoords := Dictionary new.\n\tcoords at: #screenParent put: (space addCoordinateNamed: #screenParent onDimension: (dims at: #rcvr) parent: nil).\n\tcoords at: #screen put: (space addCoordinateNamed: #screen onDimension: (dims at: #rcvr) parent: (coords at: #screenParent)).\n\tcoords at: #southernHemi put: south.\n\tcoords at: #northernHemi put: north.\n\tcoords at: #australia put: (space addCoordinateNamed: #australia onDimension: (dims at: #location) parent: south).\n\tcoords at: #antarctica put: (space addCoordinateNamed: #antarctica onDimension: (dims at: #location) parent: south).\n\tcoords at: #false put: (space addCoordinateNamed: #false onDimension: (dims at: #isColorblind) parent: nil).\n\tcoords at: #true put: (space addCoordinateNamed: #true onDimension: (dims at: #isColorblind) parent: nil).\n\tself addDrawPixelSlotsOn: space dimensions: dims coordinates: coords.\n\t^ Dictionary newFrom: { #slotSpace -> space. #dimensions -> dims. #coordinates -> coords }\n]\n\nKoSlotSpaceExamples class >> addDrawPixelSlotsOn: space dimensions: dims coordinates: coords [\n\t| rcvr location vision |\n\trcvr := dims at: #rcvr.\n\tlocation := dims at: #location.\n\tvision := dims at: #isColorblind.\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #drawPixel\n\t\t\tdimensionConstraints: (Dictionary newFrom: { rcvr -> (coords at: #screenParent) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | 'baseline renderer' ]).\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #drawPixel\n\t\t\tdimensionConstraints: (Dictionary newFrom: {\n\t\t\t\trcvr -> (coords at: #screenParent).\n\t\t\t\tlocation -> (coords at: #southernHemi) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | 'southern hemisphere override' ]).\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #drawPixel\n\t\t\tdimensionConstraints: (Dictionary newFrom: {\n\t\t\t\trcvr -> (coords at: #screenParent).\n\t\t\t\tvision -> (coords at: #true) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | 'colorblind override' ]).\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #drawPixel\n\t\t\tdimensionConstraints: (Dictionary newFrom: {\n\t\t\t\trcvr -> (coords at: #screenParent).\n\t\t\t\tlocation -> (coords at: #southernHemi).\n\t\t\t\tvision -> (coords at: #true) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | 'southern colorblind override' ])\n]\n\nKoSlotSpaceExamples class >> screenContextsUsingDimensions: dims coordinates: coords [\n\t| rcvr location vision screen |\n\trcvr := dims at: #rcvr.\n\tlocation := dims at: #location.\n\tvision := dims at: #isColorblind.\n\tscreen := coords at: #screen.\n\t^ Dictionary newFrom: {\n\t\t#australia -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coords at: #australia). vision -> (coords at: #false) }).\n\t\t#colorblindAustralia -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coords at: #australia). vision -> (coords at: #true) }).\n\t\t#antarctica -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coords at: #antarctica). vision -> (coords at: #false) }).\n\t\t#northern -> (Dictionary newFrom: {\n\t\t\trcvr -> screen. location -> (coords at: #northernHemi). vision -> (coords at: #false) })\n\t}\n]\n```\n\n```smalltalk\n\"Bracket scenario\"\nKoSlotSpaceExamples class >> bracketBoundaryCoordinatesFrom: coords [\n\t^ Dictionary newFrom: {\n\t\t#square -> (coords at: #square).\n\t\t#round -> (coords at: #round).\n\t\t#curly -> (coords at: #curly).\n\t\t#angle -> (coords at: #angle) }\n]\n\nKoSlotSpaceExamples class >> addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: boundary pov: pov result: resultCollection [\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #sees\n\t\t\tdimensionConstraints: (Dictionary newFrom: { boundaryDimension -> boundary. povDimension -> pov })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | resultCollection ])\n]\n\nKoSlotSpaceExamples class >> addBracketSeesSlotsOn: space boundaryDimension: boundaryDimension povDimension: povDimension coordinates: coords [\n\t| square round curly angle adjacent symmetric |\n\tsquare := coords at: #square. round := coords at: #round.\n\tcurly := coords at: #curly. angle := coords at: #angle.\n\tadjacent := coords at: #povAdjacent. symmetric := coords at: #povSymmetric.\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: square pov: adjacent result: #(round curly).\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: round  pov: adjacent result: #(curly square).\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: curly  pov: adjacent result: #(round angle square).\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: angle   pov: adjacent result: #(curly).\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: square pov: symmetric result: #(round curly).\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: round  pov: symmetric result: #(curly square).\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: curly  pov: symmetric result: #(round angle square).\n\tself addSeesSlotOn: space boundaryDimension: boundaryDimension povDimension: povDimension boundary: angle   pov: symmetric result: #(curly)\n]\n\nKoSlotSpaceExamples class >> bracketSeesScenario [\n\t| space boundaryDimension povDimension coords |\n\tspace := KoSlotSpace new.\n\tboundaryDimension := space addDimensionNamed: #boundaryType.\n\tpovDimension := space addDimensionNamed: #pov.\n\tcoords := Dictionary new.\n\t#(square round curly angle) do: [ :nm |\n\t\tcoords at: nm put: (space addCoordinateNamed: nm onDimension: boundaryDimension parent: nil) ].\n\tcoords at: #povAdjacent put: (space addCoordinateNamed: #povAdjacent onDimension: povDimension parent: nil).\n\tcoords at: #povSymmetric put: (space addCoordinateNamed: #povSymmetric onDimension: povDimension parent: nil).\n\tself addBracketSeesSlotsOn: space boundaryDimension: boundaryDimension povDimension: povDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> space.\n\t\t#dimensions -> (Dictionary newFrom: { #boundaryType -> boundaryDimension. #pov -> povDimension }).\n\t\t#coordinates -> coords }\n]\n```\n\n```smalltalk\n\"Yoneda-ish scenario\"\nKoSlotSpaceExamples class >> addProfileSlotOn: space povDimension: povDimension objectDimension: objectDimension pov: pov object: object result: resultCollection [\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #profile\n\t\t\tdimensionConstraints: (Dictionary newFrom: { povDimension -> pov. objectDimension -> object })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | resultCollection ])\n]\n\nKoSlotSpaceExamples class >> addYonedaSlotsOn: space povDimension: povDimension objectDimension: objectDimension coordinates: coords [\n\t| povLocal povMeta nodeA nodeB nodeC |\n\tpovLocal := coords at: #povLocal. povMeta := coords at: #povMeta.\n\tnodeA := coords at: #nodeA. nodeB := coords at: #nodeB. nodeC := coords at: #nodeC.\n\tself addProfileSlotOn: space povDimension: povDimension objectDimension: objectDimension pov: povLocal object: nodeA result: #(fromB).\n\tself addProfileSlotOn: space povDimension: povDimension objectDimension: objectDimension pov: povLocal object: nodeB result: #(fromC).\n\tself addProfileSlotOn: space povDimension: povDimension objectDimension: objectDimension pov: povLocal object: nodeC result: #(fromB).\n\tself addProfileSlotOn: space povDimension: povDimension objectDimension: objectDimension pov: povMeta  object: nodeA result: #(fromAll).\n\tself addProfileSlotOn: space povDimension: povDimension objectDimension: objectDimension pov: povMeta  object: nodeB result: #(fromAll).\n\tself addProfileSlotOn: space povDimension: povDimension objectDimension: objectDimension pov: povMeta  object: nodeC result: #(fromAll)\n]\n\nKoSlotSpaceExamples class >> yonedaScenario [\n\t| space povDimension objectDimension coords |\n\tspace := KoSlotSpace new.\n\tpovDimension := space addDimensionNamed: #pov.\n\tobjectDimension := space addDimensionNamed: #object.\n\tcoords := Dictionary new.\n\tcoords at: #povLocal put: (space addCoordinateNamed: #povLocal onDimension: povDimension parent: nil).\n\tcoords at: #povMeta  put: (space addCoordinateNamed: #povMeta  onDimension: povDimension parent: nil).\n\t#(nodeA nodeB nodeC) do: [ :nm |\n\t\tcoords at: nm put: (space addCoordinateNamed: nm onDimension: objectDimension parent: nil) ].\n\tself addYonedaSlotsOn: space povDimension: povDimension objectDimension: objectDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> space.\n\t\t#dimensions -> (Dictionary newFrom: { #pov -> povDimension. #object -> objectDimension }).\n\t\t#coordinates -> coords }\n]\n```\n\n```smalltalk\n\"Pile / Combiner scenarios\"\nKoSlotSpaceExamples class >> addPileSlotsOn: space selectionDimension: selectionDimension coordinates: coords [\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #project\n\t\t\tdimensionConstraints: (Dictionary newFrom: { selectionDimension -> (coords at: #tops) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #(topA topB) ]).\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #project\n\t\t\tdimensionConstraints: (Dictionary newFrom: { selectionDimension -> (coords at: #all) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | #(topA midC baseD) ])\n]\n\nKoSlotSpaceExamples class >> pileScenario [\n\t| space selectionDimension coords |\n\tspace := KoSlotSpace new.\n\tselectionDimension := space addDimensionNamed: #selection.\n\tcoords := Dictionary new.\n\tcoords at: #tops put: (space addCoordinateNamed: #tops onDimension: selectionDimension parent: nil).\n\tcoords at: #all  put: (space addCoordinateNamed: #all  onDimension: selectionDimension parent: nil).\n\tself addPileSlotsOn: space selectionDimension: selectionDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> space.\n\t\t#dimensions -> (Dictionary newFrom: { #selection -> selectionDimension }).\n\t\t#coordinates -> coords }\n]\n\nKoSlotSpaceExamples class >> addCombinerSlotsOn: space combinerDimension: combinerDimension coordinates: coords [\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #stabilize\n\t\t\tdimensionConstraints: (Dictionary newFrom: { combinerDimension -> (coords at: #meet) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | 'intersection of candidates' ]).\n\tspace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #stabilize\n\t\t\tdimensionConstraints: (Dictionary newFrom: { combinerDimension -> (coords at: #quorum) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | 'accept proposals supported by ≥ 2 POVs' ])\n]\n\nKoSlotSpaceExamples class >> combinerScenario [\n\t| space combinerDimension coords |\n\tspace := KoSlotSpace new.\n\tcombinerDimension := space addDimensionNamed: #combiner.\n\tcoords := Dictionary new.\n\tcoords at: #meet put: (space addCoordinateNamed: #meet onDimension: combinerDimension parent: nil).\n\tcoords at: #quorum put: (space addCoordinateNamed: #quorum onDimension: combinerDimension parent: nil).\n\tself addCombinerSlotsOn: space combinerDimension: combinerDimension coordinates: coords.\n\t^ Dictionary newFrom: {\n\t\t#slotSpace -> space.\n\t\t#dimensions -> (Dictionary newFrom: { #combiner -> combinerDimension }).\n\t\t#coordinates -> coords }\n]\n```\n\n```smalltalk\n\"Public examples (gtExample annotations kept)\"\nKoSlotSpaceExamples class >> exampleSlotMatching [\n\t<gtExample>\n\t| scenario space dims coords contexts results |\n\tscenario := self screenScenario.\n\tspace := scenario at: #slotSpace.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tcontexts := self screenContextsUsingDimensions: dims coordinates: coords.\n\tresults := Dictionary new.\n\tcontexts keysAndValuesDo: [ :label :context |\n\t\tresults at: label put: (self resultsForContext: context slotSpace: space selector: #drawPixel) ].\n\t^ results\n]\n\nKoSlotSpaceExamples class >> exampleBracketSees [\n\t<gtExample>\n\t| scenario dims coords space boundaryDimension povDimension boundaryCoords povs result |\n\tscenario := self bracketSeesScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tspace := scenario at: #slotSpace.\n\tboundaryDimension := dims at: #boundaryType.\n\tpovDimension := dims at: #pov.\n\tboundaryCoords := self bracketBoundaryCoordinatesFrom: coords.\n\tpovs := Dictionary newFrom: {\n\t\t#adjacent -> (coords at: #povAdjacent).\n\t\t#symmetric -> (coords at: #povSymmetric) }.\n\tresult := Dictionary new.\n\tpovs keysAndValuesDo: [ :povLabel :povCoord |\n\t\t| perBoundary |\n\t\tperBoundary := Dictionary new.\n\t\tboundaryCoords keysAndValuesDo: [ :boundaryLabel :boundaryCoord |\n\t\t\t| context |\n\t\t\tcontext := Dictionary newFrom: { boundaryDimension -> boundaryCoord. povDimension -> povCoord }.\n\t\t\tperBoundary at: boundaryLabel put: (self resultsForContext: context slotSpace: space selector: #sees)\n\t\t].\n\t\tresult at: povLabel put: perBoundary\n\t].\n\t^ result\n]\n\nKoSlotSpaceExamples class >> exampleYonedaProfiles [\n\t<gtExample>\n\t| scenario dims coords space povDimension objectDimension povs objects result |\n\tscenario := self yonedaScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tspace := scenario at: #slotSpace.\n\tpovDimension := dims at: #pov.\n\tobjectDimension := dims at: #object.\n\tpovs := Dictionary newFrom: { #local -> (coords at: #povLocal). #meta -> (coords at: #povMeta) }.\n\tobjects := Dictionary newFrom: { #nodeA -> (coords at: #nodeA). #nodeB -> (coords at: #nodeB). #nodeC -> (coords at: #nodeC) }.\n\tresult := Dictionary new.\n\tpovs keysAndValuesDo: [ :povLabel :povCoord |\n\t\t| perObject |\n\t\tperObject := Dictionary new.\n\t\tobjects keysAndValuesDo: [ :objectLabel :objectCoord |\n\t\t\t| context profile |\n\t\t\tcontext := Dictionary newFrom: { povDimension -> povCoord. objectDimension -> objectCoord }.\n\t\t\tprofile := self firstResultForContext: context slotSpace: space selector: #profile.\n\t\t\tperObject at: objectLabel put: profile ].\n\t\tresult at: povLabel put: perObject ].\n\t^ result\n]\n\nKoSlotSpaceExamples class >> examplePileSelection [\n\t<gtExample>\n\t| scenario dims coords space selectionDimension |\n\tscenario := self pileScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tspace := scenario at: #slotSpace.\n\tselectionDimension := dims at: #selection.\n\t^ Dictionary newFrom: {\n\t\t#tops -> (self resultsForContext: (Dictionary newFrom: { selectionDimension -> (coords at: #tops) }) slotSpace: space selector: #project).\n\t\t#all -> (self resultsForContext: (Dictionary newFrom: { selectionDimension -> (coords at: #all) }) slotSpace: space selector: #project) }\n]\n\nKoSlotSpaceExamples class >> exampleCombinerPolicies [\n\t<gtExample>\n\t| scenario dims coords space combinerDimension |\n\tscenario := self combinerScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tspace := scenario at: #slotSpace.\n\tcombinerDimension := dims at: #combiner.\n\t^ Dictionary newFrom: {\n\t\t#meet -> (self firstResultForContext: (Dictionary newFrom: { combinerDimension -> (coords at: #meet) }) slotSpace: space selector: #stabilize).\n\t\t#quorum -> (self firstResultForContext: (Dictionary newFrom: { combinerDimension -> (coords at: #quorum) }) slotSpace: space selector: #stabilize) }\n]\n```\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:47:36.072601+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:47:36.072601+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "/09Ayev/DQCcl2tbCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 2) Your example suite (as given)"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:51:11.600888+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:52:41.994927+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "KQkZ1uv/DQCdoDLHCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtClass:KoSlotSpaceExamplesTest}}"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:48:28.446359+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-14T09:50:56.617852+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "8nhfzOv/DQCctHbkCi3ECw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "```smalltalk\nTestCase subclass: #KoSlotSpaceExamplesTest\n\tinstanceVariableNames: ''\n\tclassVariableNames: ''\n\tpackage: 'Korz'.\n```\n\n```smalltalk\nKoSlotSpaceExamplesTest >> testExampleSlotMatching [\n\t| dict |\n\tdict := KoSlotSpaceExamples exampleSlotMatching.\n\tself assert: (dict at: #australia) equals: #('baseline renderer' 'southern hemisphere override').\n\tself assert: (dict at: #colorblindAustralia) equals: #('baseline renderer' 'southern hemisphere override' 'colorblind override' 'southern colorblind override').\n\tself assert: (dict at: #antarctica) equals: #('baseline renderer').\n\tself assert: (dict at: #northern) equals: #('baseline renderer')\n]\n```\n\n```smalltalk\nKoSlotSpaceExamplesTest >> testExampleBracketSeesAdjacent [\n\t| result |\n\tresult := KoSlotSpaceExamples exampleBracketSees.\n\tself assert: ((result at: #adjacent) at: #square) equals: #(round curly).\n\tself assert: ((result at: #adjacent) at: #round)  equals: #(curly square).\n\tself assert: ((result at: #adjacent) at: #curly)  equals: #(round angle square).\n\tself assert: ((result at: #adjacent) at: #angle)  equals: #(curly)\n]\n```\n\n```smalltalk\nKoSlotSpaceExamplesTest >> testExampleBracketSeesSymmetric [\n\t| result |\n\tresult := KoSlotSpaceExamples exampleBracketSees.\n\tself assert: ((result at: #symmetric) at: #square) equals: #(round curly).\n\tself assert: ((result at: #symmetric) at: #round)  equals: #(curly square).\n\tself assert: ((result at: #symmetric) at: #curly)  equals: #(round angle square).\n\tself assert: ((result at: #symmetric) at: #angle)  equals: #(curly)\n]\n```\n\n```smalltalk\nKoSlotSpaceExamplesTest >> testExampleYonedaProfiles [\n\t| result |\n\tresult := KoSlotSpaceExamples exampleYonedaProfiles.\n\tself assert: ((result at: #local) at: #nodeA) equals: #(fromB).\n\tself assert: ((result at: #local) at: #nodeB) equals: #(fromC).\n\tself assert: ((result at: #local) at: #nodeC) equals: #(fromB).\n\tself assert: ((result at: #meta) at: #nodeA) equals: #(fromAll).\n\tself assert: ((result at: #meta) at: #nodeB) equals: #(fromAll).\n\tself assert: ((result at: #meta) at: #nodeC) equals: #(fromAll)\n]\n```\n\n```smalltalk\nKoSlotSpaceExamplesTest >> testExamplePileSelection [\n\t| result |\n\tresult := KoSlotSpaceExamples examplePileSelection.\n\tself assert: (result at: #tops) equals: #(topA topB).\n\tself assert: (result at: #all)  equals: #(topA midC baseD)\n]\n```\n\n```smalltalk\nKoSlotSpaceExamplesTest >> testExampleCombinerPolicies [\n\t| result |\n\tresult := KoSlotSpaceExamples exampleCombinerPolicies.\n\tself assert: (result at: #meet) equals: 'intersection of candidates'.\n\tself assert: (result at: #quorum) equals: 'accept proposals supported by ≥ 2 POVs'\n]\n```\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:50:56.609213+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:50:56.609213+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fEA01ev/DQCdmMvoCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### 3) Tests that nail the behavior"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:30:53.201279+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T09:52:09.593048+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Frx5jev/DQCaanrjCi3ECw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### Notes on the fixes\n\n* **No early returns inside blocks**: `matchingSlotsForContext:…` builds `out` and returns once, preventing `mustBeBoolean`/short-circuit surprises inside `#select:`.\n* **No variable shadowing**: I kept `slots` only as an ivar; temporaries are named `eachSlot`, `g`, `constraints`, etc.\n* **Guard API present**: `KoSlotGuard class>>selector:dimensionConstraints:parameterConstraints:` and accessors are defined; `acceptableConstraints` is provided to match your earlier probe.\n* The examples/tests use **identity (`==`)** on coordinates, as your comment indicated.\n\nIf anything in your image already defines these class names, rename the shims (e.g., `KoZSlotSpace*`) or file them into a clean package first.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T09:32:01.100313+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T09:32:01.100313+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Back to a runnable state with clean, minimal shims and the examples/tests"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "2db8798d-ebff-0d00-9a69-2bb50a2dc40b"
+	}
+}
