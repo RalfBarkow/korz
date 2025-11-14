@@ -1,0 +1,181 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:19:21.988941+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:19:29.24717+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kpcB6O3/DQCuULvZDe83Kg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{gtMethod:KoSlotGuard>>parameterConstraints}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:18:28.888604+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:18:33.192257+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "yVjX5O3/DQCuSjtkDe83Kg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Your ctor works; the issue is the **getter** `KoSlotGuard>>parameterConstraints` returning `nil`. Let’s (re)define the getter to always return a `Dictionary`, then smoke-test.\n\n```smalltalk\n\"=== Ensure KoSlotGuard getters never return nil ===\"\n\n| g |\ng := Smalltalk at: #KoSlotGuard ifAbsent: [ ^ self error: 'KoSlotGuard not present' ].\n\n\"Storage hook (idempotent)\"\n(g canUnderstand: #kozGuardState) ifFalse: [\n\tg compile:\n'kozGuardState\n\t^ KoSlotGuardState at: self ifAbsentPut: [ Dictionary new ]'\n\tclassified: 'storage' ].\n\n\"Dimension constraints getter: default Dictionary\"\ng compile:\n'dimensionConstraints\n\t^ self kozGuardState at: #dimensionConstraints ifAbsent: [ Dictionary new ]'\nclassified: 'accessing'.\n\n\"Parameter constraints getter: default Dictionary\"\ng compile:\n'parameterConstraints\n\t^ self kozGuardState at: #parameterConstraints ifAbsent: [ Dictionary new ]'\nclassified: 'accessing'.\n\n\"Setters (keep them idempotent)\"\n(g canUnderstand: #dimensionConstraints:) ifFalse: [\n\tg compile:\n'dimensionConstraints: aDict\n\tself kozGuardState at: #dimensionConstraints put: (aDict ifNil: [ Dictionary new ])'\n\tclassified: 'accessing' ].\n\n(g canUnderstand: #parameterConstraints:) ifFalse: [\n\tg compile:\n'parameterConstraints: aDict\n\tself kozGuardState at: #parameterConstraints put: (aDict ifNil: [ Dictionary new ])'\n\tclassified: 'accessing' ].\n\n\"=== Smoke ===\"\n[\n\t| guard ok |\n\tguard := KoSlotGuard\n\t\tselector: #drawPixel\n\t\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\t\tparameterConstraints: nil.\n\n\tok := {\n\t\t#selector     -> (guard selector = #drawPixel).\n\t\t#dimRcvr      -> ((guard dimensionConstraints at: #rcvr ifAbsent: [ nil ]) = #screenParent).\n\t\t#paramIsDict  -> (guard parameterConstraints isKindOf: Dictionary)\n\t} asDictionary.\n\n\tTranscript cr; show: '[KoSlotGuard getters OK] '; show: ok printString; cr\n] on: Error do: [ :ex |\n\tTranscript cr; show: '[KoSlotGuard smoke ERROR] '; show: ex description; cr ].\n```\n\nIf that prints `#paramIsDict->true`, your examples should run cleanly.\n"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:23:58.730336+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:23:58.730336+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "C06A+O3/DQCucC5VDe83Kg=="
+				},
+				"code" : "\t| guard ok |\n\tguard := KoSlotGuard\n\t\tselector: #drawPixel\n\t\tdimensionConstraints: (Dictionary newFrom: { #rcvr -> #screenParent })\n\t\tparameterConstraints: nil.\n\n\tok := {\n\t\t#selector     -> (guard selector = #drawPixel).\n\t\t#dimRcvr      -> ((guard dimensionConstraints at: #rcvr ifAbsent: [ nil ]) = #screenParent).\n\t\t#paramIsDict  -> (guard parameterConstraints isKindOf: Dictionary)\n\t} asDictionary."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:23:41.559505+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T12:24:23.154431+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "E1N69+3/DQCuaAv3De83Kg=="
+				},
+				"code" : "[\tTranscript cr; show: '[KoSlotGuard getters OK] '; show: ok printString; cr\n] on: Error do: [ :ex |\n\tTranscript cr; show: '[KoSlotGuard smoke ERROR] '; show: ex description; cr ]."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T12:19:20.366285+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T12:19:20.366285+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Getter KoSlotGuard>>parameterConstraints returning"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "603bd7e4-edff-0d00-ae49-d2660def372a"
+	}
+}
