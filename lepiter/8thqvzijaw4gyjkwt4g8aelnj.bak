@@ -51,7 +51,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-11-14T16:39:39.239262+01:00"
+			"dateAndTimeString" : "2025-11-14T16:40:01.935592+01:00"
 		}
 	},
 	"editEmail" : {
@@ -62,12 +62,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-11-14T16:39:39.239262+01:00"
+			"dateAndTimeString" : "2025-11-14T16:40:01.935592+01:00"
 		}
 	},
 	"pageType" : {
-		"__type" : "unnamedPage",
-		"defaultTitle" : "Page"
+		"__type" : "namedPage",
+		"title" : "KoSlotSpace"
 	},
 	"uid" : {
 		"__type" : "uuid",
