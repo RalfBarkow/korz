@@ -1,0 +1,698 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T23:32:59.50582+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:30:11.233413+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4fQTUff/DQChg2yzAuDTbA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtMethod:KoSlotSpaceExamples class>>#exampleYonedaProfiles}} , {{gtMethod:KoSlotSpace>>#matchingSlotsForContext:selector:arguments:}} and {{gtMethod:KoSlotSpaceExamples class>>#resultsForContext:slotSpace:selector:}}"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:27:42.303593+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:27:45.718389+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "OenI8v3/DQCixO16AuDTbA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "* The `OrderedCollection>>errorSubscriptBounds:` and the `nil` results have the **same root cause**:\n  for the `combiner` and `yoneda` scenarios,\n  `matchingSlotsForContext:selector:arguments:` returns **no slots**,\n  so `resultsForContext:` returns an empty collection.\n* When `firstResultForContext:` used `first`, you got the bounds error.\n  After we made it “defensive” (returning `nil` on empty), the error disappeared – but\n  you now see `nil` for `#meet` and `#quorum`.\n\nThat means: the contexts we build in the examples do **not** match any guards actually stored on the slots (dimension / coordinate mismatch). The bracket / pile examples happen to be correct; the combiner & Yoneda ones are out of sync.\n"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:27:45.714667+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:27:45.714667+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Ufb88v3/DQCiy8ukAuDTbA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The short version:"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:14:03.910514+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:27:42.311288+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GUABwv3/DQCh8EMJAuDTbA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Let’s do two things:\n\n1. Restore the **original behaviour** of `firstResultForContext:` (assumes at least one match).\n2. Re-compile the **combiner and Yoneda helper methods** so the guards and contexts line up exactly (dimensions as keys, coordinates as values).\n\nPaste the following **do-it** into a Playground and run it once:"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:17:55.354091+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:18:22.883278+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "uMXMz/3/DQCiQ6+HAuDTbA=="
+				},
+				"code" : "\"1. Restore the simple helpers on KoSlotSpaceExamples class\"\n\ncls := KoSlotSpaceExamples class."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:16:28.665854+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:18:59.675402+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "PRCiyv3/DQCiKcA+AuDTbA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtMethod:KoSlotSpaceExamples class>>#resultsForContext:slotSpace:selector:}}"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:16:13.633793+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:17:55.356206+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "86q8yf3/DQCiJBppAuDTbA=="
+				},
+				"code" : "cls\n  compile: 'resultsForContext: context slotSpace: slotSpace selector: selector\n\t| matches |\n\tmatches := slotSpace\n\t\tmatchingSlotsForContext: context\n\t\tselector: selector\n\t\targuments: #().\n\t^ matches collect: [ :slot |\n\t\tslot evaluateInContext: context withArguments: #() ]'\n  classified: 'private - querying'.\n"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:15:13.440769+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:15:22.085452+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "PDgmxv3/DQCiClKhAuDTbA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtMethod:KoSlotSpaceExamples class>>#firstResultForContext:slotSpace:selector:}}"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:14:23.170352+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:16:13.63632+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "aycnw/3/DQCh+iOmAuDTbA=="
+				},
+				"code" : "cls\n  compile: 'firstResultForContext: context slotSpace: slotSpace selector: selector\n\t^ (self\n\t\tresultsForContext: context\n\t\tslotSpace: slotSpace\n\t\tselector: selector) first'\n  classified: 'private - querying'."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:21:18.202285+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:21:26.81104+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "7Qnk2/3/DQCigBceAuDTbA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtMethod:KoSlotSpaceExamples class>>#addCombinerSlotsOn:combinerDimension:coordinates:}}"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:20:46.859536+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:20:46.859536+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "X8MF2v3/DQCie9o1AuDTbA=="
+				},
+				"code" : "\"2. Make sure combiner helpers and example use the same dimension objects\"\n\ncls\n  compile: 'addCombinerSlotsOn: slotSpace combinerDimension: combinerDimension coordinates: coordinates\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #stabilize\n\t\t\tdimensionConstraints: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coordinates at: #meet) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''intersection of candidates'' ]).\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #stabilize\n\t\t\tdimensionConstraints: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coordinates at: #quorum) })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | ''accept proposals supported by >= 2 POVs'' ])'\n  classified: 'private - building'."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:22:55.808495+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T07:22:55.808495+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "JGS14f3/DQCiom2EAuDTbA=="
+							},
+							"exampleSelector" : "exampleCombinerPolicies",
+							"previewHeight" : 200,
+							"previewShowSelector" : "gtViewsFor:",
+							"exampleBehaviorName" : "KoSlotSpaceExamples class",
+							"codeExpanded" : true,
+							"previewExpanded" : false,
+							"noCode" : false
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:20:06.616519+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:20:46.861434+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "HLqf1/3/DQCia4u6AuDTbA=="
+				},
+				"code" : "cls\n  compile: 'exampleCombinerPolicies\n\t<gtExample>\n\t| scenario dims coords slotSpace combinerDimension |\n\tscenario := self combinerScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tslotSpace := scenario at: #slotSpace.\n\tcombinerDimension := dims at: #combiner.\n\t^ Dictionary newFrom: {\n\t\t#meet -> (self\n\t\t\tfirstResultForContext: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coords at: #meet) })\n\t\t\tslotSpace: slotSpace\n\t\t\tselector: #stabilize).\n\t\t#quorum -> (self\n\t\t\tfirstResultForContext: (Dictionary newFrom: {\n\t\t\t\tcombinerDimension -> (coords at: #quorum) })\n\t\t\tslotSpace: slotSpace\n\t\t\tselector: #stabilize) }'\n  classified: 'examples'."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:23:59.813272+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:25:22.853668+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "5gaG5f3/DQCipu1VAuDTbA=="
+				},
+				"code" : "\"3. Make sure Yoneda helpers and example line up the same way\"\n\ncls\n  compile: 'addProfileSlotOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tpov: pov\n\t\tobject: object\n\t\tresult: resultCollection\n\tslotSpace addSlot: (KoSlot\n\t\tguard: (KoSlotGuard\n\t\t\tselector: #profile\n\t\t\tdimensionConstraints: (Dictionary newFrom: {\n\t\t\t\tpovDimension -> pov.\n\t\t\t\tobjectDimension -> object })\n\t\t\tparameterConstraints: nil)\n\t\tcontents: [ :ctx :args | resultCollection ])'\n  classified: 'private - building'.\n\ncls\n  compile: 'addYonedaSlotsOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tcoordinates: coordinates\n\t| povLocal povMeta nodeA nodeB nodeC |\n\tpovLocal := coordinates at: #povLocal.\n\tpovMeta := coordinates at: #povMeta.\n\tnodeA := coordinates at: #nodeA.\n\tnodeB := coordinates at: #nodeB.\n\tnodeC := coordinates at: #nodeC.\n\tself\n\t\taddProfileSlotOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tpov: povLocal\n\t\tobject: nodeA\n\t\tresult: #(fromB).\n\tself\n\t\taddProfileSlotOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tpov: povLocal\n\t\tobject: nodeB\n\t\tresult: #(fromC).\n\tself\n\t\taddProfileSlotOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tpov: povLocal\n\t\tobject: nodeC\n\t\tresult: #(fromB).\n\tself\n\t\taddProfileSlotOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tpov: povMeta\n\t\tobject: nodeA\n\t\tresult: #(fromAll).\n\tself\n\t\taddProfileSlotOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tpov: povMeta\n\t\tobject: nodeB\n\t\tresult: #(fromAll).\n\tself\n\t\taddProfileSlotOn: slotSpace\n\t\tpovDimension: povDimension\n\t\tobjectDimension: objectDimension\n\t\tpov: povMeta\n\t\tobject: nodeC\n\t\tresult: #(fromAll)'\n  classified: 'private - building'.\n\ncls\n  compile: 'exampleYonedaProfiles\n\t<gtExample>\n\t| scenario dims coords slotSpace povDimension objectDimension povs objects result |\n\tscenario := self yonedaScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tslotSpace := scenario at: #slotSpace.\n\tpovDimension := dims at: #pov.\n\tobjectDimension := dims at: #object.\n\tpovs := Dictionary newFrom: {\n\t\t#local -> (coords at: #povLocal).\n\t\t#meta -> (coords at: #povMeta) }.\n\tobjects := Dictionary newFrom: {\n\t\t#nodeA -> (coords at: #nodeA).\n\t\t#nodeB -> (coords at: #nodeB).\n\t\t#nodeC -> (coords at: #nodeC) }.\n\tresult := Dictionary new.\n\tpovs keysAndValuesDo: [ :povLabel :povCoord |\n\t\t| perObject |\n\t\tperObject := Dictionary new.\n\t\tobjects keysAndValuesDo: [ :objectLabel :objectCoord |\n\t\t\t| context profile |\n\t\t\tcontext := Dictionary newFrom: {\n\t\t\t\tpovDimension -> povCoord.\n\t\t\t\tobjectDimension -> objectCoord }.\n\t\t\tprofile := self\n\t\t\t\tfirstResultForContext: context\n\t\t\t\tslotSpace: slotSpace\n\t\t\t\tselector: #profile.\n\t\t\tperObject at: objectLabel put: profile ].\n\t\tresult at: povLabel put: perObject ].\n\t^ result'\n  classified: 'examples'."
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:25:52.075212+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:25:52.075212+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AwI37P3/DQCitLzMAuDTbA=="
+				},
+				"exampleSelector" : "exampleYonedaProfiles",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "KoSlotSpaceExamples class",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T23:31:11.790815+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:26:07.006132+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "TFuoSvf/DQChcV/gAuDTbA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "After this:\n\n* `KoSlotSpaceExamples exampleCombinerPolicies` should again show:\n\n  * `#quorum -> 'accept proposals supported by >= 2 POVs'`\n  * `#meet   -> 'intersection of candidates'`\n\n* `KoSlotSpaceExamples exampleYonedaProfiles` should yield the nested dictionaries of `#(fromB)`, `#(fromC)`, `#(fromAll)` as before.\n\nIf anything is still off after running this chunk, tell me exactly which example misbehaves and what it prints, and we’ll drill into that specific scenario.\n"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T23:33:55.620151+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-14T23:34:00.360016+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "bzFsVPf/DQCh1J7ZAuDTbA=="
+				},
+				"code" : "KoSlotSpaceExamples exampleCombinerPolicies"
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:07:43.772509+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T07:07:43.772509+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "UdRYq/3/DQCh30KGAuDTbA=="
+				},
+				"exampleSelector" : "exampleYonedaProfiles",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "KoSlotSpaceExamples class",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-14T23:31:58.291154+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-15T07:10:49.107484+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Restore the original behaviour of firstResultForContext"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "f23ca84a-f7ff-0d00-a170-8b0a02e0d36c"
+	}
+}

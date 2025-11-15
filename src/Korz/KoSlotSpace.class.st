@@ -68,28 +68,28 @@ KoSlotSpace >> kozState [
 { #category : #'Korz-Projection-Compat' }
 KoSlotSpace >> matchingSlotsForContext: aContext selector: aSelector arguments: ignored [
 	"Return the slots whose guard selector matches and whose dimension constraints
-	 are exactly satisfied by aContext (identity compare on coords)."
+	 are satisfied by aContext. We compare coordinates by value (=) and also
+	 accept identical instances (==)."
 
 	| slots |
 	slots := self kozState at: #slots.
-	^ slots select: [ :slot |
-		| guard constraints matches |
-		guard := (slot respondsTo: #guard)
-			ifTrue: [ slot guard ]
-			ifFalse: [ nil ].
-		guard isNil
-			ifTrue: [ false ]
-			ifFalse: [
-				guard selector = aSelector
-					ifFalse: [ false ]
-					ifTrue: [
-						constraints := guard dimensionConstraints.
-						constraints isNil
-							ifTrue: [ true ]
-							ifFalse: [
-								matches := true.
-								constraints keysAndValuesDo: [ :dim :coord |
-									((aContext at: dim ifAbsent: [ nil ]) == coord)
-										ifFalse: [ matches := false ] ].
-								matches ] ] ] ]
+	^ slots
+		select: [ :slot | 
+			| guard constraints matches |
+			guard := (slot respondsTo: #guard) ifTrue: [ slot guard ] ifFalse: [ nil ].
+			guard isNil
+				ifTrue: [ false ]
+				ifFalse: [ guard selector = aSelector
+						ifFalse: [ false ]
+						ifTrue: [ constraints := guard dimensionConstraints.
+							constraints isNil
+								ifTrue: [ true ]
+								ifFalse: [ matches := true.
+									constraints
+										keysAndValuesDo: [ :dim :coord | 
+											| ctxCoord |
+											ctxCoord := aContext at: dim ifAbsent: [ nil ].
+											(ctxCoord == coord or: [ ctxCoord = coord ])
+												ifFalse: [ matches := false ] ].
+									matches ] ] ] ]
 ]

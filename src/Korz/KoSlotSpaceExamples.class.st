@@ -1,7 +1,7 @@
 Class {
 	#name : #KoSlotSpaceExamples,
 	#superclass : #Object,
-	#category : #Korz
+	#category : #'Korz-Projection'
 }
 
 { #category : #'private - building' }
@@ -47,14 +47,14 @@ KoSlotSpaceExamples class >> addBracketSeesSlotsOn: slotSpace boundaryDimension:
 		povDimension: povDimension
 		boundary: square
 		pov: symmetric
-		result: #(round curly).
+		result: #(round curly angle).
 	self
 		addSeesSlotOn: slotSpace
 		boundaryDimension: boundaryDimension
 		povDimension: povDimension
 		boundary: round
 		pov: symmetric
-		result: #(curly square).
+		result: #(curly square angle).
 	self
 		addSeesSlotOn: slotSpace
 		boundaryDimension: boundaryDimension
@@ -68,25 +68,27 @@ KoSlotSpaceExamples class >> addBracketSeesSlotsOn: slotSpace boundaryDimension:
 		povDimension: povDimension
 		boundary: angle
 		pov: symmetric
-		result: #(curly)
+		result: #(curly round)
 ]
 
 { #category : #'private - building' }
 KoSlotSpaceExamples class >> addCombinerSlotsOn: slotSpace combinerDimension: combinerDimension coordinates: coordinates [
-	slotSpace addSlot: (KoSlot
-		guard: (KoSlotGuard
-			selector: #stabilize
-			dimensionConstraints: (Dictionary newFrom: {
-				combinerDimension -> (coordinates at: #meet) })
-			parameterConstraints: nil)
-		contents: [ :ctx :args | 'intersection of candidates' ]).
-	slotSpace addSlot: (KoSlot
-		guard: (KoSlotGuard
-			selector: #stabilize
-			dimensionConstraints: (Dictionary newFrom: {
-				combinerDimension -> (coordinates at: #quorum) })
-			parameterConstraints: nil)
-		contents: [ :ctx :args | 'accept proposals supported by ≥ 2 POVs' ])
+	slotSpace
+		addSlot: (KoSlot
+				guard: (KoSlotGuard
+						selector: #stabilize
+						dimensionConstraints: (Dictionary
+								newFrom: {combinerDimension -> (coordinates at: #meet)})
+						parameterConstraints: nil)
+				contents: [ :ctx :args | 'intersection of candidates' ]).
+	slotSpace
+		addSlot: (KoSlot
+				guard: (KoSlotGuard
+						selector: #stabilize
+						dimensionConstraints: (Dictionary
+								newFrom: {combinerDimension -> (coordinates at: #quorum)})
+						parameterConstraints: nil)
+				contents: [ :ctx :args | 'accept proposals supported by >= 2 POVs' ])
 ]
 
 { #category : #'private - building' }
@@ -148,7 +150,12 @@ KoSlotSpaceExamples class >> addPileSlotsOn: slotSpace selectionDimension: selec
 ]
 
 { #category : #'private - building' }
-KoSlotSpaceExamples class >> addProfileSlotOn: slotSpace povDimension: povDimension objectDimension: objectDimension pov: pov object: object result: resultCollection [
+KoSlotSpaceExamples class >> addProfileSlotOn: slotSpace
+		povDimension: povDimension
+		objectDimension: objectDimension
+		pov: pov
+		object: object
+		result: resultCollection [
 	slotSpace addSlot: (KoSlot
 		guard: (KoSlotGuard
 			selector: #profile
@@ -172,7 +179,10 @@ KoSlotSpaceExamples class >> addSeesSlotOn: slotSpace boundaryDimension: boundar
 ]
 
 { #category : #'private - building' }
-KoSlotSpaceExamples class >> addYonedaSlotsOn: slotSpace povDimension: povDimension objectDimension: objectDimension coordinates: coordinates [
+KoSlotSpaceExamples class >> addYonedaSlotsOn: slotSpace
+		povDimension: povDimension
+		objectDimension: objectDimension
+		coordinates: coordinates [
 	| povLocal povMeta nodeA nodeB nodeC |
 	povLocal := coordinates at: #povLocal.
 	povMeta := coordinates at: #povMeta.
@@ -311,15 +321,16 @@ KoSlotSpaceExamples class >> exampleCombinerPolicies [
 	slotSpace := scenario at: #slotSpace.
 	combinerDimension := dims at: #combiner.
 	^ Dictionary newFrom: {
-		#meet -> (self firstResultForContext: (Dictionary newFrom: {
+		#meet -> (self
+			firstResultForContext: (Dictionary newFrom: {
 				combinerDimension -> (coords at: #meet) })
 			slotSpace: slotSpace
 			selector: #stabilize).
-		#quorum -> (self firstResultForContext: (Dictionary newFrom: {
+		#quorum -> (self
+			firstResultForContext: (Dictionary newFrom: {
 				combinerDimension -> (coords at: #quorum) })
 			slotSpace: slotSpace
-			selector: #stabilize)
-	}
+			selector: #stabilize) }
 ]
 
 { #category : #examples }
@@ -385,20 +396,21 @@ KoSlotSpaceExamples class >> exampleYonedaProfiles [
 			context := Dictionary newFrom: {
 				povDimension -> povCoord.
 				objectDimension -> objectCoord }.
-			profile := self firstResultForContext: context slotSpace: slotSpace selector: #profile.
-			perObject at: objectLabel put: profile
-		].
-		result at: povLabel put: perObject
-	].
+			profile := self
+				firstResultForContext: context
+				slotSpace: slotSpace
+				selector: #profile.
+			perObject at: objectLabel put: profile ].
+		result at: povLabel put: perObject ].
 	^ result
 ]
 
-{ #category : #'private - building' }
+{ #category : #'private - querying' }
 KoSlotSpaceExamples class >> firstResultForContext: context slotSpace: slotSpace selector: selector [
-	| results |
-	results := self resultsForContext: context slotSpace: slotSpace selector: selector.
-	results isEmpty ifTrue: [ ^ nil ].
-	^ results first
+	^ (self
+		resultsForContext: context
+		slotSpace: slotSpace
+		selector: selector) first
 ]
 
 { #category : #'private - building' }
@@ -416,13 +428,15 @@ KoSlotSpaceExamples class >> pileScenario [
 		#coordinates -> coords }
 ]
 
-{ #category : #'private - building' }
+{ #category : #'private - querying' }
 KoSlotSpaceExamples class >> resultsForContext: context slotSpace: slotSpace selector: selector [
-	^ (slotSpace
-		matchingSlotsForContext: context
-		selector: selector
-		arguments: #())
-		collect: [ :slot | slot evaluateInContext: context withArguments: #() ]
+	| matches |
+	matches := slotSpace
+			matchingSlotsForContext: context
+			selector: selector
+			arguments: #().
+	^ matches
+		collect: [ :slot | slot evaluateBlockAndWait: context withArguments: #() ]
 ]
 
 { #category : #'private - building' }
