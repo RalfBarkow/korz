@@ -1,0 +1,150 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T09:55:00.225216+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T09:55:22.457133+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AvGQAQAADgCQUTTFBR37LA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Context: {{gtMethod:KoSlotSpaceExamples class>>#exampleCombinerPolicies}}\t"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T09:59:08.620657+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T09:59:08.620657+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "oCFfEAAADgCQ4/jCBR37LA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "`self` there is just “send a helper message to this class”.\n\nYou can read your method like this, with all temporaries made explicit:\n\n```smalltalk\nexampleCombinerPolicies\n\t<gtExample>\n\t| scenario dims coords slotSpace combinerDimension\n\t  meetContext quorumContext meetResult quorumResult |\n\t\t\n\tscenario := self combinerScenario.\n\tdims := scenario at: #dimensions.\n\tcoords := scenario at: #coordinates.\n\tslotSpace := scenario at: #slotSpace.\n\tcombinerDimension := dims at: #combiner.\n\n\tmeetContext := Dictionary newFrom: {\n\t\tcombinerDimension -> (coords at: #meet) }.\n\tquorumContext := Dictionary newFrom: {\n\t\tcombinerDimension -> (coords at: #quorum) }.\n\n\tmeetResult := self\n\t\tfirstResultForContext: meetContext\n\t\tslotSpace: slotSpace\n\t\tselector: #stabilize.\n\n\tquorumResult := self\n\t\tfirstResultForContext: quorumContext\n\t\tslotSpace: slotSpace\n\t\tselector: #stabilize.\n\n\t^ Dictionary newFrom: {\n\t\t#meet -> meetResult.\n\t\t#quorum -> quorumResult }\n```\n\nThat is **exactly** what your shorter version does.\n"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T09:54:22.518684+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-15T10:00:21.635518+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "8ZVR////DQCQS+x7BR37LA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### What `self` means here\n\n* This is a **class-side** method (`KoSlotSpaceExamples class >> exampleCombinerPolicies`).\n* In a class-side method, `self` is the **class object** `KoSlotSpaceExamples`.\n* So\n\n  ```smalltalk\n  self firstResultForContext: ... slotSpace: slotSpace selector: #stabilize\n  ```\n\n  is the same as\n\n  ```smalltalk\n  KoSlotSpaceExamples\n    firstResultForContext: ...\n    slotSpace: slotSpace\n    selector: #stabilize\n  ```\n\n### How the helper works\n\nFrom your class:\n\n```smalltalk\nfirstResultForContext: context slotSpace: slotSpace selector: selector\n\t^ (self\n\t\tresultsForContext: context\n\t\tslotSpace: slotSpace\n\t\tselector: selector) first\n```\n\nSo the flow is:\n\n1. `exampleCombinerPolicies` builds a **context** dictionary (dimension → coordinate).\n\n2. It calls the helper on `self` (the class):\n\n   ```smalltalk\n   self firstResultForContext: context slotSpace: slotSpace selector: #stabilize\n   ```\n\n3. That helper sends another message to `self`:\n\n   ```smalltalk\n   self resultsForContext:context slotSpace:slotSpace selector:selector\n   ```\n\n4. {{gtMethod:KoSlotSpaceExamples class>>#resultsForContext:slotSpace:selector:}} does the actual slot lookup:\n\n   ```smalltalk\n   resultsForContext: context slotSpace: slotSpace selector: selector\n    ^ (slotSpace\n    \tmatchingSlotsForContext: context\n    \tselector: selector\n    \targuments: #())\n    \tcollect: [ :slot | slot evaluateInContext: context withArguments: #() ]\n   ```\n\n   This returns an `OrderedCollection` of whatever each matching slot’s `contents` block returns (strings in the combiner case).\n\n5. `firstResultForContext:...` then takes `first` element of that collection, so you get a **single string** instead of a 1-element collection.\n\n### Why you saw `SubscriptOutOfBounds`\n\nThat stack trace says:\n\n```smalltalk\nOrderedCollection(SequenceableCollection)>>first\nself = an OrderedCollection(0 items)\n```\n\nSo:\n\n* `resultsForContext:slotSpace:selector:` returned an **empty** collection for that context.\n* Calling `first` on an empty collection raises `SubscriptOutOfBounds`.\n\nThat’s a *separate* issue (no slot matched, or `matchingSlotsForContext:selector:arguments:` filtered everything out). But structurally, the `self` send is just:\n\n> “Ask `KoSlotSpaceExamples` to compute the first matching result for this context and selector.”\n\nIf you like the more explicit version, you can keep the expanded form above; the shorter version with `self` is just idiomatic Smalltalk.\n"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-15T09:54:47.703872+01:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-11-15T09:54:47.703872+01:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "exampleCombinerPolicies"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "438f51ff-ffff-0d00-904a-82af051dfb2c"
+	}
+}

@@ -314,23 +314,30 @@ KoSlotSpaceExamples class >> exampleBracketSees [
 { #category : #examples }
 KoSlotSpaceExamples class >> exampleCombinerPolicies [
 	<gtExample>
-	| scenario dims coords slotSpace combinerDimension |
+	| scenario dims coords slotSpace combinerDimension meetContext quorumContext meetResult quorumResult |
 	scenario := self combinerScenario.
 	dims := scenario at: #dimensions.
 	coords := scenario at: #coordinates.
 	slotSpace := scenario at: #slotSpace.
 	combinerDimension := dims at: #combiner.
-	^ Dictionary newFrom: {
-		#meet -> (self
-			firstResultForContext: (Dictionary newFrom: {
-				combinerDimension -> (coords at: #meet) })
+
+	meetContext := Dictionary newFrom: {combinerDimension -> (coords at: #meet)}.
+	quorumContext := Dictionary
+			newFrom: {combinerDimension -> (coords at: #quorum)}.
+
+	meetResult := self
+			firstResultForContext: meetContext
 			slotSpace: slotSpace
-			selector: #stabilize).
-		#quorum -> (self
-			firstResultForContext: (Dictionary newFrom: {
-				combinerDimension -> (coords at: #quorum) })
+			selector: #stabilize.
+
+	quorumResult := self
+			firstResultForContext: quorumContext
 			slotSpace: slotSpace
-			selector: #stabilize) }
+			selector: #stabilize.
+
+	^ Dictionary
+		newFrom: {#meet -> meetResult.
+				#quorum -> quorumResult}
 ]
 
 { #category : #examples }
@@ -430,13 +437,11 @@ KoSlotSpaceExamples class >> pileScenario [
 
 { #category : #'private - querying' }
 KoSlotSpaceExamples class >> resultsForContext: context slotSpace: slotSpace selector: selector [
-	| matches |
-	matches := slotSpace
-			matchingSlotsForContext: context
-			selector: selector
-			arguments: #().
-	^ matches
-		collect: [ :slot | slot evaluateBlockAndWait: context withArguments: #() ]
+	^ (slotSpace
+		matchingSlotsForContext: context
+		selector: selector
+		arguments: #())
+		collect: [ :slot | slot evaluateInContext: context withArguments: #() ]
 ]
 
 { #category : #'private - building' }

@@ -9,9 +9,12 @@ Class {
 	#category : #'Korz-Projection-Compat'
 }
 
-{ #category : #'private - building' }
-KoSlot class >> guard: anObject contents: anObject1 [
-	
+{ #category : #'instance creation' }
+KoSlot class >> guard: aGuard contents: aBlock [
+	^ self new
+		guard: aGuard;
+		implementation: aBlock;
+		yourself
 ]
 
 { #category : #'instance creation' }
@@ -33,6 +36,13 @@ KoSlot class >> selector: aSelector implementation: aBlock [
 		dimensionConstraints: Dictionary new
 		parameterConstraints: nil
 		implementation: aBlock
+]
+
+{ #category : #evaluating }
+KoSlot >> evaluateInContext: aContext withArguments: args [
+	"Delegates to the implementation block.
+	Our examples use 2-arg blocks: [:ctx :args | ...]."
+	^ implementation value: aContext value: args
 ]
 
 { #category : #accessing }

@@ -20,31 +20,29 @@ KoSlotGuard class >> selector: aSelector [
 ]
 
 { #category : #'instance creation' }
-KoSlotGuard class >> selector: aSelector dimensionConstraints: aDict parameterConstraints: aParam [
+KoSlotGuard class >> selector: aSelector dimensionConstraints: dimConstraints parameterConstraints: paramConstraints [
 	^ self new
 		selector: aSelector;
-		dimensionConstraints: (aDict ifNil: [ Dictionary new ]);
-		parameterConstraints: aParam;
+		dimensionConstraints: dimConstraints;
+		parameterConstraints: paramConstraints;
 		yourself
 ]
 
 { #category : #accessing }
 KoSlotGuard >> acceptableConstraints [
-	"Default to dimensionConstraints if present; never nil."
-
-	^ (self respondsTo: #dimensionConstraints)
-		ifTrue: [ self dimensionConstraints ifNil: [ Dictionary new ] ]
-		ifFalse: [ Dictionary new ]
+	"Hook for future generalization.
+	For now we just forward to dimensionConstraints."
+	^ self dimensionConstraints
 ]
 
 { #category : #accessing }
 KoSlotGuard >> dimensionConstraints [
-	^ self kozGuardState at: #dimensionConstraints ifAbsent: [ Dictionary new ]
+	^ dimensionConstraints
 ]
 
-{ #category : #accessing }
-KoSlotGuard >> dimensionConstraints: aDict [
-	dimensionConstraints := aDict
+{ #category : #initialization }
+KoSlotGuard >> dimensionConstraints: aDictionary [
+	dimensionConstraints := aDictionary
 ]
 
 { #category : #storage }
@@ -54,12 +52,12 @@ KoSlotGuard >> kozGuardState [
 
 { #category : #accessing }
 KoSlotGuard >> parameterConstraints [
-	^ self kozGuardState at: #parameterConstraints ifAbsent: [ Dictionary new ]
+	^ parameterConstraints
 ]
 
-{ #category : #accessing }
-KoSlotGuard >> parameterConstraints: aParam [
-	parameterConstraints := aParam
+{ #category : #initialization }
+KoSlotGuard >> parameterConstraints: aDictionaryOrNil [
+	parameterConstraints := aDictionaryOrNil
 ]
 
 { #category : #accessing }
@@ -67,7 +65,7 @@ KoSlotGuard >> selector [
 	^ selector
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 KoSlotGuard >> selector: aSelector [
 	selector := aSelector
 ]

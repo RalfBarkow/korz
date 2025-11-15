@@ -221,6 +221,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "{{gtPage:KoSlotGuardState|db=8g3ioytkyyruc50z9ebqr2rh6}}"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T09:42:08.387228+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-15T09:42:11.75449+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "E5yP0///DQCQNEuSBR37LA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "{{gtPage:Restore the original behaviour of firstResultForContext|db=8g3ioytkyyruc50z9ebqr2rh6}}"
 						}
 					]
 				},
